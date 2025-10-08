@@ -311,8 +311,8 @@ const Facilities = () => {
       {/* Room Detail Modal */}
       {activeRoom && (
         <div className="room-modal">
-          <div className="modal-backdrop" onClick={closeRoomDetail}></div>
           <div className="modal-content">
+          <div className="modal-backdrop" onClick={closeRoomDetail}></div>
             <div className="modal-header">
               <h3>{activeRoom.name}</h3>
               <button className="modal-close" onClick={closeRoomDetail}>
