@@ -265,13 +265,13 @@ const Facilities = () => {
                       <i className="bi bi-calendar-check me-2"></i>
                       Book Now
                     </button>
-                    {/* <button 
+                    <button 
                       className="btn btn-view-details-outline"
                       onClick={() => openRoomDetail(room)}
                     >
                       <i className="bi bi-info-circle me-2"></i>
                       View Details
-                    </button> */}
+                    </button>
                   </div>
                 </div>
               </div>
