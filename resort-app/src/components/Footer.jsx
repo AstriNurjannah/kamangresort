@@ -65,13 +65,13 @@ function Footer() {
           <div className="col-md-2 mb-4 ">
             <h5 className="">Our Partner</h5>
             <img
-              src="/LogoResort.png"
+              src="/Kamang-Resort/LogoResort.png"
               alt="Logo Resort"
               width="120"
               className="my-2"
             />
             <img
-              src="/LogoGroup.png"
+              src="/Kamang-Resort/LogoGroup.png"
               alt="Logo Support"
               width="120"
               className="my-2"

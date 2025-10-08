@@ -1,10 +1,14 @@
 import React, { useRef, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function NavigationBar() {
   const navbarRef = useRef(null);
+  const location = useLocation();
+
+  // Cek apakah user sedang di halaman Home
+  const isHomePage = location.pathname === "/Home";
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -28,11 +32,17 @@ function NavigationBar() {
   return (
     <Navbar
       expand="lg"
-      bg="white"
-      variant="light"
+      variant="dark"
       fixed="top"
       className="shadow-sm"
       ref={navbarRef}
+      style={{
+        backgroundColor: isHomePage
+          ? "rgba(49, 91, 81, 0.90)" // Navbar transparan di Home
+          : "rgba(49, 91, 81, 0.90)", // Navbar berwarna di halaman lain
+        backdropFilter: "blur(6px)",
+        transition: "background-color 0.3s ease",
+      }}
     >
       <Container>
         {/* Logo */}
@@ -41,7 +51,12 @@ function NavigationBar() {
           to="/Home"
           className="d-flex align-items-center me-1"
         >
-          <img src="/Kamang-Resort/LogoResort2.png" alt="Logo" width="250" height="100" />
+          <img
+            src="/Kamang-Resort/LogoResort2.png"
+            alt="Logo"
+            width="250"
+            height="100"
+          />
         </Navbar.Brand>
 
         {/* Toggle (Hamburger) */}
@@ -50,41 +65,57 @@ function NavigationBar() {
         {/* Menu Collapse */}
         <Navbar.Collapse id="navbarNavDropdown">
           <Nav className="ms-auto">
+            {/* Home */}
             <Nav.Link
               as={NavLink}
               to="/Home"
               className={({ isActive }) =>
-                isActive ? "active text-dark me-4" : "text-secondary me-4"
+                isActive
+                  ? isHomePage
+                    ? "active text-dark me-4"
+                    : "active text-white me-4"
+                  : isHomePage
+                  ? "text-dark me-4"
+                  : "text-light me-4"
               }
             >
               Home
             </Nav.Link>
 
+            {/* Contact */}
             <Nav.Link
               as={NavLink}
               to="/ContactUs"
               className={({ isActive }) =>
-                isActive ? "active text-dark me-4" : "text-secondary me-4"
+                isActive
+                  ? "active text-white me-4"
+                  : "text-light me-4"
               }
             >
               Contact Us
             </Nav.Link>
 
+            {/* About */}
             <Nav.Link
               as={NavLink}
               to="/About"
               className={({ isActive }) =>
-                isActive ? "active text-dark me-4" : "text-secondary me-4"
+                isActive
+                  ? "active text-white me-4"
+                  : "text-light me-4"
               }
             >
               About
             </Nav.Link>
 
+            {/* Gallery */}
             <Nav.Link
               as={NavLink}
               to="/Gallery"
               className={({ isActive }) =>
-                isActive ? "active text-dark me-4" : "text-secondary me-4"
+                isActive
+                  ? "active text-white me-4"
+                  : "text-light me-4"
               }
             >
               Gallery
@@ -94,7 +125,7 @@ function NavigationBar() {
             <NavDropdown
               title="Service"
               id="navbarDropdown"
-              className="me-4 text-secondary"
+              className={isHomePage ? "me-4 text-dark" : "me-4 text-light"}
               menuVariant="light"
             >
               <NavDropdown.Item
