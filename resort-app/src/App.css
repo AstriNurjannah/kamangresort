@@ -1,0 +1,524 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
+
+/* reset margin bawaan browser */
+html,
+body,
+#root {
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+:root {
+  --navbar-height: 80px;
+}
+
+/* FAQ Start */
+.accordion-button {
+  background-color: #fff !important;
+  color: #315B51 !important;
+  border: 1px solid #315B51 !important;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* Warna ketika diklik / terbuka */
+.accordion-button:not(.collapsed) {
+  background-color: #315B51 !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+/* Hilangkan border saat aktif agar terlihat mulus */
+.accordion-button:focus {
+  box-shadow: none !important;
+}
+/* FAQ End */
+
+/* Testimoni Start */
+ .testimonial-card {
+        transition: all 0.3s ease;
+      }
+
+      .testimonial-card:hover {
+        transform: translateY(-8px) scale(1.06);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+/* Testimoni ENd */
+
+
+/* resturant */
+.restaurant {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  min-height: 100vh;
+  margin-top: var(--navbar-height);
+  min-height: calc(100vh - var(--navbar-height));
+}
+/* end */
+
+/* facilities */
+.facilities {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  min-height: 100vh;
+  margin-top: var(--navbar-height);
+  min-height: calc(100vh - var(--navbar-height));
+}
+
+/* end */
+
+
+.hero-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+}
+
+
+/* Untuk Section Asked */
+.faq-btn {
+  background-color: #fff;
+  color: #315b51;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.faq-btn:hover {
+  background-color: #315b51;
+  color: #fff;
+}
+
+/* Awal (transparan di atas hero/video) */
+.navbar-transparent {
+  background: transparent !important;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar-transparent .nav-link {
+  color: #e7601d !important; /* beige */
+  font-weight: 900;
+}
+
+.navbar-transparent .nav-link:hover {
+  color: #ffffff !important; /* putih pas hover */
+}
+
+/* Setelah scroll */
+.navbar-scrolled {
+  background-color: #ffffff !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar-scrolled .nav-link {
+  color: #355b4f !important; /* hijau tua */
+  font-weight: 600;
+}
+
+.navbar-scrolled .nav-link:hover {
+  color: #315b51 !important; /* hijau lebih gelap */
+}
+
+.navbar-brand img {
+  width: 200px; /* lebar crop gambar yg diinginkan */
+  height: 90px; /* tinggi crop gambar yg diinginkan */
+  object-fit: cover;
+  margin: 0;
+  object-position: 10% 20%; /* menentukan view crop image yg diinginkan */
+}
+
+.contact-us {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  min-height: 100vh;
+  margin-top: var(--navbar-height);
+  min-height: calc(100vh - var(--navbar-height));
+}
+
+.contact-info-card,
+.contact-form-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-info-card:hover,
+.contact-form-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.contact-icon {
+  width: 50px;
+  height: 50px;
+  background: rgba(13, 110, 253, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-icon i {
+  font-size: 1.2rem;
+}
+
+.contact-item {
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.contact-item:last-child {
+  border-bottom: none;
+}
+
+.form-control {
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  padding: 12px 15px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.form-label {
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 8px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #315b50 0%, #315b50 100%);
+  border: none;
+  border-radius: 10px;
+  padding: 15px 30px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(13, 110, 253, 0.4);
+}
+
+.btn-primary:disabled {
+  opacity: 0.7;
+  transform: none;
+  box-shadow: none;
+}
+
+.map-section {
+  margin-top: 50px;
+}
+
+.map-placeholder {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.map-content {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.alert {
+  border-radius: 10px;
+  border: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact-us {
+    padding: 40px 0;
+  }
+
+  .contact-info-card,
+  .contact-form-card {
+    margin-bottom: 20px;
+  }
+
+  .display-4 {
+    font-size: 2.5rem;
+  }
+}
+
+/* Animation untuk form */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contact-info-card,
+.contact-form-card {
+  animation: fadeInUp 0.6s ease-out;
+  background: rgba(255, 255, 255, 0.9); /* 70% opacity */
+}
+
+.contact-form-card {
+  animation-delay: 0.2s;
+}
+
+.contact-content-with-bg {
+  background-image: url("/Kamang-Resort/Resort1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 50px 0;
+  border-radius: 15px;
+  margin-bottom: 30px;
+}
+
+.video-section {
+  margin-top: 30px;
+  padding-top: 30px;
+}
+
+@media (max-width: 768px) {
+  .contact-us {
+    padding: 40px 0;
+  }
+
+  .display-4 {
+    font-size: 2rem;
+  }
+
+  .contact-info-card,
+  .contact-form-card {
+    margin-bottom: 20px;
+  }
+}
+
+.about-us {
+  padding: 100px 0 80px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  margin-top: var(--navbar-height);
+  min-height: calc(100vh - var(--navbar-height));
+}
+
+.about-hero-image,
+.about-story-image {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card {
+  padding: 30px 20px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+  height: 100%;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-icon {
+  width: 70px;
+  height: 70px;
+  background: rgba(49, 91, 80, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.feature-icon i {
+  font-size: 1.5rem;
+  color: #315b50;
+}
+
+.team-card {
+  padding: 30px 20px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.team-image img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 5px solid rgba(49, 91, 80, 0.1);
+}
+
+.stats-section {
+  padding: 50px 0;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.stat-item h3 {
+  font-size: 3rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-us {
+    padding: 80px 0 60px;
+  }
+
+  .display-4 {
+    font-size: 2.5rem;
+  }
+
+  .feature-card,
+  .team-card {
+    margin-bottom: 20px;
+  }
+}
+
+.reservation {
+
+  padding: 100px 0 100px;
+  margin-top: var(--navbar-height);
+  min-height: calc(80vh - var(--navbar-height));
+
+}
+
+
+.gallery {
+  padding: 100px 0 80px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  min-height: 100vh;
+  margin-top: var(--navbar-height);
+  min-height: calc(100vh - var(--navbar-height));
+}
+
+.filter-buttons .btn {
+  border-radius: 25px;
+  padding: 10px 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #315b50 0%, #2a4d43 100%);
+  border: none;
+}
+
+.gallery-item {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-image {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+
+.gallery-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-image img {
+  transform: scale(1.1);
+}
+
+.gallery-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(49, 91, 80, 0.8) 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.gallery-content {
+  color: white;
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-content {
+  transform: translateY(0);
+}
+
+.gallery-content h5 {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.gallery-content p {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.gallery-cta {
+  background: white;
+  padding: 50px 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .gallery {
+    padding: 80px 0 60px;
+  }
+
+  .display-4 {
+    font-size: 2.5rem;
+  }
+
+  .filter-buttons .btn {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    margin: 5px;
+  }
+
+  .gallery-cta {
+    padding: 30px 20px;
+  }
+}
+
