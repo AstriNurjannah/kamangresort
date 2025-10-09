@@ -265,13 +265,13 @@ const Facilities = () => {
                       <i className="bi bi-calendar-check me-2"></i>
                       Book Now
                     </button>
-                    {/* <button 
+                    <button 
                       className="btn btn-view-details-outline"
                       onClick={() => openRoomDetail(room)}
                     >
                       <i className="bi bi-info-circle me-2"></i>
                       View Details
-                    </button> */}
+                    </button>
                   </div>
                 </div>
               </div>
@@ -311,8 +311,8 @@ const Facilities = () => {
       {/* Room Detail Modal */}
       {activeRoom && (
         <div className="room-modal">
-          <div className="modal-backdrop" onClick={closeRoomDetail}></div>
           <div className="modal-content">
+          <div className="modal-backdrop" onClick={closeRoomDetail}></div>
             <div className="modal-header">
               <h3>{activeRoom.name}</h3>
               <button className="modal-close" onClick={closeRoomDetail}>

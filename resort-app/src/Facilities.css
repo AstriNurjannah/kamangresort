@@ -2,7 +2,6 @@
   padding: 100px 0 100px;
   margin-top: var(--navbar-height);
   min-height: calc(80vh - var(--navbar-height));
-
 }
 
 /* Accommodations Hero Section */
@@ -269,8 +268,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.1);
+  /* backdrop-filter: blur(5px); */
 }
 
 .modal-content {
