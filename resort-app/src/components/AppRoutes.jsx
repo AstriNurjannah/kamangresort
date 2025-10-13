@@ -2,14 +2,16 @@ import ContactUs from "../content/ContactUs";
 import Beranda from "../content/Home";
 import Gallery from "../content/Gallery";
 import About from "../content/About";
-import Reservation from "../content/Reservation"
-import Restaurant from "../content/Restaurant"
-import Facilities from "../content/Facilities"
+import Reservation from "../content/Reservation";
+import Restaurant from "../content/Restaurant";
+import Facilities from "../content/Facilities";
 import { Routes, Route } from "react-router-dom";
+import BackgroundMusic from "./BackgroundMusic";
 
 function AppRoutes() {
   return (
     <div className="container">
+      <BackgroundMusic />
       <Routes>
         <Route path="/" element={<Beranda />} />
         <Route path="/Home" element={<Beranda />} />

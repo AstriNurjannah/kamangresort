@@ -44,11 +44,58 @@ function Home() {
       : galleryItems.filter((item) => item.category === activeFilter);
 
   const [show, setShow] = useState(false);
+
+  // Data wisata terdekat
+  const wisataTerdekat = [
+    {
+      id: 1,
+      nama: "RAFTING",
+      kategori: "Wisata Petualangan",
+      lokasi: "Kamang Magek, Agam",
+      jarak: "2.5 km",
+      // video: "/Kamang-Resort/rafting-video.mp4",
+      gambar: "/Kamang-Resort/rafting.jpg", // thumbnail fallback
+    },
+    {
+      id: 2,
+      nama: "PULAU SOETAN",
+      kategori: "Wisata Alam & Pulau",
+      lokasi: "Danau Maninjau, Agam",
+      jarak: "15 km",
+      video: "/Kamang-Resort/pulau-soetan.MP4",
+      gambar: "/Kamang-Resort/pulau-soetan-thumbnail.jpg", // thumbnail fallback
+    },
+    {
+      id: 3,
+      nama: "JUMPING PULAU SIRONJONG",
+      kategori: "Wisata Air & Petualangan",
+      lokasi: "Pulau Sironjong, Agam",
+      jarak: "18 km",
+      video: "/Kamang-Resort/jumping-sironjong.MP4",
+      gambar: "/Kamang-Resort/jumping-sironjong-thumbnail.jpg",
+    },
+    {
+      id: 4,
+      nama: "JAM GADANG",
+      kategori: "Wisata Ikonik & Sejarah",
+      lokasi: "Bukittinggi",
+      jarak: "25 km",
+      video: "/Kamang-Resort/jam-gadang.MP4",
+      gambar: "/Kamang-Resort/jam-gadang-thumbnail.jpg",
+    },
+  ];
+
   return (
     <>
       {/* Hero Section */}
       <section
         className="hero-section d-flex align-items-center justify-content-center text-center"
+        style={{
+          paddingTop: "90px",
+          height: "80vh",
+          minHeight: "700px",
+          maxHeight: "800px",
+        }}
       >
         <video
           autoPlay
@@ -56,19 +103,14 @@ function Home() {
           muted
           playsInline
           className="position-absolute top-0 start-0 w-100 h-100"
-          style={{ objectFit: "cover", zIndex: "-1" }}
+          style={{ objectFit: "cover", zIndex: "-1", paddingTop: "100px" }}
         >
-          <source src="/Kamang-Resort/KemangResort.mp4" type="video/mp4" />
+          <source src="/Kamang-Resort/1010(1).mp4" type="video/mp4" />
         </video>
-
-        <div
-          className="position-absolute top-0 start-0 w-100 h-100"
-        ></div>
+        <div className="position-absolute top-0 start-0 w-100 h-100"></div>
       </section>
 
-
       {/* Intro Text */}
-
       <section
         style={{
           marginTop: "0px",
@@ -98,41 +140,43 @@ function Home() {
           }}
         ></div>
 
-        {/* Carousel text */}
+        {/* Running Text - Alternative */}
         <div
-          id="carouselExampleSlidesOnly"
-          className="carousel slide"
-          data-bs-ride="carousel"
-          data-bs-interval="6000"
-          style={{ zIndex: 2 }}
+          style={{
+            backgroundColor: "#fff8edff",
+            padding: "15px 0",
+            width: "100vw",
+            marginLeft: "calc(-50vw + 50%)",
+            overflow: "hidden",
+          }}
         >
           <div
-            className="carousel-inner text-center mb-3"
             style={{
-              color: "#355B4F",
-              fontStyle: "italic",
-              fontSize: "1.2rem",
+              display: "flex",
+              animation: "marquee 30s linear infinite",
+              width: "max-content", // Tambahkan ini
             }}
           >
-            <div className="carousel-item active">
-              <h5 className="d-block w-100 mb-0">
-                “Tempat ideal untuk acara keluarga, gathering, hingga konvensi —
-                semua dalam harmoni alam yang memikat.”
-              </h5>
-            </div>
-            <div className="carousel-item">
-              <h5 className="d-block w-100 mb-0">
-                “Nikmati suasana damai di setiap sudut, dengan pelayanan yang
-                ramah dan fasilitas berkelas.”
-              </h5>
-            </div>
-            <div className="carousel-item">
-              <h5 className="d-block w-100 mb-0">
-                “Rasakan ketenangan di Kamang Resort & Convention, tempat di
-                mana kenyamanan modern berpadu dengan keindahan alam. Pilihan
-                sempurna untuk liburan yang menenangkan.”
-              </h5>
-            </div>
+            {[
+              "“Tempat ideal untuk acara keluarga, gathering, hingga konvensi — semua dalam harmoni alam yang memikat.”",
+              "“Nikmati suasana damai di setiap sudut, dengan pelayanan yang ramah dan fasilitas berkelas.”",
+              "“Rasakan ketenangan di Kamang Resort & Convention, tempat di mana kenyamanan modern berpadu dengan keindahan alam.”",
+            ].map((text, index) => (
+              <div
+                key={index}
+                style={{
+                  color: " #ab6a44ff",
+                  fontSize: "1.2rem",
+                  fontWeight: "500",
+                  fontStyle: "italic",
+                  whiteSpace: "nowrap",
+                  padding: "0 50px",
+                  flexShrink: 0,
+                }}
+              >
+                {text}
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -158,7 +202,8 @@ function Home() {
                     Lingkungan Alam
                   </h6>
                   <p className="mb-0" style={{ color: "#333" }}>
-                    Rasakan kesejukan udara pegunungan dan nikmati keindahan alam hijau yang menenangkan.
+                    Rasakan kesejukan udara pegunungan dan nikmati keindahan
+                    alam hijau yang menenangkan.
                   </p>
                 </div>
               </div>
@@ -174,7 +219,8 @@ function Home() {
                     Fasilitas Modern
                   </h6>
                   <p className="mb-0" style={{ color: "#333" }}>
-                    Dilengkapi Wi-Fi cepat, double bed nyaman, ruang karaoke, dan kolam renang yang menenangkan.
+                    Dilengkapi Wi-Fi cepat, double bed nyaman, ruang karaoke,
+                    dan kolam renang yang menenangkan.
                   </p>
                 </div>
               </div>
@@ -190,7 +236,8 @@ function Home() {
                     Masakan Lokal
                   </h6>
                   <p className="mb-0" style={{ color: "#333" }}>
-                    Nikmati kelezatan kuliner autentik khas Sumatera Barat yang kaya akan cita rasa dan tradisi.
+                    Nikmati kelezatan kuliner autentik khas Sumatera Barat yang
+                    kaya akan cita rasa dan tradisi.
                   </p>
                 </div>
               </div>
@@ -206,7 +253,8 @@ function Home() {
                     Lokasi Strategis
                   </h6>
                   <p className="mb-0" style={{ color: "#333" }}>
-                    Nikmati akses mudah menuju berbagai destinasi wisata dari panorama alam hingga tempat bersejarah yang menarik.
+                    Nikmati akses mudah menuju berbagai destinasi wisata dari
+                    panorama alam hingga tempat bersejarah yang menarik.
                   </p>
                 </div>
               </div>
@@ -267,8 +315,6 @@ function Home() {
         </div>
       </section>
 
-
-
       {/* Highlight Section */}
       <section
         style={{
@@ -302,17 +348,11 @@ function Home() {
         {/* Konten di atas overlay */}
         <div style={{ zIndex: 2, textAlign: "center" }}>
           <h2 style={{ color: "#D7BE93" }}>Ingin Membuat Reservasi</h2>
-          <Button variant="primary" onClick={() => setShow(true)} >
+          <Button variant="primary" onClick={() => setShow(true)}>
             Check Sekarang
           </Button>
 
-          <Modal
-            show={show}
-            onHide={() => setShow(false)}
-            centered
-            size="md"
-
-          >
+          <Modal show={show} onHide={() => setShow(false)} centered size="md">
             <Modal.Header
               closeButton
               style={{
@@ -333,7 +373,10 @@ function Home() {
                 <fieldset>
                   {/* Check-in */}
                   <div className="mb-3">
-                    <label className="form-label fw-semibold" style={{ color: "#355B4F" }}>
+                    <label
+                      className="form-label fw-semibold"
+                      style={{ color: "#355B4F" }}
+                    >
                       Check-in <span className="text-danger">*</span>
                     </label>
                     <input
@@ -345,7 +388,10 @@ function Home() {
 
                   {/* Check-out */}
                   <div className="mb-3">
-                    <label className="form-label fw-semibold" style={{ color: "#355B4F" }}>
+                    <label
+                      className="form-label fw-semibold"
+                      style={{ color: "#355B4F" }}
+                    >
                       Check-out <span className="text-danger">*</span>
                     </label>
                     <input
@@ -357,7 +403,10 @@ function Home() {
 
                   {/* Adults */}
                   <div className="mb-3">
-                    <label className="form-label fw-semibold" style={{ color: "#355B4F" }}>
+                    <label
+                      className="form-label fw-semibold"
+                      style={{ color: "#355B4F" }}
+                    >
                       Adults
                     </label>
                     <select className="form-select border-0 shadow-sm py-2">
@@ -369,7 +418,10 @@ function Home() {
 
                   {/* Children */}
                   <div className="mb-3">
-                    <label className="form-label fw-semibold" style={{ color: "#355B4F" }}>
+                    <label
+                      className="form-label fw-semibold"
+                      style={{ color: "#355B4F" }}
+                    >
                       Children
                     </label>
                     <select className="form-select border-0 shadow-sm py-2">
@@ -381,7 +433,13 @@ function Home() {
 
                   {/* Submit */}
                   <div className="text-center mt-4">
-                    <button type="button" class="btn btn-success" style={{ backgroundColor: "#315B51" }}>Submit</button>
+                    <button
+                      type="button"
+                      class="btn btn-success"
+                      style={{ backgroundColor: "#315B51" }}
+                    >
+                      Submit
+                    </button>
                   </div>
                 </fieldset>
               </form>
@@ -393,10 +451,126 @@ function Home() {
                 borderTop: "none",
                 justifyContent: "center",
               }}
-            >
-
-            </Modal.Footer>
+            ></Modal.Footer>
           </Modal>
+        </div>
+      </section>
+
+      {/*destinasi terdekat */}
+      <section className="py-5" style={{ backgroundColor: "#ffffff" }}>
+        <div className="container">
+          <div className="text-center mb-5">
+            <h3 className="fw-bold" style={{ color: "#315B51" }}>
+              Wisata Terdekat
+            </h3>
+            <p className="text-muted">Dari Kamang Resort</p>
+          </div>
+
+          <div className="row g-4">
+            {wisataTerdekat.map((wisata) => (
+              <div key={wisata.id} className="col-md-6 col-lg-3">
+                <div
+                  className="card border-0"
+                  style={{
+                    borderRadius: "10px",
+                    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                    cursor: "pointer",
+                    display: "flex",
+                    flexDirection: "column",
+                    boxShadow: "none",
+                  }}
+                >
+                  {/* Container video dengan aspect ratio 16:9 */}
+                  <div
+                    className="video-container"
+                    style={{
+                      width: "100%",
+                      height: "0",
+                      paddingBottom:
+                        "56.25%" /* 16:9 aspect ratio (9/16 = 0.5625) */,
+                      position: "relative",
+                      borderRadius: "10px",
+                      overflow: "hidden",
+                      backgroundColor: "#f0f0f0",
+                    }}
+                  >
+                    {wisata.video ? (
+                      <video
+                        style={{
+                          position: "absolute",
+                          top: "0",
+                          left: "0",
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                        }}
+                        muted
+                        loop
+                        playsInline
+                        autoPlay
+                      >
+                        <source src={wisata.video} type="video/mp4" />
+                        Browser Anda tidak mendukung video.
+                      </video>
+                    ) : (
+                      <img
+                        src={wisata.gambar}
+                        alt={wisata.nama}
+                        style={{
+                          position: "absolute",
+                          top: "0",
+                          left: "0",
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                        }}
+                      />
+                    )}
+                  </div>
+
+                  <div
+                    className="card-body d-flex flex-column"
+                    style={{ minHeight: "150px" }}
+                  >
+                    <h5
+                      className="card-title fw-bold"
+                      style={{ color: "#315B51", fontSize: "1.1rem" }}
+                    >
+                      {wisata.nama}
+                    </h5>
+
+                    <div className="d-flex align-items-center mb-2">
+                      <i
+                        className="bi bi-geo me-2"
+                        style={{ color: "#315B51" }}
+                      ></i>
+                      <span
+                        className="fw-semibold"
+                        style={{ color: "#315B51", fontSize: "0.9rem" }}
+                      >
+                        {wisata.jarak} dari Kamang Resort
+                      </span>
+                    </div>
+
+                    <p
+                      className="text-muted mb-2"
+                      style={{ fontSize: "0.9rem" }}
+                    >
+                      {wisata.kategori}
+                    </p>
+
+                    <div
+                      className="d-flex align-items-center text-muted mt-auto"
+                      style={{ fontSize: "0.85rem" }}
+                    >
+                      <i className="bi bi-geo-alt me-1"></i>
+                      {wisata.lokasi}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -444,207 +618,6 @@ function Home() {
           </Link>
         </div>
       </div>
-
-      {/* Testimonial */}
-      <section className="py-5 mt-4" style={{ backgroundColor: "#F8FCFF" }}>
-        <div className="container text-center">
-          <h3 className="mb-5 fw-bold" style={{ color: "#315B51" }}>
-            What Our Guests Say
-          </h3>
-
-          <div
-            id="testimonialCarousel"
-            className="carousel slide"
-            data-bs-ride="carousel"
-          >
-            <div className="carousel-inner">
-              {/* === SLIDE 1 === */}
-              <div className="carousel-item active">
-                <div className="row justify-content-center">
-                  {/* Card 1 */}
-                  <div className="col-md-4 mb-4">
-                    <div
-                      className="card border-0 shadow-sm p-4 rounded-4 testimonial-card"
-                    >
-                      <img
-                        src="/Kamang-Resort/woman.png"
-                        alt="Missy Limana"
-                        className="rounded-circle mx-auto mb-3"
-                        style={{
-                          width: "80px",
-                          height: "80px",
-                          objectFit: "cover",
-                        }}
-                      />
-                      <h5 className="fw-bold mb-1">Missy Limana</h5>
-                      <p className="text-muted mb-2">Designer</p>
-                      <p className="fst-italic text-secondary">
-                        “Tempat yang indah dan nyaman. Sangat direkomendasikan
-                        untuk liburan keluarga!”
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Card 2 */}
-                  <div className="col-md-4 mb-4">
-                    <div
-                      className="card border-0 shadow-sm p-4 rounded-4 testimonial-card"
-                    >
-                      <img
-                        src="/Kamang-Resort/woman.png"
-                        alt="Martha Brown"
-                        className="rounded-circle mx-auto mb-3"
-                        style={{
-                          width: "80px",
-                          height: "80px",
-                          objectFit: "cover",
-                        }}
-                      />
-                      <h5 className="fw-bold mb-1">Martha Brown</h5>
-                      <p className="text-muted mb-2">Project Manager</p>
-                      <p className="fst-italic text-secondary">
-                        “Pelayanan yang sangat ramah dan pemandangan luar biasa.”
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Card 3 */}
-                  <div className="col-md-4 mb-4">
-                    <div
-                      className="card border-0 shadow-sm p-4 http://localhost:5173/Kamang-Resort/Galleryrounded-4 testimonial-card"
-                    >
-                      <img
-                        src="/Kamang-Resort/man.png"
-                        alt="James Collins"
-                        className="rounded-circle mx-auto mb-3"
-                        style={{
-                          width: "80px",
-                          height: "80px",
-                          objectFit: "cover",
-                        }}
-                      />
-                      <h5 className="fw-bold mb-1">Hanna Lisen</h5>
-                      <p className="text-muted mb-2">Product Manager</p>
-                      <p className="fst-italic text-secondary">
-                        “Fasilitas lengkap dan nyaman. Cocok untuk staycation
-                        maupun meeting kantor.”
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* === SLIDE 2 === */}
-              <div className="carousel-item">
-                <div className="row justify-content-center">
-                  {/* Card 4 */}
-                  <div className="col-md-4 mb-4">
-                    <div
-                      className="card border-0 shadow-sm p-4 rounded-4 testimonial-card"
-                    >
-                      <img
-                        src="/Kamang-Resort/woman.png"
-                        alt="Hanna Lisen"
-                        className="rounded-circle mx-auto mb-3"
-                        style={{
-                          width: "80px",
-                          height: "80px",
-                          objectFit: "cover",
-                        }}
-                      />
-                      <h5 className="fw-bold mb-1">James Collins</h5>
-                      <p className="text-muted mb-2">Engineer</p>
-                      <p className="fst-italic text-secondary">
-                        “Sangat tenang dan damai. Saya pasti akan kembali lagi
-                        ke sini.”
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Card 5 */}
-                  <div className="col-md-4 mb-4">
-                    <div
-                      className="card border-0 shadow-sm p-4 rounded-4 testimonial-card"
-                    >
-                      <img
-                        src="/Kamang-Resort/man.png"
-                        alt="Ethan Reed"
-                        className="rounded-circle mx-auto mb-3"
-                        style={{
-                          width: "80px",
-                          height: "80px",
-                          objectFit: "cover",
-                        }}
-                      />
-                      <h5 className="fw-bold mb-1">Ethan Reed</h5>
-                      <p className="text-muted mb-2">Traveler</p>
-                      <p className="fst-italic text-secondary">
-                        “Kebersihan dan kenyamanan resort ini luar biasa. Sangat
-                        memuaskan!”
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Card 6 */}
-                  <div className="col-md-4 mb-4">
-                    <div
-                      className="card border-0 shadow-sm p-4 rounded-4 testimonial-card"
-                    >
-                      <img
-                        src="/Kamang-Resort/man.png"
-                        alt="Noah Smith"
-                        className="rounded-circle mx-auto mb-3"
-                        style={{
-                          width: "80px",
-                          height: "80px",
-                          objectFit: "cover",
-                        }}
-                      />
-                      <h5 className="fw-bold mb-1">Noah Smith</h5>
-                      <p className="text-muted mb-2">Business Owner</p>
-                      <p className="fst-italic text-secondary">
-                        “Tempat ini benar-benar memberikan pengalaman menginap
-                        yang luar biasa.”
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* BULATAN PREV/NEXT DI BAWAH */}
-            <div className="d-flex justify-content-center mt-2 gap-3">
-              <button
-                className="btn btn-outline-dark rounded-circle d-flex align-items-center justify-content-center"
-                type="button"
-                data-bs-target="#testimonialCarousel"
-                data-bs-slide="prev"
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  borderWidth: "2px",
-                }}
-              >
-                <i className="bi bi-chevron-left"></i>
-              </button>
-
-              <button
-                className="btn btn-outline-dark rounded-circle d-flex align-items-center justify-content-center"
-                type="button"
-                data-bs-target="#testimonialCarousel"
-                data-bs-slide="next"
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  borderWidth: "2px",
-                }}
-              >
-                <i className="bi bi-chevron-right"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <section
         className="py-5 text-center"
@@ -723,7 +696,12 @@ function Home() {
         </div>
 
         {/* Modal Poster 1 */}
-        <div className="modal fade" id="posterModal1" tabIndex="-1" aria-hidden="true">
+        <div
+          className="modal fade"
+          id="posterModal1"
+          tabIndex="-1"
+          aria-hidden="true"
+        >
           <div className="modal-dialog modal-dialog-centered modal-lg">
             <div className="modal-content border-0 bg-transparent">
               <div className="modal-body p-0">
@@ -738,7 +716,12 @@ function Home() {
         </div>
 
         {/* Modal Poster 2 */}
-        <div className="modal fade" id="posterModal2" tabIndex="-1" aria-hidden="true">
+        <div
+          className="modal fade"
+          id="posterModal2"
+          tabIndex="-1"
+          aria-hidden="true"
+        >
           <div className="modal-dialog modal-dialog-centered modal-lg">
             <div className="modal-content border-0 bg-transparent">
               <div className="modal-body p-0">
@@ -752,8 +735,6 @@ function Home() {
           </div>
         </div>
       </section>
-
-
 
       {/* Video Ai */}
       <section>
@@ -773,11 +754,204 @@ function Home() {
                     className="w-100 h-100"
                     style={{ objectFit: "cover", borderRadius: "15px" }}
                   >
-                    <source src="/Kamang-Resort/KemangResort.mp4" type="video/mp4" />
+                    <source
+                      src="/Kamang-Resort/KemangResort.mp4"
+                      type="video/mp4"
+                    />
                     Your browser does not support the video tag.
                   </video>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonial */}
+      <section className="py-5 mt-4" style={{ backgroundColor: "#F8FCFF" }}>
+        <div className="container text-center">
+          <h3 className="mb-5 fw-bold" style={{ color: "#315B51" }}>
+            What Our Guests Say
+          </h3>
+
+          <div
+            id="testimonialCarousel"
+            className="carousel slide"
+            data-bs-ride="carousel"
+          >
+            <div className="carousel-inner">
+              {/* === SLIDE 1 === */}
+              <div className="carousel-item active">
+                <div className="row justify-content-center">
+                  {/* Card 1 */}
+                  <div className="col-md-4 mb-4">
+                    <div className="card border-0 shadow-sm p-4 rounded-4 testimonial-card">
+                      <img
+                        src="/Kamang-Resort/woman.png"
+                        alt="Missy Limana"
+                        className="rounded-circle mx-auto mb-3"
+                        style={{
+                          width: "80px",
+                          height: "80px",
+                          objectFit: "cover",
+                        }}
+                      />
+                      <h5 className="fw-bold mb-1">Missy Limana</h5>
+                      <p className="text-muted mb-2">Designer</p>
+                      <p className="fst-italic text-secondary">
+                        “Tempat yang indah dan nyaman. Sangat direkomendasikan
+                        untuk liburan keluarga!”
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Card 2 */}
+                  <div className="col-md-4 mb-4">
+                    <div className="card border-0 shadow-sm p-4 rounded-4 testimonial-card">
+                      <img
+                        src="/Kamang-Resort/woman.png"
+                        alt="Martha Brown"
+                        className="rounded-circle mx-auto mb-3"
+                        style={{
+                          width: "80px",
+                          height: "80px",
+                          objectFit: "cover",
+                        }}
+                      />
+                      <h5 className="fw-bold mb-1">Martha Brown</h5>
+                      <p className="text-muted mb-2">Project Manager</p>
+                      <p className="fst-italic text-secondary">
+                        “Pelayanan yang sangat ramah dan pemandangan luar
+                        biasa.”
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Card 3 */}
+                  <div className="col-md-4 mb-4">
+                    <div className="card border-0 shadow-sm p-4 http://localhost:5173/Kamang-Resort/Galleryrounded-4 testimonial-card">
+                      <img
+                        src="/Kamang-Resort/man.png"
+                        alt="James Collins"
+                        className="rounded-circle mx-auto mb-3"
+                        style={{
+                          width: "80px",
+                          height: "80px",
+                          objectFit: "cover",
+                        }}
+                      />
+                      <h5 className="fw-bold mb-1">Hanna Lisen</h5>
+                      <p className="text-muted mb-2">Product Manager</p>
+                      <p className="fst-italic text-secondary">
+                        “Fasilitas lengkap dan nyaman. Cocok untuk staycation
+                        maupun meeting kantor.”
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* === SLIDE 2 === */}
+              <div className="carousel-item">
+                <div className="row justify-content-center">
+                  {/* Card 4 */}
+                  <div className="col-md-4 mb-4">
+                    <div className="card border-0 shadow-sm p-4 rounded-4 testimonial-card">
+                      <img
+                        src="/Kamang-Resort/woman.png"
+                        alt="Hanna Lisen"
+                        className="rounded-circle mx-auto mb-3"
+                        style={{
+                          width: "80px",
+                          height: "80px",
+                          objectFit: "cover",
+                        }}
+                      />
+                      <h5 className="fw-bold mb-1">James Collins</h5>
+                      <p className="text-muted mb-2">Engineer</p>
+                      <p className="fst-italic text-secondary">
+                        “Sangat tenang dan damai. Saya pasti akan kembali lagi
+                        ke sini.”
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Card 5 */}
+                  <div className="col-md-4 mb-4">
+                    <div className="card border-0 shadow-sm p-4 rounded-4 testimonial-card">
+                      <img
+                        src="/Kamang-Resort/man.png"
+                        alt="Ethan Reed"
+                        className="rounded-circle mx-auto mb-3"
+                        style={{
+                          width: "80px",
+                          height: "80px",
+                          objectFit: "cover",
+                        }}
+                      />
+                      <h5 className="fw-bold mb-1">Ethan Reed</h5>
+                      <p className="text-muted mb-2">Traveler</p>
+                      <p className="fst-italic text-secondary">
+                        “Kebersihan dan kenyamanan resort ini luar biasa. Sangat
+                        memuaskan!”
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Card 6 */}
+                  <div className="col-md-4 mb-4">
+                    <div className="card border-0 shadow-sm p-4 rounded-4 testimonial-card">
+                      <img
+                        src="/Kamang-Resort/man.png"
+                        alt="Noah Smith"
+                        className="rounded-circle mx-auto mb-3"
+                        style={{
+                          width: "80px",
+                          height: "80px",
+                          objectFit: "cover",
+                        }}
+                      />
+                      <h5 className="fw-bold mb-1">Noah Smith</h5>
+                      <p className="text-muted mb-2">Business Owner</p>
+                      <p className="fst-italic text-secondary">
+                        “Tempat ini benar-benar memberikan pengalaman menginap
+                        yang luar biasa.”
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* BULATAN PREV/NEXT DI BAWAH */}
+            <div className="d-flex justify-content-center mt-2 gap-3">
+              <button
+                className="btn btn-outline-dark rounded-circle d-flex align-items-center justify-content-center"
+                type="button"
+                data-bs-target="#testimonialCarousel"
+                data-bs-slide="prev"
+                style={{
+                  width: "40px",
+                  height: "40px",
+                  borderWidth: "2px",
+                }}
+              >
+                <i className="bi bi-chevron-left"></i>
+              </button>
+
+              <button
+                className="btn btn-outline-dark rounded-circle d-flex align-items-center justify-content-center"
+                type="button"
+                data-bs-target="#testimonialCarousel"
+                data-bs-slide="next"
+                style={{
+                  width: "40px",
+                  height: "40px",
+                  borderWidth: "2px",
+                }}
+              >
+                <i className="bi bi-chevron-right"></i>
+              </button>
             </div>
           </div>
         </div>
@@ -867,14 +1041,13 @@ function Home() {
         </div>
       </section>
 
-
       {/* FAQ */}
-      <section className="py-2 mt-5 mb-5" style={{ backgroundColor: "#ffffff" }}>
+      <section
+        className="py-2 mt-5 mb-5"
+        style={{ backgroundColor: "#ffffff" }}
+      >
         <div className="container">
-          <h4
-            className="mb-5 text-center fw-bold"
-            style={{ color: "#315B51" }}
-          >
+          <h4 className="mb-5 text-center fw-bold" style={{ color: "#315B51" }}>
             Frequently Asked Questions
           </h4>
 
@@ -913,8 +1086,8 @@ function Home() {
                     color: "#315B51",
                   }}
                 >
-                  Resort Kamang adalah tempat penginapan bernuansa alam yang cocok
-                  untuk liburan, gathering, dan acara keluarga.
+                  Resort Kamang adalah tempat penginapan bernuansa alam yang
+                  cocok untuk liburan, gathering, dan acara keluarga.
                 </div>
               </div>
             </div>
@@ -953,8 +1126,8 @@ function Home() {
                     color: "#315B51",
                   }}
                 >
-                  Ya, tersedia paket khusus untuk rombongan dengan harga lebih hemat
-                  dan fasilitas tambahan.
+                  Ya, tersedia paket khusus untuk rombongan dengan harga lebih
+                  hemat dan fasilitas tambahan.
                 </div>
               </div>
             </div>
@@ -1001,7 +1174,6 @@ function Home() {
           </div>
         </div>
       </section>
-
 
       {/* Footer */}
     </>

@@ -1,14 +1,25 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "../App.css";
 
 function NavigationBar() {
   const navbarRef = useRef(null);
   const location = useLocation();
+  const [isScrolled, setIsScrolled] = useState(false);
 
   // Cek apakah user sedang di halaman Home
   const isHomePage = location.pathname === "/Home";
+
+  //Effect untuk detect scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -32,14 +43,16 @@ function NavigationBar() {
   return (
     <Navbar
       expand="lg"
-      variant="dark"
+      variant="light"
       fixed="top"
-      className="shadow-sm"
+      className={
+        isHomePage && !isScrolled ? "navbar-transparent" : "navbar-scrolled"
+      }
       ref={navbarRef}
       style={{
         backgroundColor: isHomePage
-          ? "rgba(49, 91, 81, 0.90)" // Navbar transparan di Home
-          : "rgba(49, 91, 81, 0.90)", // Navbar berwarna di halaman lain
+          ? "rgba(255, 255, 255, 0.9)" // Navbar transparan di Home
+          : "rgba(255, 255, 255, 0.9)", // Navbar berwarna di halaman lain
         backdropFilter: "blur(6px)",
         transition: "background-color 0.3s ease",
       }}
@@ -69,6 +82,7 @@ function NavigationBar() {
             <Nav.Link
               as={NavLink}
               to="/Home"
+              className="me-4"
               className={({ isActive }) =>
                 isActive
                   ? isHomePage
@@ -87,9 +101,7 @@ function NavigationBar() {
               as={NavLink}
               to="/ContactUs"
               className={({ isActive }) =>
-                isActive
-                  ? "active text-white me-4"
-                  : "text-light me-4"
+                isActive ? "active text-white me-4" : "text-light me-4"
               }
             >
               Contact Us
@@ -100,9 +112,7 @@ function NavigationBar() {
               as={NavLink}
               to="/About"
               className={({ isActive }) =>
-                isActive
-                  ? "active text-white me-4"
-                  : "text-light me-4"
+                isActive ? "active text-white me-4" : "text-light me-4"
               }
             >
               About
@@ -113,9 +123,7 @@ function NavigationBar() {
               as={NavLink}
               to="/Gallery"
               className={({ isActive }) =>
-                isActive
-                  ? "active text-white me-4"
-                  : "text-light me-4"
+                isActive ? "active text-white me-4" : "text-light me-4"
               }
             >
               Gallery
