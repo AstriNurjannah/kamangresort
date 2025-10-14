@@ -105,7 +105,7 @@ function Home() {
           className="position-absolute top-0 start-0 w-100 h-100"
           style={{ objectFit: "cover", zIndex: "-1", paddingTop: "100px" }}
         >
-          <source src="/Kamang-Resort/1010(1).mp4" type="video/mp4" />
+          <source src="/Kamang-Resort/KemangResort.mp4" type="video/mp4" />
         </video>
         <div className="position-absolute top-0 start-0 w-100 h-100"></div>
       </section>
