@@ -38,10 +38,9 @@ function Footer() {
           {/* Kolom 2 - Contact Us */}
           <div className="col-md-3 mb-4">
             <h5 className="">Contact Us</h5>
-            <p>Email: info@kemangresort.com</p>
-            <p>Phone: +62 812-3456-7890</p>
-            <p>Address: Jl. Raya Pauah - Bukittinggi, Kamang Mudiak, Kec. Kamang Magek, Kabupaten Agam, Sumatera Barat 26152
-</p>
+            <p>Email : team8bbpvp@gmail.com</p>
+            <p>Phone : +123-456-7890</p>
+            <p>Address: Jl. Raya Pauah - Bukittinggi, Kamang Mudiak, Kec. Kamang Magek, Kabupaten Agam, Sumatera Barat 26152</p>
           </div>
 
           {/* Kolom 3 - Media Sosial */}

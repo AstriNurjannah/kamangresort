@@ -12,6 +12,46 @@ body,
   --navbar-height: 80px;
 }
 
+
+
+.hero-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+}
+
+
+/* Start Wisata */
+/* Sembunyikan scrollbar tapi tetap bisa discroll */
+::-webkit-scrollbar {
+  display: none;
+}
+.scroll-container {
+  -ms-overflow-style: none;  /* IE dan Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+/* End */
+
+/* Start untuk bayangan */
+/* Efek bayangan universal untuk semua heading */
+
+
+/*  */
+
+
+p {
+ max-width: 800px;
+  margin: 0 auto;
+  font-size: 17px;
+  line-height: 1.8;
+
+}
 /*tulisan berjalan*/
 @keyframes marquee {
   0% {
@@ -64,15 +104,18 @@ body,
 /* FAQ End */
 
 /* Testimoni Start */
- .testimonial-card {
-        transition: all 0.3s ease;
-      }
+#testimoni .testimonial-card {
+  transition: all 0.2 ease;
+  background: white;
+  border-radius: 30px;
+}
 
-      .testimonial-card:hover {
-        transform: translateY(-8px) scale(1.06);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-      }
-/* Testimoni ENd */
+#testimoni .testimonial-card:hover {
+  transform: translateY(-8px) scale(1.06);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+/* Testimoni End */
+
 
 
 /* resturant */
@@ -97,17 +140,6 @@ body,
 /* end */
 
 
-.hero-section {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  overflow: hidden;
-}
-
 
 /* Untuk Section Asked */
 .faq-btn {
@@ -117,18 +149,108 @@ body,
   transition: all 0.3s ease;
 }
 
-/* Hover effect */
 .faq-btn:hover {
   background-color: #315b51;
   color: #fff;
 }
 
+/* Smooth transition */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.6s ease, opacity 0.4s ease;
+}
+
+.accordion-content.open {
+  max-height: 300px; /* cukup besar agar isi bisa muat */
+  opacity: 1;
+}
+
+/* Optional tambahan efek saat hover */
+.accordion-button:not(.collapsed) {
+  background-color: #eaf4f1;
+  color: #315b51;
+  box-shadow: none;
+}
+
+/* End FAQ */
+
+
+/* Home LAyout */
+.video {
+  display: flex;
+  gap: 20px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.left {
+  flex: 1;
+}
+
+.right {
+  flex: 1;
+}
+
+.img {
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Sesuaikan tinggi gambar */
+.img.tall {
+  height: 300px; /* gambar tinggi */
+}
+
+.img.small {
+  height: 140px; /* gambar kecil */
+}
+
+/* End */
+
 
 
 /* Awal (transparan di atas hero/video) */
+/* ==== NAVBAR STYLE ==== */
+
+/* Perbesar teks utama link navbar */
+.navbar .nav-link {
+  font-size: 1.1rem; /* ubah jadi 1.2rem atau lebih kalau mau lebih besar */
+  letter-spacing: 0.5px;
+}
+
+/* Brand (Logo atau Nama) */
+.navbar-brand {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+/* Dropdown menu item */
+.dropdown-item {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+
+
 .navbar-transparent {
-  background: rgba(255, 255, 255, 0.8)!important;
+   background: rgba(138, 137, 137, 0.3) !important; /* lebih transparan agar blur terlihat */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(12px);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
 }
 
 .navbar-transparent .nav-link {
@@ -137,12 +259,12 @@ body,
 }
 
 .navbar-transparent .nav-link:hover {
-  color: #F75E05 !important; /* putih pas hover */
+  color: #fffcfa !important; /* putih pas hover */
 }
 
 /* Setelah scroll */
 .navbar-scrolled {
-  background-color: rgba(255, 255, 255, 0.8) !important;
+  background-color: rgba(255, 255, 255, 0.966) !important;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -153,7 +275,7 @@ body,
 }
 
 .navbar-scrolled .nav-link:hover {
-  color: #315b51 !important; /* hijau lebih gelap */
+  color: #5caa91 !important; /* hijau lebih gelap */
 }
 
 .navbar-brand img {
