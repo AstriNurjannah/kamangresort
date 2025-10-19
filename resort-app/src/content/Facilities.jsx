@@ -1,8 +1,80 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../Facilities.css";
 
 const Facilities = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isAnimating, setIsAnimating] = useState(false);
   const [activeRoom, setActiveRoom] = useState(null);
+
+  const facilitySlides = [
+    {
+      id: 1,
+      image: "/Kamang-Resort/fasilitas1.jpg",
+      title: "Kolam Renang Infinity",
+      description: "Nikmati pemandangan lembah dari kolam renang infinity kami",
+    },
+    {
+      id: 2,
+      image: "/Kamang-Resort/fasilitas2.jpg",
+      title: "Spa & Wellness Center",
+      description: "Relaksasi total dengan treatment tradisional Minang",
+    },
+    {
+      id: 3,
+      image: "/Kamang-Resort/fasilitas3.jpg",
+      title: "Meeting Room",
+      description: "Fasilitas meeting lengkap untuk acara bisnis Anda",
+    },
+    {
+      id: 4,
+      image: "/Kamang-Resort/fasilitas4.jpg",
+      title: "Restaurant",
+      description: "Restaurant dengan pemandangan dan kuliner autentik",
+    },
+    {
+      id: 5,
+      image: "/Kamang-Resort/fasilitas5.jpg",
+      title: "Taman & Landscape",
+      description: "Taman yang asri dengan desain landscape menawan",
+    },
+  ];
+
+  // Auto slide functionality
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % facilitySlides.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, facilitySlides.length]);
+
+  const nextSlide = () => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setTimeout(() => setIsAnimating(false), 600);
+
+    setCurrentSlide((prev) => (prev + 1) % facilitySlides.length);
+  };
+
+  const prevSlide = () => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setTimeout(() => setIsAnimating(false), 600);
+
+    setCurrentSlide((prev) =>
+      prev === 0 ? facilitySlides.length - 1 : prev - 1
+    );
+  };
+
+  const goToSlide = (index) => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setTimeout(() => setIsAnimating(false), 600);
+    setCurrentSlide(index);
+  };
 
   const rooms = [
     {
@@ -22,7 +94,10 @@ const Facilities = () => {
         "Terrace",
         "Wi-Fi",
       ],
-      images: ["/Kamang-Resort/cottage-deluxe-201-1.jpg", "/room-deluxe-201-2.jpg"],
+      images: [
+        "/Kamang-Resort/cottage-deluxe-201-1.jpg",
+        "/room-deluxe-201-2.jpg",
+      ],
       description:
         "Pilihan sempurna untuk bersantai setelah hari yang sibuk. Nikmati kenyamanan maksimal dengan fasilitas lengkap.",
     },
@@ -43,7 +118,10 @@ const Facilities = () => {
         "Terrace",
         "Wi-Fi",
       ],
-      images: ["/Kamang-Resort/cottage-tarusan-1.jpg", "/room-deluxe-202-2.jpg"],
+      images: [
+        "/Kamang-Resort/cottage-tarusan-1.jpg",
+        "/room-deluxe-202-2.jpg",
+      ],
       description:
         "Pilihan sempurna untuk bersantai setelah hari yang sibuk. Nikmati kenyamanan maksimal dengan fasilitas lengkap.",
     },
@@ -84,7 +162,10 @@ const Facilities = () => {
         "Terrace",
         "Wi-Fi",
       ],
-      images: ["/Kamang-Resort/cottage-lengkok-1.jpg", "/cottage-lengkok-2.jpg"],
+      images: [
+        "/Kamang-Resort/cottage-lengkok-1.jpg",
+        "/cottage-lengkok-2.jpg",
+      ],
       description:
         "Tempat ideal untuk bersantai sepenuhnya dengan kenyamanan dan pelayanan terbaik.",
     },
@@ -126,7 +207,10 @@ const Facilities = () => {
         "Terrace",
         "Wi-Fi",
       ],
-      images: ["/Kamang-Resort/cottage-tarusan-1.jpg", "/cottage-tarusan-2.jpg"],
+      images: [
+        "/Kamang-Resort/cottage-tarusan-1.jpg",
+        "/cottage-tarusan-2.jpg",
+      ],
       description:
         "Nikmati pengalaman menginap mewah dengan pelayanan terbaik yang membuat Anda selalu puas.",
     },
@@ -168,15 +252,78 @@ const Facilities = () => {
 
   return (
     <div className="accommodations" id="accommodations">
-      {/* Hero Section */}
-      <div className="accommodations-hero">
-        <div className="container">
-          <div className="hero-content text-center">
-            <h1 className="hero-title">Our Accommodations</h1>
-            <p className="hero-subtitle">
-              Experience comfort and luxury in every stay
+      {/* Judul Section */}
+      <div className="container">
+        <div className="row text-center mt-2">
+          <div className="col-12">
+            <h1 className="display-5 fw-bold mb-3" style={{ color: "#315B50" }}>
+              Fasilitas Kamang Resort
+            </h1>
+            <p className="lead">
+              Kenyamanan Terbaik • Fasilitas Lengkap • Pengalaman Tak Terlupakan
             </p>
           </div>
+        </div>
+      </div>
+
+      {/* Hero Slider untuk Fasilitas */}
+      <div className="facilities-slider-container mt-5">
+        <div className="slider-wrapper">
+          {facilitySlides.map((slide, index) => {
+            const total = facilitySlides.length;
+            const diff = (index - currentSlide + total) % total;
+
+            let position = "hidden";
+            if (diff === 0) position = "active";
+            else if (diff === 1) position = "next";
+            else if (diff === 2) position = "next2";
+            else if (diff === total - 1) position = "prev";
+            else if (diff === total - 2) position = "prev2";
+
+            return (
+              <div key={slide.id} className={`facility-slide ${position}`}>
+                <img
+                  src={slide.image}
+                  alt={`Fasilitas ${slide.id}`}
+                  className="slide-image"
+                />
+                <div className="slide-content">
+                  <h3 className="slide-title">{slide.title}</h3>
+                  <p className="slide-description">{slide.description}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Navigation Controls */}
+        <div className="slider-controls">
+          <button
+            className="control-btn prev-btn"
+            onClick={prevSlide}
+            aria-label="Previous slide"
+          >
+            <i className="bi bi-chevron-left"></i>
+          </button>
+          <button
+            className="control-btn next-btn"
+            onClick={nextSlide}
+            aria-label="Next slide"
+          >
+            <i className="bi bi-chevron-right"></i>
+          </button>
+        </div>
+
+        {/* Slide Indicators */}
+        <div className="slide-indicators">
+          {facilitySlides.map((_, index) => (
+            <button
+              key={index}
+              className={`indicator ${index === currentSlide ? "active" : ""}`}
+              onClick={() => goToSlide(index)}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
         </div>
       </div>
 
@@ -265,7 +412,7 @@ const Facilities = () => {
                       <i className="bi bi-calendar-check me-2"></i>
                       Book Now
                     </button>
-                    <button 
+                    <button
                       className="btn btn-view-details-outline"
                       onClick={() => openRoomDetail(room)}
                     >
@@ -312,7 +459,7 @@ const Facilities = () => {
       {activeRoom && (
         <div className="room-modal">
           <div className="modal-content">
-          <div className="modal-backdrop" onClick={closeRoomDetail}></div>
+            <div className="modal-backdrop" onClick={closeRoomDetail}></div>
             <div className="modal-header">
               <h3>{activeRoom.name}</h3>
               <button className="modal-close" onClick={closeRoomDetail}>

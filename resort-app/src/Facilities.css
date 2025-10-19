@@ -1,3 +1,328 @@
+/* Facilities Hero Slider - Based on Restaurant Slider Style */
+
+.facilities-slider-container {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  min-height: 500px;
+  max-height: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0;
+}
+
+.slider-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.facility-slide {
+  position: absolute;
+  width: 600px;
+  height: 400px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: transform 0.9s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.9s ease,
+    z-index 0.9s ease;
+  pointer-events: none;
+}
+
+.slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* Slide aktif (tengah) */
+.facility-slide.active {
+  opacity: 1;
+  transform: translateX(0) scale(1.1);
+  z-index: 4;
+  pointer-events: auto;
+}
+
+.facility-slide.active .slide-image {
+  transform: scale(1.05);
+}
+
+/* Slide sebelumnya (kiri dekat) */
+.facility-slide.prev {
+  opacity: 0.85;
+  transform: translateX(-280px) scale(0.7) rotateY(10deg);
+  z-index: 3;
+}
+
+/* Slide setelahnya (kanan dekat) */
+.facility-slide.next {
+  opacity: 0.85;
+  transform: translateX(280px) scale(0.7) rotateY(-10deg);
+  z-index: 3;
+}
+
+/* Slide dua langkah sebelum (lebih kecil, agak kabur di kiri) */
+.facility-slide.prev2 {
+  opacity: 0.5;
+  transform: translateX(-480px) scale(0.5) rotateY(20deg);
+  z-index: 2;
+}
+
+/* Slide dua langkah setelah (lebih kecil, agak kabur di kanan) */
+.facility-slide.next2 {
+  opacity: 0.5;
+  transform: translateX(480px) scale(0.5) rotateY(-20deg);
+  z-index: 2;
+}
+
+/* Slide lain yang tidak relevan */
+.facility-slide.hidden {
+  opacity: 0;
+  transform: scale(0.5) translateX(0);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Konten slide */
+.slide-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(49, 91, 80, 0.9));
+  color: white;
+  padding: 2rem;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.facility-slide.active .slide-content {
+  transform: translateY(0);
+}
+
+.slide-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.slide-description {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin: 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Navigation Controls */
+.slider-controls {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+  z-index: 5;
+}
+
+.control-btn {
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+  color: #315b50;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.control-btn:hover {
+  background: white;
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Slide Indicators */
+.slide-indicators {
+  position: absolute;
+  bottom: 2rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  z-index: 5;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator.active {
+  background: white;
+  transform: scale(1.2);
+}
+
+.indicator:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: scale(1.1);
+}
+
+/* Mencegah kedipan selama animasi */
+.slider-wrapper.animating
+  .facility-slide:not(.active):not(.prev):not(.next):not(.prev2):not(.next2) {
+  opacity: 0;
+  transform: scale(0.5);
+  pointer-events: none;
+}
+
+/* Responsive Design untuk Facilities Slider */
+@media (max-width: 1200px) {
+  .facility-slide {
+    width: 500px;
+    height: 350px;
+  }
+
+  .facility-slide.prev {
+    transform: translateX(-220px) scale(0.7) rotateY(10deg);
+  }
+
+  .facility-slide.next {
+    transform: translateX(220px) scale(0.7) rotateY(-10deg);
+  }
+
+  .facility-slide.prev2 {
+    transform: translateX(-380px) scale(0.5) rotateY(20deg);
+  }
+
+  .facility-slide.next2 {
+    transform: translateX(380px) scale(0.5) rotateY(-20deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .facilities-slider-container {
+    height: 50vh;
+    min-height: 400px;
+    max-height: 600px;
+  }
+
+  .facility-slide {
+    width: 350px;
+    height: 250px;
+  }
+
+  .slide-content {
+    padding: 1.5rem;
+  }
+
+  .slide-title {
+    font-size: 1.2rem;
+  }
+
+  .slide-description {
+    font-size: 0.9rem;
+  }
+
+  .facility-slide.prev {
+    transform: translateX(-150px) scale(0.7) rotateY(10deg);
+  }
+
+  .facility-slide.next {
+    transform: translateX(150px) scale(0.7) rotateY(-10deg);
+  }
+
+  .facility-slide.prev2 {
+    transform: translateX(-250px) scale(0.5) rotateY(20deg);
+  }
+
+  .facility-slide.next2 {
+    transform: translateX(250px) scale(0.5) rotateY(-20deg);
+  }
+
+  .control-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .slider-controls {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .facilities-slider-container {
+    height: 40vh;
+    min-height: 300px;
+    max-height: 400px;
+  }
+
+  .facility-slide {
+    width: 280px;
+    height: 200px;
+  }
+
+  .slide-content {
+    padding: 1rem;
+  }
+
+  .slide-title {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .slide-description {
+    font-size: 0.8rem;
+  }
+
+  .facility-slide.prev {
+    transform: translateX(-120px) scale(0.7) rotateY(10deg);
+  }
+
+  .facility-slide.next {
+    transform: translateX(120px) scale(0.7) rotateY(-10deg);
+  }
+
+  .facility-slide.prev2 {
+    transform: translateX(-180px) scale(0.5) rotateY(20deg);
+  }
+
+  .facility-slide.next2 {
+    transform: translateX(180px) scale(0.5) rotateY(-20deg);
+  }
+
+  .indicator {
+    width: 10px;
+    height: 10px;
+  }
+
+  .autoplay-btn {
+    width: 35px;
+    height: 35px;
+  }
+}
+
 .accommodations {
   padding: 100px 0 100px;
   margin-top: var(--navbar-height);
