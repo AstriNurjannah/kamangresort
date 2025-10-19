@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../App.css";
+import "../gallery.css";
 
 const Gallery = () => {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -12,6 +12,7 @@ const Gallery = () => {
       image: "/Kamang-Resort/resort-gunung.jpg",
       title: "Mountain View",
       description: "Breathtaking scenery from the resort",
+      grid: "square",
     },
     {
       id: 2,
@@ -19,6 +20,7 @@ const Gallery = () => {
       image: "/Kamang-Resort/resort-garden.jpg",
       title: "Resort Garden",
       description: "Beautifully maintained tropical garden",
+      grid: "wide",
     },
     {
       id: 3,
@@ -26,6 +28,7 @@ const Gallery = () => {
       image: "/Kamang-Resort/resort-sunrise.jpg",
       title: "Sunrise View",
       description: "Stunning sunset over the mountains",
+      grid: "square",
     },
 
     // Facilities
@@ -35,6 +38,7 @@ const Gallery = () => {
       image: "/Kamang-Resort/resort-kolam.jpg",
       title: "Swimming Pool",
       description: "Infinity pool with panoramic views",
+      grid: "wide",
     },
     {
       id: 5,
@@ -42,6 +46,7 @@ const Gallery = () => {
       image: "/Kamang-Resort/resort-resto.png",
       title: "Restaurant",
       description: "Authentic Minang cuisine dining experience",
+      grid: "wide",
     },
     {
       id: 6,
@@ -49,6 +54,7 @@ const Gallery = () => {
       image: "/Kamang-Resort/resort-tamu.jpg",
       title: "Main Lobby",
       description: "Traditional Minangkabau architecture",
+      grid: "square",
     },
 
     // Rooms
@@ -58,6 +64,7 @@ const Gallery = () => {
       image: "/Kamang-Resort/resort-bed2.jpg",
       title: "Deluxe Room",
       description: "Spacious room with mountain view",
+      grid: "wide",
     },
     {
       id: 8,
@@ -65,6 +72,7 @@ const Gallery = () => {
       image: "/Kamang-Resort/resort-bed3.jpg",
       title: "Family Suite",
       description: "Perfect for family vacations",
+      grid: "square",
     },
     {
       id: 9,
@@ -72,6 +80,7 @@ const Gallery = () => {
       image: "/Kamang-Resort/resort-bed1.jpg",
       title: "Executive Suite",
       description: "Luxury accommodation with premium amenities",
+      grid: "wide",
     },
 
     // Guest Photos (placeholder)
@@ -81,6 +90,7 @@ const Gallery = () => {
       image: "/Kamang-Resort/resort-guest1.jpg",
       title: "Guest Photo",
       description: "Happy guest experience",
+      grid: "wide",
     },
     {
       id: 11,
@@ -88,6 +98,7 @@ const Gallery = () => {
       image: "/Kamang-Resort/resort-guest2.jpg",
       title: "Guest Photo",
       description: "Beautiful memories at Kemang Resort",
+      grid: "square",
     },
     {
       id: 12,
@@ -95,6 +106,7 @@ const Gallery = () => {
       image: "/Kamang-Resort/resort-guest3.jpg",
       title: "Guest Photo",
       description: "Unforgettable stay experience",
+      grid: "square",
     },
   ];
 
@@ -148,7 +160,7 @@ const Gallery = () => {
         </div>
 
         {/* Gallery Grid */}
-        <div className="row">
+        {/* <div className="row">
           {filteredItems.map((item) => (
             <div key={item.id} className="col-lg-4 col-md-6 mb-4">
               <div className="gallery-item">
@@ -168,7 +180,27 @@ const Gallery = () => {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
+         <div className="tetris-grid">
+          {filteredItems.map((item, index) => (
+            <div
+              key={item.id}
+              className={`tetris-item ${item.grid}`}
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="tetris-image">
+                <img src={item.image} alt={item.title} />
+                <div className="tetris-overlay">
+                  <div className="overlay-content">
+                    <h4>{item.title}</h4>
+                    <p>{item.description}</p>
+                  </div>
+                </div>
+              </div>
+              </div>
+              ))}
+               </div>
+        
 
         {/* CTA */}
         <div className="row mt-5">
