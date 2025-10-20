@@ -12,6 +12,16 @@ body,
   --navbar-height: 80px;
 }
 
+/* Sembunyikan scrollbar tapi tetap bisa discroll */
+::-webkit-scrollbar {
+  display: none;
+}
+.scroll-container {
+  -ms-overflow-style: none;  /* IE dan Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+/* End */
 
 
 .hero-section {
@@ -24,25 +34,6 @@ body,
   margin-right: -50vw;
   overflow: hidden;
 }
-
-
-/* Start Wisata */
-/* Sembunyikan scrollbar tapi tetap bisa discroll */
-::-webkit-scrollbar {
-  display: none;
-}
-.scroll-container {
-  -ms-overflow-style: none;  /* IE dan Edge */
-  scrollbar-width: none;     /* Firefox */
-}
-
-/* End */
-
-/* Start untuk bayangan */
-/* Efek bayangan universal untuk semua heading */
-
-
-/*  */
 
 
 p {
@@ -81,28 +72,6 @@ p {
 
 /* End Poster */
 
-/* FAQ Start */
-.accordion-button {
-  background-color: #fff !important;
-  color: #315B51 !important;
-  border: 1px solid #315B51 !important;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-/* Warna ketika diklik / terbuka */
-.accordion-button:not(.collapsed) {
-  background-color: #315B51 !important;
-  color: #fff !important;
-  box-shadow: none !important;
-}
-
-/* Hilangkan border saat aktif agar terlihat mulus */
-.accordion-button:focus {
-  box-shadow: none !important;
-}
-/* FAQ End */
-
 /* Testimoni Start */
 #testimoni .testimonial-card {
   transition: all 0.2 ease;
@@ -115,6 +84,58 @@ p {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 /* Testimoni End */
+
+
+/* ================================
+   FAQ Section Styles
+================================ */
+
+/* Tombol accordion default */
+.accordion-button {
+  background-color: #fff !important;
+  color: #315B51 !important;
+  border: 1px solid #315B51 !important;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* Tombol saat aktif (terbuka) */
+.accordion-button:not(.collapsed) {
+  background-color: #315B51 !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+/* Hilangkan efek fokus agar rapi */
+.accordion-button:focus {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Konten accordion dengan animasi smooth */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.6s ease, opacity 0.4s ease;
+}
+
+.accordion-content.open {
+  max-height: 300px; /* cukup besar agar isi bisa muat */
+  opacity: 1;
+}
+
+/* Efek hover opsional */
+.accordion-button:hover {
+  background-color: #eaf4f1 !important;
+  color: #315B51 !important;
+}
+
+/* ================================
+   End FAQ Section
+================================ */
+
+
 
 
 
@@ -138,43 +159,6 @@ p {
 }
 
 /* end */
-
-
-
-/* Untuk Section Asked */
-.faq-btn {
-  background-color: #fff;
-  color: #315b51;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.faq-btn:hover {
-  background-color: #315b51;
-  color: #fff;
-}
-
-/* Smooth transition */
-.accordion-content {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.6s ease, opacity 0.4s ease;
-}
-
-.accordion-content.open {
-  max-height: 300px; /* cukup besar agar isi bisa muat */
-  opacity: 1;
-}
-
-/* Optional tambahan efek saat hover */
-.accordion-button:not(.collapsed) {
-  background-color: #eaf4f1;
-  color: #315b51;
-  box-shadow: none;
-}
-
-/* End FAQ */
 
 
 /* Home LAyout */
@@ -243,14 +227,11 @@ p {
   font-weight: 500;
 }
 
-
-
 .navbar-transparent {
    background: rgba(138, 137, 137, 0.3) !important; /* lebih transparan agar blur terlihat */
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(12px);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
-
 }
 
 .navbar-transparent .nav-link {
@@ -393,21 +374,6 @@ p {
   border: none;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .contact-us {
-    padding: 40px 0;
-  }
-
-  .contact-info-card,
-  .contact-form-card {
-    margin-bottom: 20px;
-  }
-
-  .display-4 {
-    font-size: 2.5rem;
-  }
-}
 
 /* Animation untuk form */
 @keyframes fadeInUp {
@@ -446,23 +412,8 @@ p {
   padding-top: 30px;
 }
 
-@media (max-width: 768px) {
-  .contact-us {
-    padding: 40px 0;
-  }
-
-  .display-4 {
-    font-size: 2rem;
-  }
-
-  .contact-info-card,
-  .contact-form-card {
-    margin-bottom: 20px;
-  }
-}
-
 .about-us {
-  padding: 100px 0 80px;
+  padding: 80px 0 80px;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   margin-top: var(--navbar-height);
   min-height: calc(100vh - var(--navbar-height));
@@ -529,30 +480,11 @@ p {
   font-size: 3rem;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .about-us {
-    padding: 80px 0 60px;
-  }
-
-  .display-4 {
-    font-size: 2.5rem;
-  }
-
-  .feature-card,
-  .team-card {
-    margin-bottom: 20px;
-  }
-}
-
 .reservation {
-
   padding: 100px 0 100px;
   margin-top: var(--navbar-height);
   min-height: calc(80vh - var(--navbar-height));
-
 }
-
 
 .gallery {
   padding: 100px 0 80px;
@@ -654,24 +586,128 @@ p {
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive */
+/* ===== RESPONSIVE SETTINGS ===== */
+
+/* 📱 HP KECIL (max 480px) */
+@media (max-width: 480px) {
+  .hero-section {
+    height: 80vh;
+    padding: 20px 90px;
+  }
+
+  .hero-section h1 {
+    font-size: 1.7rem;
+    line-height: 1.5;
+  }
+  
+  .hero-section p {
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .hero-section .btn {
+    font-size: 0.9rem;
+  }
+}
+
+/* 📱 HP BESAR - TABLET KECIL (481px–768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .hero-section {
+    height: 85vh;
+    padding: 0 40px;
+  }
+
+  .hero-section h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-section p {
+    font-size: 1.2rem;
+  
+  }
+
+  .hero-section .btn {
+    font-size: 0.95rem;
+  }
+}
+
+/* 💻 TABLET LANDSCAPE - LAPTOP KECIL (769px–1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero-section {
+    height: 90vh;
+    padding: 0 60px;
+  }
+
+  .hero-section h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-section p {
+    font-size: 1.3rem;
+  }
+}
+
+/* 🖥️ DESKTOP BESAR (1025px ke atas) */
+@media (min-width: 1025px) {
+  .hero-section {
+    height: 100vh;
+    padding: 0 120px;
+  }
+
+  .hero-section h1 {
+    font-size: 3rem;
+  }
+
+  .hero-section p {
+    font-size: 1.5rem;
+  }
+}
+
+
+
+/* Responsive Design untuk layar dengan lebar maksimum 768px */
 @media (max-width: 768px) {
+
+  /* ===== Section Contact Us ===== */
+  .contact-us {
+    padding: 80px 0;
+  }
+
+  /* ===== Section About Us ===== */
+  .about-us .container {
+    padding: 0 20px; /* Tambahan agar tidak terlalu mepet di layar kecil */
+  }
+
+  /* ===== Section Gallery ===== */
   .gallery {
     padding: 80px 0 60px;
   }
 
+  /* ===== Heading besar di layar kecil ===== */
   .display-4 {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 
+  /* ===== Tombol filter pada gallery ===== */
   .filter-buttons .btn {
     padding: 8px 20px;
     font-size: 0.9rem;
     margin: 5px;
   }
 
+  /* ===== CTA pada gallery ===== */
   .gallery-cta {
     padding: 30px 20px;
   }
+
+  /* ===== Kartu pada Contact dan About Us ===== */
+  .contact-info-card,
+  .contact-form-card,
+  .feature-card,
+  .team-card {
+    margin-bottom: 20px;
+  }
 }
+
 

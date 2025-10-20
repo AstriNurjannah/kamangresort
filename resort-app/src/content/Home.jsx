@@ -186,6 +186,7 @@ function Home() {
             zIndex: "0",
           }}
         ></div>
+        
 
         {/* Konten Tulisan */}
         <div
@@ -194,31 +195,16 @@ function Home() {
             maxWidth: "700px",
           }}
         >
-          <h1
-            className="fw-bold mb-3"
-            style={{
-              fontSize: "3rem",
-              color: "#F4EBDC",
-              textShadow: "2px 2px 8px rgba(0,0,0,0.6)",
-            }}
-          >
-            Selamat Datang <br />
-            di Kamang Resort
-          </h1>
+         <h1 class="fw-bold mb-3 text-light text-shadow-title">
+  Selamat Datang <br />
+  di Kamang Resort
+</h1>
 
-          <p
-            className="lead mb-4"
-            style={{
-              fontSize: "1.50rem",
-              color: "#ffffffcc",
-              textShadow: "1px 1px 10px rgba(0,0,0,0.5)",
-              textAlign: "justify",
-              textJustify: "inter-word",
-            }}
-          >
-            Temukan ketenangan, kenyamanan, dan keindahan alam yang berpadu sempurna.
-            Pengalaman menginap tak terlupakan menanti Anda di Kamang Resort.
-          </p>
+<p class="lead mb-4 text-light text-shadow-paragraph">
+  Temukan ketenangan, kenyamanan, dan keindahan alam yang berpadu sempurna.
+  Pengalaman menginap tak terlupakan menanti Anda di Kamang Resort.
+</p>
+
       <Link
   to="/facilities" 
   className="btn btn-lg"
@@ -226,7 +212,7 @@ function Home() {
     backgroundColor: "#F75E05", // oranye awal
     color: "#fff", // teks putih
     padding: "12px 30px",
-    borderRadius: "50px",
+    borderRadius: "15px",
     fontWeight: "600",
     transition: "all 0.3s ease",
   }}
