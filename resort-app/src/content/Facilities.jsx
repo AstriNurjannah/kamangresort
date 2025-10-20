@@ -254,7 +254,7 @@ const Facilities = () => {
     <div className="accommodations" id="accommodations">
       {/* Judul Section */}
       <div className="container">
-        <div className="row text-center mt-2">
+        <div className="row text-center ">
           <div className="col-12">
             <h1 className="display-5 fw-bold mb-3" style={{ color: "#315B50" }}>
               Fasilitas Kamang Resort
@@ -267,7 +267,7 @@ const Facilities = () => {
       </div>
 
       {/* Hero Slider untuk Fasilitas */}
-      <div className="facilities-slider-container mt-5">
+      <div className="facilities-slider-container ">
         <div className="slider-wrapper">
           {facilitySlides.map((slide, index) => {
             const total = facilitySlides.length;

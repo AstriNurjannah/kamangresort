@@ -41,126 +41,125 @@ function NavigationBar() {
   }, []);
 
   return (
-   <Navbar
-  expand="lg"
-  variant="light"
-  fixed="top"
-  className={`custom-navbar ${
-    isHomePage && !isScrolled ? "navbar-transparent" : "navbar-scrolled"
-  }`}
-  ref={navbarRef}
->
-  <Container>
-    <Navbar.Brand
-      as={NavLink}
-      to="/Home"
-      className="d-flex align-items-center me-1"
+    <Navbar
+      expand="lg"
+      variant="light"
+      fixed="top"
+      className={`custom-navbar ${
+        isHomePage && !isScrolled ? "navbar-transparent" : "navbar-scrolled"
+      }`}
+      ref={navbarRef}
     >
-      <img
-        src="/Kamang-Resort/LogoResort2.png"
-        alt="Logo"
-        width="250"
-        height="100"
-      />
-    </Navbar.Brand>
-
-    <Navbar.Toggle aria-controls="navbarNavDropdown" className="border-0" />
-
-    <Navbar.Collapse id="navbarNavDropdown">
-      <Nav className="ms-auto  d-flex  gap-5">
-        <Nav.Link
+      <Container>
+        <Navbar.Brand
           as={NavLink}
           to="/Home"
-          className={({ isActive }) =>
-            isActive
-              ? isHomePage
-                ? "active text-dark me-4"
-                : "active text-white me-4"
-              : isHomePage
-              ? "text-dark me-4"
-              : "text-light me-4"
-          }
+          className="d-flex align-items-center me-1"
         >
-          Home
-        </Nav.Link>
+          <img
+            src="/Kamang-Resort/LogoResort2.png"
+            alt="Logo"
+            width="250"
+            height="100"
+          />
+        </Navbar.Brand>
 
-        <Nav.Link
-          as={NavLink}
-          to="/ContactUs"
-          className={({ isActive }) =>
-            isActive ? "active text-white me-4" : "text-light me-4"
-          }
-        >
-          Contact Us
-        </Nav.Link>
+        <Navbar.Toggle aria-controls="navbarNavDropdown" className="border-0" />
 
-        <Nav.Link
-          as={NavLink}
-          to="/About"
-          className={({ isActive }) =>
-            isActive ? "active text-white me-4" : "text-light me-4"
-          }
-        >
-          About
-        </Nav.Link>
+        <Navbar.Collapse id="navbarNavDropdown">
+          <Nav className="nav ms-auto  d-flex  gap-3">
+            <Nav.Link
+              as={NavLink}
+              to="/Home"
+              className={({ isActive }) =>
+                isActive
+                  ? isHomePage
+                    ? "active text-dark me-4"
+                    : "active text-white me-4"
+                  : isHomePage
+                  ? "text-dark me-4"
+                  : "text-light me-4"
+              }
+            >
+              <p>Beranda</p>
+            </Nav.Link>
 
-        <Nav.Link
-          as={NavLink}
-          to="/Gallery"
-          className={({ isActive }) =>
-            isActive ? "active text-white me-4" : "text-light me-4"
-          }
-        >
-          Gallery
-        </Nav.Link>
+            <Nav.Link
+              as={NavLink}
+              to="/ContactUs"
+              className={({ isActive }) =>
+                isActive ? "active text-white me-4" : "text-light me-4"
+              }
+            >
+              <p>Hubungi Kami</p>
+            </Nav.Link>
 
-        <NavDropdown
-          title="Service"
-          id="navbarDropdown"
-          className={isHomePage ? "me-4 text-dark" : "me-4 text-light"}
-          menuVariant="light"
-        >
-          <NavDropdown.Item
-            as={NavLink}
-            to="/Reservation"
-            className={({ isActive }) =>
-              isActive
-                ? "dropdown-item active text-dark"
-                : "dropdown-item text-secondary"
-            }
-          >
-            Reservation
-          </NavDropdown.Item>
+            <Nav.Link
+              as={NavLink}
+              to="/About"
+              className={({ isActive }) =>
+                isActive ? "active text-white me-4" : "text-light me-4"
+              }
+            >
+              <p>Tentang Kami</p>
+            </Nav.Link>
 
-          <NavDropdown.Item
-            as={NavLink}
-            to="/Facilities"
-            className={({ isActive }) =>
-              isActive
-                ? "dropdown-item active text-dark"
-                : "dropdown-item text-secondary"
-            }
-          >
-            Facilities
-          </NavDropdown.Item>
+            <Nav.Link
+              as={NavLink}
+              to="/Gallery"
+              className={({ isActive }) =>
+                isActive ? "active text-white me-4" : "text-light me-4"
+              }
+            >
+              <p>Galeri</p>
+            </Nav.Link>
 
-          <NavDropdown.Item
-            as={NavLink}
-            to="/Restaurant"
-            className={({ isActive }) =>
-              isActive
-                ? "dropdown-item active text-dark"
-                : "dropdown-item text-secondary"
-            }
-          >
-            Restaurant
-          </NavDropdown.Item>
-        </NavDropdown>
-      </Nav>
-    </Navbar.Collapse>
-  </Container>
-</Navbar>
+            <NavDropdown
+              title="layanan"
+              id="navbarDropdown"
+              className={isHomePage ? "me-4 text-dark" : "me-4 text-light"}
+              menuVariant="light"
+            >
+              <NavDropdown.Item
+                as={NavLink}
+                to="/Reservation"
+                className={({ isActive }) =>
+                  isActive
+                    ? "dropdown-item active text-dark"
+                    : "dropdown-item text-secondary"
+                }
+              >
+                <p>Reservasi</p>
+              </NavDropdown.Item>
 
+              <NavDropdown.Item
+                as={NavLink}
+                to="/Facilities"
+                className={({ isActive }) =>
+                  isActive
+                    ? "dropdown-item active text-dark"
+                    : "dropdown-item text-secondary"
+                }
+              >
+                <p>Fasilitas</p>
+              </NavDropdown.Item>
+
+              <NavDropdown.Item
+                as={NavLink}
+                to="/Restaurant"
+                className={({ isActive }) =>
+                  isActive
+                    ? "dropdown-item active text-dark"
+                    : "dropdown-item text-secondary"
+                }
+              >
+                <p>Restaurant</p>
+              </NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }
 

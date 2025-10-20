@@ -12,7 +12,7 @@ const AboutUs = () => {
             <h1 className="display-4 fw-bold mb-4" style={{ color: "#315B50" }}>
               About Kamang Resort
             </h1>
-            <p className="lead mb-4">
+            <p className=" text-tengah lead mb-4">
               Terletak di jantung Sumatera Barat, Kamang Resort menawarkan
               pengalaman tak terlupakan yang dikelilingi oleh keindahan alam
               serta kehangatan keramahan tradisional Minangkabau.
@@ -110,14 +110,14 @@ const AboutUs = () => {
             <h2 className="fw-bold mb-4" style={{ color: "#315B50" }}>
               Our Story
             </h2>
-            <p className="mb-3">
+            <p className=" text-tengah mb-3">
               Didirikan pada tahun 2024, Kamang Resort lahir dari semangat untuk
               membagikan keindahan Sumatera Barat kepada dunia. Para pendirinya,
               memiliki visi untuk menghadirkan tempat di mana para pengunjung
               dapat merasakan budaya Minangkabau yang autentik sekaligus
               menikmati kenyamanan modern.
             </p>
-            <p className="mb-3">
+            <p className=" text-tengah mb-3">
               Berlokasi di Kamang Mudiak, Agam, resort ini memadukan arsitektur
               tradisional dengan fasilitas kontemporer, menciptakan tempat
               peristirahatan unik bagi para wisatawan yang mencari petualangan
@@ -161,8 +161,8 @@ const AboutUs = () => {
           </div>
 
           {/* Baris 1: 2 card */}
-          <div className="row justify-content-center">
-            <div className="col-lg-4 col-md-6 mb-4">
+          <div className="row justify-content-center ">
+            <div className="col-lg-3 col-md-6 mb-4">
               <div className="team-card text-center h-100 d-flex flex-column">
                 <div className="team-image mb-3">
                   <img

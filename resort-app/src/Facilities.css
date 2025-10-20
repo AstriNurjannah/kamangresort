@@ -363,7 +363,15 @@
     width: 35px;
     height: 35px;
   }
+
+  
+   .room-description{
+  text-align: center;
+
 }
+}
+
+
 
 @media (min-resolution: 192dpi) {
   .slide-indicators {
