@@ -1,0 +1,98 @@
+/* Background animasi */
+.reservation-page {
+  position: relative;
+  margin-top: 100px;
+  min-height: 100vh; /* ganti height jadi min-height agar bisa melar */
+  padding-bottom: 100px; /* jarak aman untuk footer */
+  overflow: hidden;
+  background-color: #f9fdfb;
+}
+
+/* Elemen lingkaran lembut */
+.animated-bg .circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: move 20s infinite alternate ease-in-out;
+}
+
+.c1 {
+  width: 200px;
+  height: 200px;
+  background: #6d7a74;
+  top: 10%;
+  left: 15%;
+  animation-delay: 0s;
+}
+.c2 {
+  width: 300px;
+  height: 300px;
+  background: #c2e5d3;
+  bottom: 15%;
+  right: 10%;
+  animation-delay: 4s;
+}
+.c3 {
+  width: 150px;
+  height: 150px;
+  background: #b0dfc3;
+  top: 60%;
+  left: 5%;
+  animation-delay: 2s;
+}
+.c4 {
+  width: 250px;
+  height: 250px;
+  background: #a4d7b9;
+  bottom: 5%;
+  left: 40%;
+  animation-delay: 6s;
+}
+
+/* Animasi lingkaran */
+@keyframes move {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-40px) scale(1.05);
+  }
+  100% {
+    transform: translateY(20px) scale(0.95);
+  }
+}
+
+/* Animasi fade-in untuk form */
+.animate-fade-in {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover tombol */
+button:hover {
+  background-color: #3b7a66 !important;
+  transform: translateY(-2px);
+}
+
+/* Efek fokus input */
+.form-control:focus,
+.form-select:focus {
+  border-color: #315B51;
+  box-shadow: 0 0 5px rgba(49, 91, 81, 0.3);
+}
+
+/* Jarak ekstra bagian bawah halaman (opsional, bisa dihapus kalau footer sudah fix) */
+.book {
+  padding-bottom: 120px;
+}

@@ -96,7 +96,7 @@ const ContactUs = () => {
                       </div>
                       <div>
                         <h6 className="mb-1">Phone</h6>
-                        <p className="text-muted mb-0"> +62 812-3456-7890</p>
+                        <p className="text-muted mb-0"> +123-456-7890</p>
                       </div>
                     </div>
                   </div>
@@ -107,7 +107,7 @@ const ContactUs = () => {
                       </div>
                       <div>
                         <h6 className="mb-1">Email</h6>
-                        <p className="text-muted mb-0">info@kemangresort.com</p>
+                        <p className="text-muted mb-0">team8bbpvp@gmail.com</p>
                       </div>
                     </div>
                   </div>

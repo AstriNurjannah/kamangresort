@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const BackgroundMusic = () => {
-  const [audio] = useState(new Audio("/Kamang-Resort/KemangResort.mp3"));
+  const [audio] = useState(new Audio("/Kamang-Resort/KemangResortsound.mp3"));
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {

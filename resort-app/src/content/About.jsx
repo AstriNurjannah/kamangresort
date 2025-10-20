@@ -10,7 +10,7 @@ const AboutUs = () => {
         <div className="row align-items-center mb-5">
           <div className="col-lg-6">
             <h1 className="display-4 fw-bold mb-4" style={{ color: "#315B50" }}>
-              About Kemang Resort
+              About Kamang Resort
             </h1>
             <p className="lead mb-4">
               Terletak di jantung Sumatera Barat, Kamang Resort menawarkan
@@ -47,7 +47,7 @@ const AboutUs = () => {
         <div className="row mb-5">
           <div className="col-12 text-center mb-5">
             <h2 className="fw-bold" style={{ color: "#315B50" }}>
-              Why Choose Kemang Resort?
+              Why Choose Kamang Resort?
             </h2>
           </div>
 

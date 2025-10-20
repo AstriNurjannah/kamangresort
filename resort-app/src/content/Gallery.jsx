@@ -121,7 +121,7 @@ const Gallery = () => {
               Gallery
             </h1>
             <p className="lead">
-              Discover the beauty of Kemang Resort through our photos
+              Discover the beauty of Kamang Resort through our photos
             </p>
           </div>
         </div>
@@ -175,7 +175,7 @@ const Gallery = () => {
           <div className="col-12 text-center">
             <div className="gallery-cta">
               <h3 className="mb-4" style={{ color: "#315B50" }}>
-                Experience Kemang Resort Yourself
+                Experience Kamang Resort Yourself
               </h3>
               <p className="lead mb-4">
                 Book your stay and create unforgettable memories

@@ -20,24 +20,68 @@ const Restaurant = () => {
   const heroSlides = [
     {
       id: 1,
-      image: "/Kamang-Resort/menu-ayam-batokok.jpg",
+      image: "/Kamang-Resort/DaftarMenu1.jpg",
       title: "Authentic Minang Cuisine",
       description: "Experience the rich flavors of West Sumatra",
     },
     {
       id: 2,
-      image: "/Kamang-Resort/menu-ayam-kalasan.jpg",
+      image: "/Kamang-Resort/DaftarMenu2.jpg",
       title: "Fine Dining Experience",
       description: "Elegant atmosphere with mountain views",
     },
     {
       id: 3,
-      image: "/Kamang-Resort/menu-dendeng.jpg",
+      image: "/Kamang-Resort/DaftarMenu3.jpg",
+      title: "Fresh Local Ingredients",
+      description: "Sourced directly from local farmers",
+    },
+    {
+      id: 4,
+      image: "/Kamang-Resort/DaftarMenu4.jpg",
+      title: "Fresh Local Ingredients",
+      description: "Sourced directly from local farmers",
+    },
+    {
+      id: 5,
+      image: "/Kamang-Resort/DaftarMenu5.jpg",
+      title: "Fresh Local Ingredients",
+      description: "Sourced directly from local farmers",
+    },
+       {
+      id: 6,
+      image: "/Kamang-Resort/DaftarMenu6.jpg",
+      title: "Fresh Local Ingredients",
+      description: "Sourced directly from local farmers",
+    },
+     {
+      id: 6,
+      image: "/Kamang-Resort/DaftarMenu7.jpg",
       title: "Fresh Local Ingredients",
       description: "Sourced directly from local farmers",
     },
   ];
 
+
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  const nextSlide = () => {
+    if (isAnimating) return; // ⛔ Cegah klik cepat ganda
+    setIsAnimating(true);
+    setTimeout(() => setIsAnimating(false), 600); // sama dengan durasi transition
+
+    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+  };
+
+  const prevSlide = () => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setTimeout(() => setIsAnimating(false), 600);
+
+    setCurrentSlide((prev) =>
+      prev === 0 ? heroSlides.length - 1 : prev - 1
+    );
+  };
   const menuItems = [
     // Main Course
     {
@@ -126,109 +170,6 @@ const Restaurant = () => {
     },
   ];
 
-  // Testimonials data
-  const testimonials = [
-    {
-      id: 1,
-      name: "Ahmad Rizki",
-      rating: 5,
-      comment:
-        "Rasa masakan Minang yang otentik, suasana yang nyaman dengan pemandangan gunung yang menakjubkan. Highly recommended!",
-      date: "2 days ago",
-    },
-    {
-      id: 2,
-      name: "Sarah Wijaya",
-      rating: 5,
-      comment:
-        "Ayam Batokoknya luar biasa! Pelayanan ramah dan harga sangat reasonable untuk kualitas yang diberikan.",
-      date: "1 week ago",
-    },
-    {
-      id: 3,
-      name: "Budi Santoso",
-      rating: 4,
-      comment:
-        "Tempat yang perfect untuk family dinner. Anak-anak suka sekali dengan chicken crispy-nya.",
-      date: "3 days ago",
-    },
-    {
-      id: 4,
-      name: "Maya Sari",
-      rating: 5,
-      comment:
-        "Nasi Goreng Lengkok favorit keluarga kami. Rasanya authentic dan porsinya generous.",
-      date: "5 days ago",
-    },
-  ];
-
-  // Special offers data
-  const specialOffers = [
-    {
-      id: 1,
-      title: "Weekend Family Package",
-      description:
-        "Paket khusus keluarga untuk 4 orang dengan free dessert dan 4 minuman",
-      price: "Rp120.000",
-      originalPrice: "Rp150.000",
-      validUntil: "31 Dec 2024",
-    },
-    {
-      id: 2,
-      title: "Early Bird Breakfast",
-      description: "Diskon 20% untuk semua menu breakfast sebelum jam 9 pagi",
-      price: "Mulai Rp20.000",
-      originalPrice: "Rp25.000",
-      validUntil: "Ongoing",
-    },
-    {
-      id: 3,
-      title: "Birthday Special",
-      description:
-        "Free birthday cake dan special decoration untuk reservasi di hari ulang tahun",
-      price: "Free Cake",
-      validUntil: "Ongoing",
-    },
-  ];
-
-  // Facilities data
-  //   const facilities = [
-  //     {
-  //       id: 1,
-  //       icon: "bi bi-mountain",
-  //       title: "Mountain View",
-  //       description: "Pemandangan gunung yang menakjubkan dari setiap sudut restaurant"
-  //     },
-  //     {
-  //       id: 2,
-  //       icon: "bi bi-wifi",
-  //       title: "Free WiFi",
-  //       description: "Internet cepat gratis untuk semua pengunjung"
-  //     },
-  //     {
-  //       id: 3,
-  //       icon: "bi bi-car-front-fill",
-  //       title: "Parking Area",
-  //       description: "Area parkir yang luas dan aman"
-  //     },
-  //     {
-  //       id: 4,
-  //       icon: "bi bi-snow",
-  //       title: "AC Rooms",
-  //       description: "Ruang ber-AC dan outdoor seating dengan udara sejuk"
-  //     }
-  //   ];
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide(
-      (prev) => (prev - 1 + heroSlides.length) % heroSlides.length
-    );
-  };
-
   const filteredItems =
     activeFilter === "all"
       ? menuItems
@@ -241,73 +182,12 @@ const Restaurant = () => {
     { key: "continental", label: "Continental" },
   ];
 
-  // Render stars for ratings
-  const renderStars = (rating) => {
-    return Array.from({ length: 5 }, (_, index) => (
-      <i
-        key={index}
-        className={`bi ${index < rating ? "bi-star-fill" : "bi-star"}`}
-        style={{ color: "#ffc107", marginRight: "2px" }}
-      ></i>
-    ));
-  };
 
   return (
     <div className="restaurant" id="restaurant">
-      {/* Hero Slider */}
-      <div className="restaurant-hero">
-        <div className="hero-slider">
-          {heroSlides.map((slide, index) => (
-            <div
-              key={slide.id}
-              className={`hero-slide ${index === currentSlide ? "active" : ""}`}
-              style={{ backgroundImage: `url(${slide.image})` }}
-            >
-              <div className="hero-overlay">
-                <div className="container">
-                  <div className="hero-content">
-                    <h1 className="hero-title">{slide.title}</h1>
-                    <p className="hero-description">{slide.description}</p>
-                    <button
-                      className="btn btn-primary btn-lg mt-3"
-                      onClick={() =>
-                        document
-                          .getElementById("restaurant-menu")
-                          .scrollIntoView({ behavior: "smooth" })
-                      }
-                    >
-                      View Our Menu
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Navigation Arrows */}
-        <button className="hero-nav hero-prev" onClick={prevSlide}>
-          <i className="bi bi-chevron-left"></i>
-        </button>
-        <button className="hero-nav hero-next" onClick={nextSlide}>
-          <i className="bi bi-chevron-right"></i>
-        </button>
-
-        {/* Dots Indicator */}
-        <div className="hero-dots">
-          {heroSlides.map((_, index) => (
-            <button
-              key={index}
-              className={`hero-dot ${index === currentSlide ? "active" : ""}`}
-              onClick={() => setCurrentSlide(index)}
-            />
-          ))}
-        </div>
-      </div>
-
       {/* Restaurant Info */}
       <div className="container">
-        <div className="row text-center mb-2 mt-5">
+        <div className="row text-center mt-2">
           <div className="col-12">
             <h1 className="display-5 fw-bold mb-3" style={{ color: "#315B50" }}>
               Kamang Resort Restaurant
@@ -319,36 +199,43 @@ const Restaurant = () => {
         </div>
       </div>
 
-      {/* Facilities Section */}
-      {/* <div className="facilities-section py-5 bg-light">
-        <div className="container">
-          <div className="row text-center mb-5">
-            <div className="col-12">
-              <h2 className="section-title" style={{ color: "#315B50" }}>
-                Our Facilities
-              </h2>
-              <p className="section-subtitle">Fasilitas lengkap untuk kenyamanan Anda</p>
-            </div>
-          </div>
-          <div className="row">
-            {facilities.map((facility) => (
-              <div key={facility.id} className="col-lg-3 col-md-6 mb-4">
-                <div className="facility-card text-center">
-                  <div className="facility-icon">
-                    <i className={facility.icon}></i>
-                  </div>
-                  <h5>{facility.title}</h5>
-                  <p>{facility.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+      {/* Hero Slider */}
+      <div className="hero-wrapper">
+  <div className="slider-container mt-5">
+    {heroSlides.map((slide, index) => {
+      const total = heroSlides.length;
+
+      // Hitung posisi relatif dari currentSlide
+      const diff = (index - currentSlide + total) % total;
+
+      let position = "hidden";
+      if (diff === 0) position = "active"; // tengah
+      else if (diff === 1) position = "next"; // kanan 1
+      else if (diff === 2) position = "next2"; // kanan 2
+      else if (diff === total - 1) position = "prev"; // kiri 1
+      else if (diff === total - 2) position = "prev2"; // kiri 2
+
+      return (
+        <div key={slide.id} className={`slide ${position}`}>
+          <img
+            src={slide.image}
+            alt={`Slide ${slide.id}`}
+            className="slide-img"
+          />
         </div>
-      </div> */}
+      );
+    })}
+  </div>
+
+  <div className="controls">
+    <button onClick={prevSlide}>PREV</button>
+    <button onClick={nextSlide}>NEXT</button>
+  </div>
+</div>
 
       {/* Menu Section */}
       <div id="restaurant-menu">
-        <div className="container">
+        <div className="container mt-4">
           {/* Filter Buttons */}
           <div className="row mb-5">
             <div className="col-12">
@@ -400,84 +287,6 @@ const Restaurant = () => {
         </div>
       </div>
 
-      {/* Special Offers Section */}
-      <div className="special-offers-section py-5">
-        <div className="container">
-          <div className="row text-center mb-5">
-            <div className="col-12">
-              <h2 className="section-title" style={{ color: "#315B50" }}>
-                Special Offers & Promotions
-              </h2>
-              <p className="section-subtitle">
-                Nikmati penawaran spesial untuk pengalaman makan yang lebih
-                berkesan
-              </p>
-            </div>
-          </div>
-          <div className="row">
-            {specialOffers.map((offer) => (
-              <div key={offer.id} className="col-lg-4 col-md-6 mb-4">
-                <div className="special-offer-card">
-                  <div className="offer-badge">Limited Offer</div>
-                  <div className="offer-content">
-                    <h5>{offer.title}</h5>
-                    <p>{offer.description}</p>
-                    <div className="offer-price">
-                      <span className="current-price">{offer.price}</span>
-                      {offer.originalPrice && (
-                        <span className="original-price">
-                          {offer.originalPrice}
-                        </span>
-                      )}
-                    </div>
-                    <div className="offer-validity">
-                      <small>Valid until: {offer.validUntil}</small>
-                    </div>
-                    <button className="btn btn-outline-primary btn-sm mt-3">
-                      Claim Offer
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Testimonials Section */}
-      <div className="testimonials-section py-5">
-        <div className="container">
-          <div className="row text-center mb-5">
-            <div className="col-12">
-              <h2 className="section-title" style={{ color: "#315B50" }}>
-                What Our Customers Say
-              </h2>
-              <p className="section-subtitle">
-                Testimoni dari pelanggan yang sudah merasakan pengalaman makan
-                di Kamang Resort
-              </p>
-            </div>
-          </div>
-          <div className="row">
-            {testimonials.map((testimonial) => (
-              <div key={testimonial.id} className="col-lg-6 col-md-6 mb-4">
-                <div className="testimonial-card">
-                  <div className="testimonial-header">
-                    <div className="customer-info">
-                      <h6 className="customer-name">{testimonial.name}</h6>
-                      <div className="customer-rating">
-                        {renderStars(testimonial.rating)}
-                      </div>
-                    </div>
-                    <span className="testimonial-date">{testimonial.date}</span>
-                  </div>
-                  <p className="testimonial-comment">"{testimonial.comment}"</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
 
       {/* Contact & CTA */}
       <div className="container">

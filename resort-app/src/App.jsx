@@ -14,6 +14,7 @@ function App() {
         {/* konten akan memenuhi ruang kosong */}
         <div className="flex-grow-1">
           <AppRoutes />
+            {/* <FlowiseChat /> */}
         </div>
 
         <Footer />
