@@ -6,37 +6,45 @@ const Facilities = () => {
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isAnimating, setIsAnimating] = useState(false);
   const [activeRoom, setActiveRoom] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const facilitySlides = [
     {
       id: 1,
-      image: "/Kamang-Resort/fasilitas1.jpg",
-      title: "Kolam Renang Infinity",
-      description: "Nikmati pemandangan lembah dari kolam renang infinity kami",
+      image: "/Kamang-Resort/cottage-bansa-1.jpg",
+      title: "Bansa Cottage",
+      description: "Rasakan relaksasi penuh di akomodasi mewah dengan fasilitas lengkap dan pelayanan ramah.",
     },
     {
       id: 2,
-      image: "/Kamang-Resort/fasilitas2.jpg",
-      title: "Spa & Wellness Center",
-      description: "Relaksasi total dengan treatment tradisional Minang",
+      image: "/Kamang-Resort/cottage-deluxe-201-1.jpg",
+      title: "Deluxe Room 201",
+      description: "Pilihan sempurna untuk bersantai setelah hari yang sibuk. Nikmati kenyamanan maksimal dengan fasilitas lengkap.",
     },
     {
       id: 3,
-      image: "/Kamang-Resort/fasilitas3.jpg",
-      title: "Meeting Room",
-      description: "Fasilitas meeting lengkap untuk acara bisnis Anda",
+      image: "/Kamang-Resort/cottage-durian-1.jpg",
+      title: "Durian Cottage",
+      description: "Pilihan sempurna untuk bersantai setelah hari yang sibuk. Nikmati kenyamanan maksimal dengan fasilitas lengkap.",
     },
     {
       id: 4,
-      image: "/Kamang-Resort/fasilitas4.jpg",
-      title: "Restaurant",
-      description: "Restaurant dengan pemandangan dan kuliner autentik",
+      image: "/Kamang-Resort/cottage-lengkok-1.jpg",
+      title: "Lengkok Cottage",
+      description: "Tempat ideal untuk bersantai sepenuhnya dengan kenyamanan dan pelayanan terbaik.",
     },
     {
       id: 5,
-      image: "/Kamang-Resort/fasilitas5.jpg",
-      title: "Taman & Landscape",
-      description: "Taman yang asri dengan desain landscape menawan",
+      image: "/Kamang-Resort/cottage-ngalau-1.jpg",
+      title: "Ngalau Cottage",
+      description: "Kamar dengan konsep terbuka, jendela besar, dan fasilitas lengkap untuk kenyamanan Anda.",
+    },
+     {
+      id: 6,
+      image: "/Kamang-Resort/cottage-tarusan-1.jpg",
+      title: "Tarusan Cottage",
+      description: "Nikmati pengalaman menginap mewah dengan pelayanan terbaik yang membuat Anda selalu puas.",
     },
   ];
 
@@ -286,6 +294,16 @@ const Facilities = () => {
                   src={slide.image}
                   alt={`Fasilitas ${slide.id}`}
                   className="slide-image"
+                   style={{
+                cursor: "pointer",
+                transition: "transform 0.3s ease",
+              }}
+               onClick={() => {
+                    setSelectedImage(slide.image);
+                    setIsModalOpen(true);
+                  }}
+                   onMouseOver={(e) => (e.target.style.transform = "scale(1.05)")}
+              onMouseOut={(e) => (e.target.style.transform = "scale(1)")}
                 />
                 <div className="slide-content">
                   <h3 className="slide-title">{slide.title}</h3>
@@ -295,6 +313,29 @@ const Facilities = () => {
             );
           })}
         </div>
+        {isModalOpen && (
+        <div
+          className="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
+          style={{
+            zIndex: 1050,
+            backgroundColor: "rgba(0,0,0,0.6)",
+            cursor: "pointer",
+          }}
+          onClick={() => setIsModalOpen(false)}
+        >
+          <img
+            src={selectedImage}
+            alt="Fasilitas Full View"
+            className="img-fluid rounded-4 shadow-lg"
+            style={{
+              maxHeight: "90vh",
+              maxWidth: "90vw",
+              objectFit: "contain",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
 
         {/* Navigation Controls */}
         <div className="slider-controls">

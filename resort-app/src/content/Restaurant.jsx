@@ -5,88 +5,104 @@ const Restaurant = () => {
   const [activeFilter, setActiveFilter] = useState("all");
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+const [selectedImage, setSelectedImage] = useState(null);
+
 
   // Auto slide functionality
-  useEffect(() => {
-    if (!isAutoPlaying) return;
+  // useEffect(() => {
+  //   if (!isAutoPlaying) return;
 
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 5000);
+  //   const interval = setInterval(() => {
+  //     setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+  //   }, 5000);
 
-    return () => clearInterval(interval);
-  }, [isAutoPlaying]);
+  //   return () => clearInterval(interval);
+  // }, [isAutoPlaying]);
+
 
   const heroSlides = [
     {
       id: 1,
-      image: "/Kamang-Resort/DaftarMenu1.jpg",
-      title: "Authentic Minang Cuisine",
-      description: "Experience the rich flavors of West Sumatra",
+      image: "/Kamang-Resort/DaftarMenu2.jpg",
+      title: "Menu Nusantara dan Cotential ",
+      description: "Menu Makanan Khas",
     },
     {
       id: 2,
-      image: "/Kamang-Resort/DaftarMenu2.jpg",
-      title: "Fine Dining Experience",
-      description: "Elegant atmosphere with mountain views",
-    },
-    {
-      id: 3,
       image: "/Kamang-Resort/DaftarMenu3.jpg",
-      title: "Fresh Local Ingredients",
+      title: "Pasta, Mie dan Pizza",
       description: "Sourced directly from local farmers",
     },
     {
-      id: 4,
+      id: 3,
       image: "/Kamang-Resort/DaftarMenu4.jpg",
       title: "Fresh Local Ingredients",
       description: "Sourced directly from local farmers",
     },
     {
-      id: 5,
+      id: 4,
       image: "/Kamang-Resort/DaftarMenu5.jpg",
-      title: "Fresh Local Ingredients",
+      title: "Starter, Dessert, Snack ",
       description: "Sourced directly from local farmers",
     },
        {
-      id: 6,
+      id: 5,
       image: "/Kamang-Resort/DaftarMenu6.jpg",
-      title: "Fresh Local Ingredients",
+      title: "Cold Drink",
       description: "Sourced directly from local farmers",
     },
      {
       id: 6,
       image: "/Kamang-Resort/DaftarMenu7.jpg",
-      title: "Fresh Local Ingredients",
+      title: "Hot Drink",
       description: "Sourced directly from local farmers",
     },
   ];
 
-
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  const nextSlide = () => {
-    if (isAnimating) return; // ⛔ Cegah klik cepat ganda
-    setIsAnimating(true);
-    setTimeout(() => setIsAnimating(false), 600); // sama dengan durasi transition
-
-    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-  };
-
-  const prevSlide = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setTimeout(() => setIsAnimating(false), 600);
-
-    setCurrentSlide((prev) =>
-      prev === 0 ? heroSlides.length - 1 : prev - 1
-    );
-  };
+   // Auto slide functionality
+   
+   useEffect(() => {
+     if (!isAutoPlaying) return;
+ 
+     const interval = setInterval(() => {
+       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+     }, 5000);
+ 
+     return () => clearInterval(interval);
+   }, [isAutoPlaying, heroSlides.length]);
+ 
+   const nextSlide = () => {
+     if (isAnimating) return;
+     setIsAnimating(true);
+     setTimeout(() => setIsAnimating(false), 600);
+ 
+     setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+   };
+ 
+   const prevSlide = () => {
+     if (isAnimating) return;
+     setIsAnimating(true);
+     setTimeout(() => setIsAnimating(false), 600);
+ 
+     setCurrentSlide((prev) =>
+       prev === 0 ? heroSlides.length - 1 : prev - 1
+     );
+   };
+ 
+   const goToSlide = (index) => {
+     if (isAnimating) return;
+     setIsAnimating(true);
+     setTimeout(() => setIsAnimating(false), 600);
+     setCurrentSlide(index);
+   };
+    
   const menuItems = [
     // Main Course
     {
       id: 1,
-      category: "main-course",
+      category: "Nusantara",
       image: "/Kamang-Resort/menu-dendeng.jpg",
       title: "Dendeng Bakar Cabai Hijau + Nasi",
       description: "Grilled beef with green chili and rice",
@@ -94,7 +110,7 @@ const Restaurant = () => {
     },
     {
       id: 2,
-      category: "main-course",
+      category: "Nusantara",
       image: "/Kamang-Resort/menu-ayam-batokok.jpg",
       title: "Ayam Batokok Ngalau Cabai Hijau + Nasi",
       description: "Pressed chicken with green chili and rice",
@@ -102,7 +118,7 @@ const Restaurant = () => {
     },
     {
       id: 3,
-      category: "main-course",
+      category: "Nusantara",
       image: "/Kamang-Resort/menu-ayam-kalasan.jpg",
       title: "Ayam Goreng Kalasan Sambal Terasi + Nasi",
       description: "Javanese fried chicken with shrimp paste sambal",
@@ -110,7 +126,7 @@ const Restaurant = () => {
     },
     {
       id: 4,
-      category: "main-course",
+      category: "Nusantara",
       image: "/Kamang-Resort/menu-ayam-sereh.jpg",
       title: "Ayam Goreng Bumbu Sereh Sambal Bawang + Nasi Daun Jeruk",
       description: "Lemongrass fried chicken with shallot sambal",
@@ -177,7 +193,7 @@ const Restaurant = () => {
 
   const categories = [
     { key: "all", label: "All Menu" },
-    { key: "main-course", label: "Main Course" },
+    { key: "Nusantara", label: "Nusantara" },
     { key: "nasi-goreng", label: "Nasi Goreng" },
     { key: "continental", label: "Continental" },
   ];
@@ -200,42 +216,104 @@ const Restaurant = () => {
       </div>
 
       {/* Hero Slider */}
-      <div className="hero-wrapper">
-  <div className="slider-container mt-5">
-    {heroSlides.map((slide, index) => {
-      const total = heroSlides.length;
 
-      // Hitung posisi relatif dari currentSlide
-      const diff = (index - currentSlide + total) % total;
 
-      let position = "hidden";
-      if (diff === 0) position = "active"; // tengah
-      else if (diff === 1) position = "next"; // kanan 1
-      else if (diff === 2) position = "next2"; // kanan 2
-      else if (diff === total - 1) position = "prev"; // kiri 1
-      else if (diff === total - 2) position = "prev2"; // kiri 2
+     <div className="facilities-slider-container ">
+        <div className="slider-wrapper">
+          {heroSlides.map((slide, index) => {
+            const total = heroSlides.length;
+            const diff = (index - currentSlide + total) % total;
 
-      return (
-        <div key={slide.id} className={`slide ${position}`}>
+            let position = "hidden";
+            if (diff === 0) position = "active";
+            else if (diff === 1) position = "next";
+            else if (diff === 2) position = "next2";
+            else if (diff === total - 1) position = "prev";
+            else if (diff === total - 2) position = "prev2";
+
+            return (
+              <div key={slide.id} className={`facility-slide ${position}`}>
+                <img
+                  src={slide.image}
+                  alt={`Fasilitas ${slide.id}`}
+                  className="slide-image"
+                  style={{
+                cursor: "pointer",
+                transition: "transform 0.3s ease",
+              }}
+                   onClick={() => {
+                    setSelectedImage(slide.image);
+                    setIsModalOpen(true);
+                  }}
+                   onMouseOver={(e) => (e.target.style.transform = "scale(1.05)")}
+              onMouseOut={(e) => (e.target.style.transform = "scale(1)")}
+                 />
+                <div className="slide-content text-center mt-3">
+                  <h3 className="slide-title">{slide.title}</h3>
+                  <p className="slide-description">{slide.description}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Navigation Controls */}
+        <div className="slider-controls">
+          <button
+            className="control-btn prev-btn"
+            onClick={prevSlide}
+            aria-label="Previous slide"
+          >
+            <i className="bi bi-chevron-left"></i>
+          </button>
+          <button
+            className="control-btn next-btn"
+            onClick={nextSlide}
+            aria-label="Next slide"
+          >
+            <i className="bi bi-chevron-right"></i>
+          </button>
+        </div>
+
+        {/* Slide Indicators */}
+        <div className="slide-indicators">
+          {heroSlides.map((_, index) => (
+            <button
+              key={index}
+              className={`indicator ${index === currentSlide ? "active" : ""}`}
+              onClick={() => goToSlide(index)}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+                {isModalOpen && (
+        <div
+          className="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
+          style={{
+            zIndex: 1050,
+            backgroundColor: "rgba(0,0,0,0.6)",
+            cursor: "pointer",
+          }}
+          onClick={() => setIsModalOpen(false)}
+        >
           <img
-            src={slide.image}
-            alt={`Slide ${slide.id}`}
-            className="slide-img"
+            src={selectedImage}
+            alt="Fasilitas Full View"
+            className="img-fluid rounded-4 shadow-lg"
+            style={{
+              maxHeight: "90vh",
+              maxWidth: "90vw",
+              objectFit: "contain",
+            }}
+            onClick={(e) => e.stopPropagation()}
           />
         </div>
-      );
-    })}
-  </div>
-
-  <div className="controls">
-    <button onClick={prevSlide}>PREV</button>
-    <button onClick={nextSlide}>NEXT</button>
-  </div>
-</div>
+      )}
 
       {/* Menu Section */}
       <div id="restaurant-menu">
-        <div className="container mt-4">
+        <div className="container mt-4 mb-3">
           {/* Filter Buttons */}
           <div className="row mb-5">
             <div className="col-12">

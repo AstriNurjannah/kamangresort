@@ -9,7 +9,8 @@ import { Link } from "react-router-dom";
 
 function Home() {
   const [activeFilter, setActiveFilter] = useState("all");
-  const [showModal, setShowModal] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const images = [
     "DaftarMenu1.jpg",
@@ -740,9 +741,9 @@ function Home() {
       {/* Poster Section */}
       <section
         className="py-5"
-        // style={{
-        //   background: "linear-gradient(180deg, #f8fcff 0%, #e9f6f1 100%)",
-        // }}
+      // style={{
+      //   background: "linear-gradient(180deg, #f8fcff 0%, #e9f6f1 100%)",
+      // }}
       >
         <div className="container">
           <h3
@@ -764,36 +765,16 @@ function Home() {
                   cursor: "pointer",
                   transition: "transform 0.3s ease",
                 }}
-                onClick={() => setShowModal(true)}
+                onClick={() => {
+                  setSelectedImage("POSTER_RESORT.png");
+                  setIsModalOpen(true);
+                }}
+
                 onMouseOver={(e) => (e.target.style.transform = "scale(1.05)")}
                 onMouseOut={(e) => (e.target.style.transform = "scale(1)")}
               />
             </div>
 
-            {/* Modal - Hanya Gambar */}
-            {showModal && (
-              <div
-                className="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
-                style={{
-                  zIndex: 1050,
-                  backgroundColor: "rgba(239, 237, 237, 0.59)",
-                  cursor: "pointer",
-                }}
-                onClick={() => setShowModal(false)}
-              >
-                <img
-                  src="POSTER_RESORT.png"
-                  alt="Poster Jurnal Dosen - Full Size"
-                  className="img-fluid"
-                  style={{
-                    maxHeight: "90vh",
-                    maxWidth: "90vw",
-                    objectFit: "contain",
-                  }}
-                  onClick={(e) => e.stopPropagation()}
-                />
-              </div>
-            )}
             <div className="col-md-6 text-md-start text-center mt-4 mt-md-0">
               <h4 className="fw-bold mb-3" style={{ color: "#315B51" }}>
                 Kenyamanan dan Fasilitas Lengkap di Kamang Resort
@@ -829,7 +810,11 @@ function Home() {
                   cursor: "pointer",
                   transition: "transform 0.3s ease",
                 }}
-                onClick={() => setShowModal(true)}
+                onClick={() => {
+                  setSelectedImage("POSTER_RESORT2.png");
+                  setIsModalOpen(true);
+                }}
+
                 onMouseOver={(e) => (e.target.style.transform = "scale(1.05)")}
                 onMouseOut={(e) => (e.target.style.transform = "scale(1)")}
               />
@@ -854,31 +839,6 @@ function Home() {
                 “Where Luxury Meets Nature.”
               </p>
             </div>
-
-            {/* Modal - Hanya Gambar */}
-            {showModal && (
-              <div
-                className="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
-                style={{
-                  zIndex: 1050,
-                  backgroundColor: "rgba(239, 237, 237, 0.59)",
-                  cursor: "pointer",
-                }}
-                onClick={() => setShowModal(false)}
-              >
-                <img
-                  src="POSTER_RESORT2.png"
-                  alt="Poster Chatbot AI - Full Size"
-                  className="img-fluid"
-                  style={{
-                    maxHeight: "90vh",
-                    maxWidth: "90vw",
-                    objectFit: "contain",
-                  }}
-                  onClick={(e) => e.stopPropagation()}
-                />
-              </div>
-            )}
           </div>
 
           {/* Poster 3 - Gambar kiri, teks kanan */}
@@ -893,7 +853,13 @@ function Home() {
                   transition: "opacity 0.5s ease-in-out",
                   cursor: "pointer",
                 }}
-                onClick={() => setShowModal(true)}
+                onClick={() => {
+                  setSelectedImage("DaftarMenu1.jpg");
+                  setIsModalOpen(true);
+                }}
+                 onMouseOver={(e) => (e.target.style.transform = "scale(1.05)")}
+                onMouseOut={(e) => (e.target.style.transform = "scale(1)")}
+
               />
             </div>
 
@@ -918,25 +884,24 @@ function Home() {
             </div>
 
             {/* Modal - Hanya Gambar */}
-            {showModal && (
+            {isModalOpen && (
               <div
                 className="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
                 style={{
                   zIndex: 1050,
-                  backgroundColor: "rgba(239, 237, 237, 0.59)",
+                  backgroundColor: "rgba(0, 0, 0, 0.6)",
                   cursor: "pointer",
                 }}
-                onClick={() => setShowModal(false)}
+                onClick={() => setIsModalOpen(false)}
               >
                 <img
-                  src="DaftarMenu1.jpg"
-                  alt={`Menu ${currentIndex + 1} - Full Size`}
-                  className="img-fluid"
+                  src={selectedImage}
+                  alt="Full View"
+                  className="img-fluid rounded-4 shadow-lg"
                   style={{
                     maxHeight: "90vh",
                     maxWidth: "90vw",
                     objectFit: "contain",
-                    borderRadius: "8px",
                   }}
                   onClick={(e) => e.stopPropagation()}
                 />
@@ -1135,9 +1100,8 @@ function Home() {
               <div key={index} className="accordion-item border-0 mb-2">
                 <h2 className="accordion-header">
                   <button
-                    className={`accordion-button faq-btn ${
-                      activeIndex === index ? "" : "collapsed"
-                    }`}
+                    className={`accordion-button faq-btn ${activeIndex === index ? "" : "collapsed"
+                      }`}
                     type="button"
                     onClick={() => toggleFAQ(index)}
                     style={{
@@ -1149,9 +1113,8 @@ function Home() {
                 </h2>
 
                 <div
-                  className={`accordion-content ${
-                    activeIndex === index ? "open" : ""
-                  }`}
+                  className={`accordion-content ${activeIndex === index ? "open" : ""
+                    }`}
                 >
                   <div
                     className="accordion-body"
