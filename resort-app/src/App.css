@@ -12,12 +12,38 @@ body,
   --navbar-height: 80px;
 }
 
+.loading-container {
+  height: 100vh;
+  width: 100vw;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+
+.loader {
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+
 /* End */
 
 .hero-section {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: 100vw;
   left: 50%;
   right: 50%;
   margin-left: -50vw;
@@ -25,12 +51,6 @@ body,
   overflow: hidden;
 }
 
-p {
-  max-width: 800px;
-  margin: 0 auto;
-  font-size: 17px;
-  line-height: 1.8;
-}
 /*tulisan berjalan*/
 @keyframes marquee {
   0% {
@@ -164,7 +184,7 @@ p {
 }
 
 .img {
-  border-radius: 15px;
+  border-radius: px;
   overflow: hidden;
 }
 
@@ -257,7 +277,7 @@ p {
 
 .contact-us {
   padding: 80px 0;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
   min-height: 100vh;
   margin-top: var(--navbar-height);
   min-height: calc(100vh - var(--navbar-height));
@@ -340,21 +360,6 @@ p {
   opacity: 0.7;
   transform: none;
   box-shadow: none;
-}
-
-.map-section {
-  margin-top: 50px;
-}
-
-.map-placeholder {
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-}
-
-.map-content {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
 }
 
 .alert {
@@ -594,16 +599,26 @@ p {
     text-align: center;
   }
 
+  .poster h4 {
+    font-size: large;
+    text-align: center;
+    line-height: 1.4;
+  }
+
   .hero-section .btn {
-    font-size: 0.9rem;
+    font-size: 0.2rem;
     justify-content: center;
     display: flex;
     margin-left: auto;
     margin-right: auto;
   }
 
-  .run-text {
+  /* untuk rata tengah */
+  .container .justify {
     font-size: 0.9rem;
+    text-align: justify;
+    line-height: 1.7;
+    font-weight: 500;
   }
 
   section .run-text p {
@@ -616,10 +631,6 @@ p {
 
   .container .justify {
     text-align: justify;
-  }
-
-  .btn-poster Link {
-    margin-bottom: 20x;
   }
 
   .container .row {
@@ -657,6 +668,17 @@ p {
     font-size: 1rem;
   }
 
+  .container .justify {
+    font-size: 1rem;
+    text-align: justify;
+    line-height: 1.7;
+    font-weight: 500;
+  }
+  .poster p {
+    padding: 0 20px 15px;
+    text-align: center;
+    line-height: 1.4;
+  }
   .position-relative {
     width: "100%";
     height: "300px";
@@ -673,6 +695,18 @@ p {
   .hero-section h1 {
     font-size: 2.5rem;
   }
+  .hero-section p {
+    font-size: 1rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .container .justify {
+    font-size: 1rem;
+    text-align: justify;
+  }
 
   .hero-section p {
     font-size: 1.3rem;
@@ -684,6 +718,7 @@ p {
   .hero-section {
     height: 100vh;
     padding: 0 120px;
+    margin-bottom: 20px;
   }
 
   .hero-section h1 {
@@ -691,19 +726,21 @@ p {
   }
 
   .hero-section p {
-    font-size: 1.2rem;
-  }
-  .run-text {
-    font-size: 1.2rem;
-  }
-  .container .justify {
-    font-size: 1.2rem;
-    text-align: center;
+    font-size: 1rem;
   }
 
+  p {
+    font-size: 0.89rem;
+  }
+
+  .container .justify {
+    font-size: 1rem;
+    text-align: center;
+  }
+/* 
   .container .row {
     margin-bottom: 120px;
-  }
+  } */
   section .run-text h6 {
     font-size: 1rem;
   }

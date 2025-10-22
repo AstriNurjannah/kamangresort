@@ -120,13 +120,14 @@ function Home() {
       lokasi: "Kamang Magek, Agam",
       jarak: "2.5 km",
       // video: "/Kamang-Resort/rafting.MP4",
-      gambar: "/Kamang-Resort/rafting.JPG", // thumbnail fallback
+      gambar: "/Kamang-Resort/rafting.jpg", // thumbnail fallback
     },
     {
       id: 2,
       nama: "PULAU SOETAN",
       kategori: "Wisata Alam & Pulau",
-      lokasi: "Danau Maninjau, Agam",
+      lokasi:
+        "Ampang Pulai, Koto XI Tarusan, Kabupaten Pesisir Selatan, Sumatera Barat",
       jarak: "15 km",
       // video: "/Kamang-Resort/pulau-soetan.MP4",
       gambar: "/Kamang-Resort/pulau-soetan.png", // thumbnail fallback
@@ -135,7 +136,8 @@ function Home() {
       id: 3,
       nama: "JUMPING PULAU SIRONJONG",
       kategori: "Wisata Air & Petualangan",
-      lokasi: "Pulau Sironjong, Agam",
+      lokasi:
+        "Ampang Pulai, Koto XI Tarusan, Kabupaten Pesisir Selatan, Sumatera Barat",
       jarak: "18 km",
       video: "/Kamang-Resort/jumping-sironjong.MP4",
       gambar: "/Kamang-Resort/jumping.png",
@@ -144,7 +146,8 @@ function Home() {
       id: 4,
       nama: "JAM GADANG",
       kategori: "Wisata Ikonik & Sejarah",
-      lokasi: "Bukittinggi",
+      lokasi:
+        "Benteng Ps. Atas, Kec. Guguk Panjang, Kota Bukittinggi, Sumatera Barat",
       jarak: "25 km",
       // video: "/Kamang-Resort/jam-gadang.MP4",
       gambar: "/Kamang-Resort/Jam-gadang.png",
@@ -158,11 +161,9 @@ function Home() {
         className="hero-section position-relative d-flex flex-column justify-content-center align-items-start text-start"
         style={{
           paddingTop: "90px",
-          height: "80vh",
-          minHeight: "850px",
-          maxHeight: "900px",
+          height: "100vh", // Tinggi 100% dari viewport
+          paddingLeft: "120px",
           overflow: "hidden",
-          paddingLeft: "120px", // beri jarak dari sisi kiri biar pas
         }}
       >
         {/* Background Video */}
@@ -174,7 +175,7 @@ function Home() {
           className="position-absolute top-0 start-0 w-100 h-100"
           style={{ objectFit: "cover", zIndex: "-1", height: "300px" }}
         >
-          <source src="/Kamang-Resort/kamangresort2.mp4" type="video/mp4" />
+          <source src="/Kamang-Resort/kamangresort3.mp4" type="video/mp4" />
         </video>
 
         {/* Overlay Gelap Halus */}
@@ -197,33 +198,34 @@ function Home() {
             className="fw-bold mb-3"
             style={{
               color: "#ffffffff",
-              textShadow: "2px 2px 1px rgba(247, 94, 5, 1)",
+              textShadow: "3px 2px 0 rgba(247, 94, 5, 1)",
             }}
           >
-            Welcome To <br />
-            Kamang Resort
+            Welcome to Kamang Resort
           </h1>
 
           <p
             className="lead mb-4"
             style={{
               color: "#ffffffcc",
-              textShadow: "1px 1px 10px rgba(0,0,0,0.5)",
+              textShadow: "1px 1px 0px rgba(0,0,0,1)",
             }}
           >
             Temukan ketenangan, kenyamanan, dan keindahan alam yang berpadu
             sempurna. Pengalaman menginap tak terlupakan menanti Anda di Kamang
             Resort.
           </p>
+
           <Link
             to="/facilities"
             className="btn btn-lg"
             style={{
-              backgroundColor: "#F75E05", // oranye awal
-              color: "#fff", // teks putih
-              padding: "12px 30px",
+              backgroundColor: "#F75E05",
+              color: "#fff",
+              fontWeight: "300",
+              fontSize: "1rem",
+              padding: "10px 20px",
               borderRadius: "50px",
-              fontWeight: "600",
               transition: "all 0.3s ease",
             }}
             onMouseOver={(e) => {
@@ -241,52 +243,10 @@ function Home() {
       </section>
 
       {/* Intro Text */}
-      <section>
-        {/* Running Text - Alternative */}
-        <div
-          style={{
-            backgroundColor: "#fff8edff",
-            padding: "16px 0",
-            width: "100vw",
-            marginLeft: "calc(-50vw + 50%)",
-            overflow: "hidden",
-          }}
-        >
-          <div
-            className="run-text"
-            style={{
-              display: "flex",
-              animation: "marquee 30s linear infinite",
-              width: "max-content", // Tambahkan ini
-            }}
-          >
-            {[
-              "“Tempat ideal untuk acara keluarga, gathering, hingga konvensi — semua dalam harmoni alam yang memikat.”",
-              "“Nikmati suasana damai di setiap sudut, dengan pelayanan yang ramah dan fasilitas berkelas.”",
-              "“Rasakan ketenangan di Kamang Resort & Convention, tempat di mana kenyamanan modern berpadu dengan keindahan alam.”",
-            ].map((text, index) => (
-              <div
-                key={index}
-                style={{
-                  color: " #ab6a44ff",
-
-                  fontWeight: "500",
-                  fontStyle: "italic",
-                  whiteSpace: "nowrap",
-                  padding: "0 50px",
-                  flexShrink: 0,
-                }}
-              >
-                {text}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* About & Services */}
       <section className="py-1" style={{ backgroundColor: "#ffffff" }}>
-        <div className="run-text container">
+        <div className="container">
           <div className="row align-items-center flex-column-reverse flex-md-row">
             {/* Kiri: Teks */}
             <div className="col-md-6 mt-4 mt-md-0">
@@ -304,7 +264,7 @@ function Home() {
                   <h6 className="fw-bold" style={{ color: "#315B51" }}>
                     Lingkungan Alam
                   </h6>
-                  <p className="tes mb-0" style={{ color: "#333" }}>
+                  <p className="mb-0" style={{ color: "#333" }}>
                     Rasakan kesejukan udara pegunungan dan nikmati keindahan
                     alam hijau yang menenangkan, dengan keindahan.
                   </p>
@@ -422,12 +382,12 @@ function Home() {
           height: "3px",
           backgroundColor: "#315B51",
           width: "80%",
-          margin: "40px auto",
+          margin: "15px auto",
         }}
       />
 
       {/*destinasi terdekat */}
-      <div className="container my-5">
+      <div className="container">
         <h3
           className="text-center my-5 "
           style={{ color: "#315B51", fontWeight: "bold" }}
@@ -436,7 +396,7 @@ function Home() {
         </h3>
 
         <p
-          className="justify  text-muted mb-5"
+          className="justify text-muted mb-5"
           style={{ maxWidth: "100%", margin: "0 auto" }}
         >
           Kamang Resort dikelilingi oleh berbagai destinasi wisata menarik yang
@@ -539,12 +499,12 @@ function Home() {
             className="my-4 text-center fancy-heading"
             style={{ color: "#315B51" }}
           >
-            <b>Gallery</b>
+            <b>Galeri</b>
           </h3>
 
           {/* Narasi Tepat Setelah Heading */}
           <p
-            className="justify  text-muted mb-5"
+            className="justify text-muted mb-5"
             style={{ maxWidth: "100%", margin: "0 auto" }}
           >
             Nikmati keindahan alam dan suasana tenang di sekitar Kamang Resort.
@@ -569,30 +529,6 @@ function Home() {
             </div>
           </div>
         ))}
-
-        {/* Tombol Lihat Selengkapnya */}
-        {/* <div className="col-12 text-center mb-3">
-    <Link
-      to="/Gallery"
-      className="btn px-4 py-2"
-      style={{
-        backgroundColor: "#315B51",
-        color: "white",
-        border: "none",
-        borderRadius: "8px",
-        letterSpacing: "0.5px",
-        transition: "background-color 0.3s ease",
-      }}
-      onMouseEnter={(e) =>
-        (e.currentTarget.style.backgroundColor = "#27433c")
-      }
-      onMouseLeave={(e) =>
-        (e.currentTarget.style.backgroundColor = "#315B51")
-      }
-    >
-      Lihat selengkapnya...
-    </Link>
-  </div> */}
       </div>
 
       {/* Highlight Section */}
@@ -644,7 +580,7 @@ function Home() {
                 className="w-100 text-center fw-bold"
                 style={{ color: "#315B51" }}
               >
-                Reservation
+                Reservasi
               </Modal.Title>
             </Modal.Header>
 
@@ -740,10 +676,10 @@ function Home() {
       {/* Poster */}
       {/* Poster Section */}
       <section
-        className="py-5"
-      // style={{
-      //   background: "linear-gradient(180deg, #f8fcff 0%, #e9f6f1 100%)",
-      // }}
+        className="py-5 poster"
+        // style={{
+        //   background: "linear-gradient(180deg, #f8fcff 0%, #e9f6f1 100%)",
+        // }}
       >
         <div className="container">
           <h3
@@ -769,7 +705,6 @@ function Home() {
                   setSelectedImage("POSTER_RESORT.png");
                   setIsModalOpen(true);
                 }}
-
                 onMouseOver={(e) => (e.target.style.transform = "scale(1.05)")}
                 onMouseOut={(e) => (e.target.style.transform = "scale(1)")}
               />
@@ -814,7 +749,6 @@ function Home() {
                   setSelectedImage("POSTER_RESORT2.png");
                   setIsModalOpen(true);
                 }}
-
                 onMouseOver={(e) => (e.target.style.transform = "scale(1.05)")}
                 onMouseOut={(e) => (e.target.style.transform = "scale(1)")}
               />
@@ -857,29 +791,20 @@ function Home() {
                   setSelectedImage("DaftarMenu1.jpg");
                   setIsModalOpen(true);
                 }}
-                 onMouseOver={(e) => (e.target.style.transform = "scale(1.05)")}
+                onMouseOver={(e) => (e.target.style.transform = "scale(1.05)")}
                 onMouseOut={(e) => (e.target.style.transform = "scale(1)")}
-
               />
             </div>
 
             <div className="col-md-6 text-md-start text-center mt-4 mt-md-0">
               <h4 className="fw-bold mb-3" style={{ color: "#315B51" }}>
-                Masakan yang beragam
+                Masakan Kamang Resort
               </h4>
               <p style={{ color: "#333", textAlign: "justify" }}>
                 Nikmati pengalaman kuliner lengkap di Kamang Resort dengan
                 berbagai pilihan menu lezat yang memadukan cita rasa lokal dan
                 internasional. Mulai dari Maincourse Nusantara seperti Iga Bakar
                 Madu dan Dendeng Bakar Cabe Ijo, hingga hidangan Continental
-                seperti Chicken Steak dan Dori Fish Finger. Untuk penggemar
-                makanan ringan, tersedia berbagai snack dan dessert seperti
-                Pisang Goreng Keju, French Fries, dan Ice Cream aneka rasa.
-                Lengkapi santapan Anda dengan minuman hangat seperti Kopi Basaka
-                dan Teh Talua khas Minang, atau segarkan hari dengan cold drinks
-                seperti Milkshake, Juice, dan Mojito. Bagi penyuka pasta dan
-                pizza, pilihan seperti Spaghetti Bolognese, Kwetiau Goreng,
-                hingga Pizza Large siap memanjakan selera.
               </p>
             </div>
 
@@ -949,7 +874,7 @@ function Home() {
                 className="text-center mb-5 fw-bold"
                 style={{ color: "#315B50" }}
               >
-                Your Journey to Kamang Resort
+                Kamang Bersama Kamala
               </h3>
               <div className="video-container mb-5">
                 <div className="ratio ratio-16x9">
@@ -1100,8 +1025,9 @@ function Home() {
               <div key={index} className="accordion-item border-0 mb-2">
                 <h2 className="accordion-header">
                   <button
-                    className={`accordion-button faq-btn ${activeIndex === index ? "" : "collapsed"
-                      }`}
+                    className={`accordion-button faq-btn ${
+                      activeIndex === index ? "" : "collapsed"
+                    }`}
                     type="button"
                     onClick={() => toggleFAQ(index)}
                     style={{
@@ -1113,8 +1039,9 @@ function Home() {
                 </h2>
 
                 <div
-                  className={`accordion-content ${activeIndex === index ? "open" : ""
-                    }`}
+                  className={`accordion-content ${
+                    activeIndex === index ? "open" : ""
+                  }`}
                 >
                   <div
                     className="accordion-body"
