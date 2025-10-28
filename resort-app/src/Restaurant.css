@@ -1,6 +1,5 @@
 /* Restaurant Hero Slider */
 
-
 .restaurant-hero {
   position: relative;
   height: 70vh;
@@ -71,7 +70,7 @@
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
-  color: #315B50;
+  color: #315b50;
   transition: all 0.3s ease;
   z-index: 10;
 }
@@ -197,7 +196,7 @@
 
 .menu-price {
   background: rgba(255, 255, 255, 0.9);
-  color: #315B50;
+  color: #315b50;
   padding: 5px 12px;
   border-radius: 15px;
   font-weight: 700;
@@ -215,7 +214,7 @@
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #315B50 0%, #2a4d43 100%);
+  background: linear-gradient(135deg, #315b50 0%, #2a4d43 100%);
   border: none;
 }
 
@@ -226,13 +225,13 @@
 }
 
 .btn-outline-primary {
-  border: 2px solid #315B50;
-  color: #315B50;
+  border: 2px solid #315b50;
+  color: #315b50;
   background: transparent;
 }
 
 .btn-outline-primary:hover {
-  background: #315B50;
+  background: #315b50;
   color: white;
   transform: translateY(-2px);
 }
@@ -245,7 +244,7 @@
 }
 
 .phone-link {
-  color: #315B50;
+  color: #315b50;
   text-decoration: none;
   font-weight: 600;
   font-size: 1.2rem;
@@ -279,7 +278,7 @@
 .special-offer-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  border-color: #315B50;
+  border-color: #315b50;
 }
 
 .offer-badge {
@@ -295,7 +294,7 @@
 }
 
 .offer-content h5 {
-  color: #315B50;
+  color: #315b50;
   margin-bottom: 15px;
   font-weight: 600;
 }
@@ -313,7 +312,7 @@
 .current-price {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #315B50;
+  color: #315b50;
   margin-right: 10px;
 }
 
@@ -350,7 +349,7 @@
   width: 70px;
   height: 70px;
   margin: 0 auto 20px;
-  background: linear-gradient(135deg, #315B50 0%, #2a4d43 100%);
+  background: linear-gradient(135deg, #315b50 0%, #2a4d43 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -360,7 +359,7 @@
 }
 
 .facility-card h5 {
-  color: #315B50;
+  color: #315b50;
   margin-bottom: 15px;
   font-weight: 600;
 }
@@ -397,7 +396,7 @@
 }
 
 .customer-name {
-  color: #315B50;
+  color: #315b50;
   font-weight: 600;
   margin-bottom: 5px;
 }
@@ -445,16 +444,36 @@
 }
 
 /* Staggered animation untuk menu items */
-.menu-item:nth-child(1) { animation-delay: 0.1s; }
-.menu-item:nth-child(2) { animation-delay: 0.2s; }
-.menu-item:nth-child(3) { animation-delay: 0.3s; }
-.menu-item:nth-child(4) { animation-delay: 0.4s; }
-.menu-item:nth-child(5) { animation-delay: 0.5s; }
-.menu-item:nth-child(6) { animation-delay: 0.6s; }
-.menu-item:nth-child(7) { animation-delay: 0.7s; }
-.menu-item:nth-child(8) { animation-delay: 0.8s; }
-.menu-item:nth-child(9) { animation-delay: 0.9s; }
-.menu-item:nth-child(10) { animation-delay: 1.0s; }
+.menu-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.menu-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.menu-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.menu-item:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.menu-item:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.menu-item:nth-child(6) {
+  animation-delay: 0.6s;
+}
+.menu-item:nth-child(7) {
+  animation-delay: 0.7s;
+}
+.menu-item:nth-child(8) {
+  animation-delay: 0.8s;
+}
+.menu-item:nth-child(9) {
+  animation-delay: 0.9s;
+}
+.menu-item:nth-child(10) {
+  animation-delay: 1s;
+}
 
 /* Smooth scrolling */
 html {
@@ -474,59 +493,79 @@ html {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .restaurant {
+    padding-top: 70px !important;
+  }
+
+  .restaurant-slider-container {
+    margin-top: 0rem !important;
+    margin-bottom: 0rem !important;
+    min-height: 280px !important;
+  }
+
+  /* OVERRIDE JUDUL RESTAURANT */
+  .restaurant h1.display-5 {
+    font-size: 1.8rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .restaurant p.lead {
+    font-size: 1.2rem !important;
+    margin-bottom: 0rem !important;
+  }
   .restaurant-hero {
     height: 50vh;
   }
-  
+
   .hero-title {
     font-size: 2rem;
   }
-  
+
   .hero-description {
     font-size: 1.1rem;
   }
-  
+
   .hero-nav {
     width: 40px;
     height: 40px;
     font-size: 1.2rem;
   }
-  
+
   .menu-content h5 {
     font-size: 1rem;
   }
-  
+
   .menu-content p {
     font-size: 0.8rem;
   }
-  
+
   .section-title {
     font-size: 2rem;
   }
-  
+
   .special-offer-card,
   .facility-card,
   .testimonial-card {
     padding: 20px;
   }
-  
+
   .facility-icon {
     width: 60px;
     height: 60px;
     font-size: 1.5rem;
   }
-  
+
   .testimonial-header {
     flex-direction: column;
     gap: 10px;
   }
-  
+
   .cta-buttons {
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
-  
+
   .cta-buttons .btn {
     margin: 5px 0;
   }
@@ -536,21 +575,21 @@ html {
   .section-title {
     font-size: 1.8rem;
   }
-  
+
   .section-subtitle {
     font-size: 1rem;
   }
-  
+
   .filter-buttons .btn {
     padding: 8px 16px;
     font-size: 0.9rem;
     margin: 2px;
   }
-  
+
   .hero-title {
     font-size: 1.8rem;
   }
-  
+
   .hero-description {
     font-size: 1rem;
   }
