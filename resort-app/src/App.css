@@ -12,7 +12,11 @@ body,
   --navbar-height: 80px;
 }
 
+/* Start Loading */
 .loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
   height: 100vh;
   width: 100vw;
   background-color: #ffffff;
@@ -20,25 +24,46 @@ body,
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: sans-serif;
+  z-index: 9999;
+  font-family: "Poppins", sans-serif;
+  transition: opacity 0.5s ease;
 }
 
-.loader {
-  border: 6px solid #f3f3f3;
-  border-top: 6px solid #3498db;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  animation: spin 1s linear infinite;
-  margin-bottom: 20px;
+.loading-logo {
+  width: 120px;
+  height: auto;
+  animation: pulse 1.8s ease-in-out infinite;
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
+@keyframes pulse {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.3;
+    transform: scale(0.95);
+  }
 }
 
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+}
 
-/* End */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Loading End */
 
 .hero-section {
   position: relative;
@@ -221,7 +246,6 @@ body,
 }
 #navbarNavDropdown .nav #navbarDropdown {
   font-size: 0.9rem;
-  margin-top: 2px;
 }
 
 /* Dropdown menu item */
@@ -266,6 +290,9 @@ body,
 .navbar-scrolled .nav-link:hover {
   color: #5caa91 !important; /* hijau lebih gelap */
 }
+
+
+
 
 .navbar-brand img {
   width: 200px; /* lebar crop gambar yg diinginkan */
@@ -345,7 +372,7 @@ body,
   background: linear-gradient(135deg, #65c1a9 0%, #315b50 100%);
   border: none;
   border-radius: 10px;
-  padding: 15px 30px;
+  padding: 10px 20px;
   font-weight: 600;
   font-size: 1.1rem;
   transition: all 0.3s ease;
@@ -353,7 +380,7 @@ body,
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(13, 110, 253, 0.4);
+  box-shadow: 0 5px 15px rgba(107, 137, 182, 0.4);
 }
 
 .btn-primary:disabled {
@@ -447,6 +474,7 @@ body,
   color: #315b50;
 }
 
+
 .team-card {
   padding: 30px 20px;
   background: white;
@@ -493,10 +521,9 @@ body,
   transition: all 0.3s ease;
 }
 
-.btn-primary {
-  background: linear-gradient(135deg, #315b50 0%, #2a4d43 100%);
-  border: none;
-}
+
+
+
 
 .gallery-item {
   border-radius: 15px;
@@ -578,7 +605,72 @@ body,
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
+
+
+
 /* ===== RESPONSIVE SETTINGS ===== */
+
+.highlight-title {
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  padding: 0 1rem;
+  font-size: 1.5rem;
+  line-height: 1.4;
+}
+
+.highlight-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.highlight-btn {
+  background-color: #d7be93;
+  color: #315b51;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.highlight-btn:hover {
+  background-color: #315b51;
+  color: #d7be93;
+}
+
+/* 🌐 Responsif untuk layar kecil */
+@media (max-width: 768px) {
+  .highlight-title {
+    font-size: 1.25rem;
+  }
+
+  .highlight-btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+
+  .Highlight {
+    background-attachment: scroll; /* hindari bug parallax di iOS */
+  }
+}
+
+/* 📱 Layar sangat kecil (hp < 480px) */
+@media (max-width: 480px) {
+  .highlight-title {
+    font-size: 1.1rem;
+  }
+
+  .highlight-btn {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+
 
 /* 📱 HP KECIL (max 480px) */
 @media (max-width: 480px) {
@@ -586,6 +678,16 @@ body,
     height: 80vh;
     padding: 20px 90px;
   }
+
+  .btn-primary {
+  background: linear-gradient(135deg, #65c1a9 0%, #315b50 100%);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 10px;
+  font-weight: 400;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
 
   .hero-section h1 {
     font-size: 1.4rem;
@@ -633,9 +735,6 @@ body,
     text-align: justify;
   }
 
-  .container .row {
-    margin-bottom: 60px;
-  }
   /* Style khusus untuk paragraf dengan class tes */
   .position-relative {
     width: "100%";
@@ -645,6 +744,15 @@ body,
   .about-us .text-tengah {
     text-align: justify;
   }
+  .justify-about {
+  font-size: 0.9rem;
+  text-align: justify;
+}
+.Highlight .responsive-text h5 {
+  font-size: 0.7rem;
+  
+}
+
 }
 
 /* 📱 HP BESAR - TABLET KECIL (481px–768px) */
@@ -683,6 +791,14 @@ body,
     width: "100%";
     height: "300px";
   }
+    .justify-about {
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: justify;
+}
+.feature-card p{
+  font-size: 1rem;
+}
 }
 
 /* 💻 TABLET LANDSCAPE - LAPTOP KECIL (769px–1024px) */
@@ -702,6 +818,15 @@ body,
   p {
     font-size: 1rem;
   }
+
+  .justify-about {
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: justify;
+}
+.feature-card p{
+  font-size: 1rem;
+}
 
   .container .justify {
     font-size: 1rem;
@@ -728,6 +853,14 @@ body,
   .hero-section p {
     font-size: 1rem;
   }
+  .justify-about {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  text-align: justify;
+}
+.feature-card p{
+  font-size: 1rem;
+}
 
   p {
     font-size: 0.89rem;
@@ -750,6 +883,8 @@ body,
   }
 }
 
+
+
 /* Responsive Design untuk layar dengan lebar maksimum 768px */
 @media (max-width: 768px) {
   /* ===== Section Contact Us ===== */
@@ -768,9 +903,6 @@ body,
   }
 
   /* ===== Heading besar di layar kecil ===== */
-  .display-4 {
-    font-size: 2rem;
-  }
 
   /* ===== Tombol filter pada gallery ===== */
   .filter-buttons .btn {

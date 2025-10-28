@@ -1,114 +1,116 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "../gallery.css";
 
 const Gallery = () => {
   const [activeFilter, setActiveFilter] = useState("all");
 
-  const galleryItems = [
-    // Nature & Views
-    {
-      id: 1,
-      category: "nature",
-      image: "/Kamang-Resort/resort-gunung.jpg",
-      title: "Mountain View",
-      description: "Breathtaking scenery from the resort",
-      grid: "square",
-    },
-    {
-      id: 2,
-      category: "nature",
-      image: "/Kamang-Resort/resort-garden.jpg",
-      title: "Resort Garden",
-      description: "Beautifully maintained tropical garden",
-      grid: "wide",
-    },
-    {
-      id: 3,
-      category: "nature",
-      image: "/Kamang-Resort/resort-sunrise.jpg",
-      title: "Sunrise View",
-      description: "Stunning sunset over the mountains",
-      grid: "square",
-    },
+const galleryItems = [
+  // Alam & Pemandangan
+  {
+    id: 1,
+    category: "alam",
+    image: "/Kamang-Resort/resort-gunung.jpg",
+    title: "Pemandangan Gunung",
+    description: "Panorama menakjubkan dari Kamang Resort",
+    grid: "square",
+  },
+  {
+    id: 2,
+    category: "alam",
+    image: "/Kamang-Resort/resort-garden.jpg",
+    title: "Taman Resort",
+    description: "Taman tropis yang terawat indah",
+    grid: "wide",
+  },
+  {
+    id: 3,
+    category: "alam",
+    image: "/Kamang-Resort/resort-sunrise.jpg",
+    title: "Pemandangan Matahari Terbit",
+    description: "Pemandangan matahari terbit yang menakjubkan di pegunungan",
+    grid: "square",
+  },
 
-    // Facilities
-    {
-      id: 4,
-      category: "facilities",
-      image: "/Kamang-Resort/resort-kolam.jpg",
-      title: "Swimming Pool",
-      description: "Infinity pool with panoramic views",
-      grid: "wide",
-    },
-    {
-      id: 5,
-      category: "facilities",
-      image: "/Kamang-Resort/resort-resto.png",
-      title: "Restaurant",
-      description: "Authentic Minang cuisine dining experience",
-      grid: "wide",
-    },
-    {
-      id: 6,
-      category: "facilities",
-      image: "/Kamang-Resort/resort-tamu.jpg",
-      title: "Main Lobby",
-      description: "Traditional Minangkabau architecture",
-      grid: "square",
-    },
+  // Fasilitas
+  {
+    id: 4,
+    category: "fasilitas",
+    image: "/Kamang-Resort/resort-kolam.jpg",
+    title: "Kolam Renang",
+    description: "Kolam renang tanpa batas dengan pemandangan indah",
+    grid: "wide",
+  },
+  {
+    id: 5,
+    category: "fasilitas",
+    image: "/Kamang-Resort/resort-resto.png",
+    title: "Restoran",
+    description: "Pengalaman bersantap dengan cita rasa khas Minang",
+    grid: "wide",
+  },
+  {
+    id: 6,
+    category: "fasilitas",
+    image: "/Kamang-Resort/resort-tamu.jpg",
+    title: "Lobi Utama",
+    description: "Arsitektur khas Minangkabau yang menawan",
+    grid: "square",
+  },
 
-    // Rooms
-    {
-      id: 7,
-      category: "rooms",
-      image: "/Kamang-Resort/resort-bed2.jpg",
-      title: "Deluxe Room",
-      description: "Spacious room with mountain view",
-      grid: "wide",
-    },
-    {
-      id: 8,
-      category: "rooms",
-      image: "/Kamang-Resort/resort-bed3.jpg",
-      title: "Family Suite",
-      description: "Perfect for family vacations",
-      grid: "square",
-    },
-    {
-      id: 9,
-      category: "rooms",
-      image: "/Kamang-Resort/resort-bed1.jpg",
-      title: "Executive Suite",
-      description: "Luxury accommodation with premium amenities",
-      grid: "wide",
-    },
+  // Kamar
+  {
+    id: 7,
+    category: "kamar",
+    image: "/Kamang-Resort/resort-bed2.jpg",
+    title: "Kamar Deluxe",
+    description: "Kamar luas dengan pemandangan pegunungan",
+    grid: "wide",
+  },
+  {
+    id: 8,
+    category: "kamar",
+    image: "/Kamang-Resort/resort-bed3.jpg",
+    title: "Suite Keluarga",
+    description: "Pilihan ideal untuk liburan keluarga",
+    grid: "square",
+  },
+  {
+    id: 9,
+    category: "kamar",
+    image: "/Kamang-Resort/resort-bed1.jpg",
+    title: "Suite Eksekutif",
+    description: "Akomodasi mewah dengan fasilitas premium",
+    grid: "wide",
+  },
 
-    // Guest Photos (placeholder)
-    {
-      id: 10,
-      category: "reviews",
-      image: "/Kamang-Resort/resort-guest1.jpg",
-      title: "Guest Photo",
-      description: "Happy guest experience",
-      grid: "wide",
-    },
-    {
-      id: 11,
-      category: "reviews",
-      image: "/Kamang-Resort/resort-guest2.jpg",
-      title: "Guest Photo",
-      description: "Beautiful memories at Kemang Resort",
-      grid: "square",
-    },
-    {
-      id: 12,
-      category: "reviews",
-      image: "/Kamang-Resort/resort-guest3.jpg",
-      title: "Guest Photo",
-      description: "Unforgettable stay experience",
-      grid: "square",
-    },
-  ];
+  // Foto Tamu
+  {
+    id: 10,
+    category: "reviews",
+    image: "/Kamang-Resort/resort-guest1.jpg",
+    title: "Foto Tamu",
+    description: "Pengalaman bahagia para tamu",
+    grid: "wide",
+  },
+  {
+    id: 11,
+    category: "reviews",
+    image: "/Kamang-Resort/resort-guest2.jpg",
+    title: "Foto Tamu",
+    description: "Kenangan indah di Kamang Resort",
+    grid: "square",
+  },
+  {
+    id: 12,
+    category: "reviews",
+    image: "/Kamang-Resort/resort-guest3.jpg",
+    title: "Foto Tamu",
+    description: "Pengalaman menginap yang tak terlupakan",
+    grid: "square",
+  },
+];
+
 
   const filteredItems =
     activeFilter === "all"
@@ -117,10 +119,10 @@ const Gallery = () => {
 
   const categories = [
     { key: "all", label: "All" },
-    { key: "rooms", label: "Rooms" },
-    { key: "facilities", label: "Facilities" },
-    { key: "nature", label: "Nature & Views" },
-    { key: "reviews", label: "Guest Photos" },
+    { key: "kamar", label: "Kamar" },
+    { key: "fasilitas", label: "Fasilitas" },
+    { key: "alam", label: "Alam & Pemandangan" },
+    { key: "reviews", label: "Foto Tamu" },
   ];
 
   return (
@@ -130,10 +132,10 @@ const Gallery = () => {
         <div className="row text-center mb-2">
           <div className="col-12">
             <h1 className="display-4 fw-bold mb-4" style={{ color: "#315B50" }}>
-              Gallery
+              Galeri
             </h1>
             <p className="lead">
-              Discover the beauty of Kamang Resort through our photos
+              Jelajahi Keindahan Kamang Resort Melalui Galeri Kami
             </p>
           </div>
         </div>
@@ -207,14 +209,11 @@ const Gallery = () => {
           <div className="col-12 text-center">
             <div className="gallery-cta">
               <h3 className="mb-4" style={{ color: "#315B50" }}>
-                Experience Kamang Resort Yourself
+                Nikmati Langsung Keindahan Kamang Resort
               </h3>
-              <p className="lead mb-4">
-                Book your stay and create unforgettable memories
-              </p>
-              <a href="/contactUs" className="btn btn-primary btn-lg">
-                Book Now
-              </a>
+              <Link to="/Reservation" className="btn btn-primary btn-lg">
+                Reservasi Sekarang
+              </Link>
             </div>
           </div>
         </div>

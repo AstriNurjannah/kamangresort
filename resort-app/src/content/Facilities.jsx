@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../Facilities.css";
+import { Link } from "react-router-dom";
 
 const Facilities = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -89,7 +90,7 @@ const Facilities = () => {
       id: 1,
       name: "Deluxe Room 201",
       price: "Rp750.000",
-      period: "/ night",
+      period: "/ malam",
       guests: 3,
       bedType: "King Size & Twin Bed",
       size: "25m²",
@@ -113,8 +114,8 @@ const Facilities = () => {
       id: 2,
       name: "Deluxe Room 202 – 206",
       price: "Rp750.000",
-      period: "/ night",
-      guests: 1,
+      period: "/ malam",
+      guests: 2,
       bedType: "Single",
       size: "25m²",
       view: "",
@@ -137,7 +138,7 @@ const Facilities = () => {
       id: 3,
       name: "Durian Cottage",
       price: "Rp1.500.000",
-      period: "/ night",
+      period: "/ malam",
       guests: 10,
       bedType: "1 King Size Bed",
       size: "48m²",
@@ -158,7 +159,7 @@ const Facilities = () => {
       id: 4,
       name: "Lengkok Cottage",
       price: "Rp1.500.000",
-      period: "/ night",
+      period: "/ malam",
       guests: 10,
       bedType: "1 King Size Bed",
       size: "48m²",
@@ -181,7 +182,7 @@ const Facilities = () => {
       id: 5,
       name: "Ngalau Cottage",
       price: "Rp1.500.000",
-      period: "/ night",
+      period: "/ malam",
       guests: 10,
       bedType: "1 Standard Bed",
       size: "48m²",
@@ -202,7 +203,7 @@ const Facilities = () => {
       id: 6,
       name: "Tarusan Cottage",
       price: "Rp1.500.000",
-      period: "/ night",
+      period: "/ malam",
       guests: 10,
       bedType: "2 Single Beds",
       size: "48m²",
@@ -226,7 +227,7 @@ const Facilities = () => {
       id: 7,
       name: "Bansa Cottage",
       price: "Rp1.500.000",
-      period: "/ night",
+      period: "/ malam",
       guests: 10,
       bedType: "1 Queen Size Bed",
       size: "48m²",
@@ -253,10 +254,6 @@ const Facilities = () => {
     setActiveRoom(null);
   };
 
-  const handleBookNow = (roomName) => {
-    // Redirect to booking page or open booking modal
-    alert(`Booking ${roomName} - Redirecting to booking page...`);
-  };
 
   return (
     <div className="accommodations" id="accommodations">
@@ -268,7 +265,7 @@ const Facilities = () => {
               Fasilitas Kamang Resort
             </h1>
             <p className="lead">
-              Kenyamanan Terbaik • Fasilitas Lengkap • Pengalaman Tak Terlupakan
+              Pelayanan Terbaik • Fasilitas Lengkap • Pengalaman Tak Terlupakan
             </p>
           </div>
         </div>
@@ -370,11 +367,11 @@ const Facilities = () => {
 
       <div className="container">
         {/* Section Title */}
-        <div className="row text-center mb-5 mt-5">
+        <div className="row text-center mb-3 ">
           <div className="col-12">
-            <h2 className="section-title">Accommodations</h2>
+            <h2 className="section-title">Jelajahi Layanan Pilihan Kami</h2>
             <p className="section-subtitle">
-              Choose from our variety of comfortable rooms and cottages
+              Pilih dari berbagai jenis kamar dan pondok nyaman kami.
             </p>
           </div>
         </div>
@@ -399,7 +396,7 @@ const Facilities = () => {
                       className="btn btn-view-details"
                       onClick={() => openRoomDetail(room)}
                     >
-                      View Gallery
+                      Lihat Galeri
                     </button>
                   </div>
                 </div>
@@ -411,7 +408,7 @@ const Facilities = () => {
                     <div className="feature">
                       <i className="bi bi-people"></i>
                       <span>
-                        {room.guests} {room.guests > 1 ? "Guests" : "Guest"}
+                        {room.guests} {room.guests > 1 ? "Tamu" : "Tamu"}
                       </span>
                     </div>
                     <div className="feature">
@@ -435,7 +432,7 @@ const Facilities = () => {
                   )}
 
                   <div className="room-amenities">
-                    <h6>✨ Amenities:</h6>
+                    <h6>✨ Layanan:</h6>
                     <div className="amenities-list">
                       {room.amenities.map((amenity, index) => (
                         <span key={index} className="amenity-tag">
@@ -446,19 +443,19 @@ const Facilities = () => {
                   </div>
 
                   <div className="room-actions">
-                    <button
+                    <Link
+                    to="/Reservation"
                       className="btn btn-book-now"
-                      onClick={() => handleBookNow(room.name)}
                     >
                       <i className="bi bi-calendar-check me-2"></i>
-                      Book Now
-                    </button>
+                      Reservasi Sekarang
+                    </Link>
                     <button
                       className="btn btn-view-details-outline"
                       onClick={() => openRoomDetail(room)}
                     >
                       <i className="bi bi-info-circle me-2"></i>
-                      View Details
+                      Lihat Detail
                     </button>
                   </div>
                 </div>
@@ -467,33 +464,7 @@ const Facilities = () => {
           ))}
         </div>
 
-        {/* CTA Section */}
-        <div className="row mt-5">
-          <div className="col-12 text-center">
-            <div className="accommodations-cta">
-              <h3 className="cta-title">Ready to Book Your Stay?</h3>
-              <p className="cta-subtitle">
-                Contact us for special packages and group reservations
-              </p>
-              <div className="cta-buttons">
-                <a
-                  href="tel:081234567890"
-                  className="btn btn-primary btn-lg me-3"
-                >
-                  <i className="bi bi-telephone-fill me-2"></i>
-                  Call Now
-                </a>
-                <a
-                  href="https://wa.me/6281234567890"
-                  className="btn btn-success btn-lg"
-                >
-                  <i className="bi bi-whatsapp me-2"></i>
-                  WhatsApp
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+
       </div>
 
       {/* Room Detail Modal */}
@@ -526,27 +497,27 @@ const Facilities = () => {
 
               <div className="room-details">
                 <div className="detail-section">
-                  <h4>Room Details</h4>
+                  <h4>Detail Kamar</h4>
                   <div className="detail-grid">
                     <div className="detail-item">
-                      <strong>Price:</strong>
+                      <strong>Harga:</strong>
                       <span>
                         {activeRoom.price} {activeRoom.period}
                       </span>
                     </div>
                     <div className="detail-item">
-                      <strong>Guests:</strong>
+                      <strong>Tamu:</strong>
                       <span>
                         {activeRoom.guests}{" "}
-                        {activeRoom.guests > 1 ? "Guests" : "Guest"}
+                        {activeRoom.guests > 1 ? "Tamu" : "Tamu"}
                       </span>
                     </div>
                     <div className="detail-item">
-                      <strong>Bed Type:</strong>
+                      <strong>Tipe Ranjang:</strong>
                       <span>{activeRoom.bedType}</span>
                     </div>
                     <div className="detail-item">
-                      <strong>Size:</strong>
+                      <strong>Ukuran:</strong>
                       <span>{activeRoom.size}</span>
                     </div>
                     {activeRoom.view && (
@@ -559,7 +530,7 @@ const Facilities = () => {
                 </div>
 
                 <div className="detail-section">
-                  <h4>Amenities</h4>
+                  <h4>Layanan</h4>
                   <div className="amenities-grid">
                     {activeRoom.amenities.map((amenity, index) => (
                       <div key={index} className="amenity-item">
@@ -572,7 +543,7 @@ const Facilities = () => {
 
                 {activeRoom.description && (
                   <div className="detail-section">
-                    <h4>Description</h4>
+                    <h4>Deskripsi</h4>
                     <p>{activeRoom.description}</p>
                   </div>
                 )}
@@ -580,15 +551,15 @@ const Facilities = () => {
             </div>
             <div className="modal-footer">
               <button className="btn btn-secondary" onClick={closeRoomDetail}>
-                Close
+                Tutup
               </button>
-              <button
+              <Link
+              to="/Reservation"
                 className="btn btn-primary"
-                onClick={() => handleBookNow(activeRoom.name)}
               >
                 <i className="bi bi-calendar-check me-2"></i>
-                Book This Room
-              </button>
+                Reservasi Sekarang
+              </Link>
             </div>
           </div>
         </div>

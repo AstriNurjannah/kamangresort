@@ -22,44 +22,45 @@ const [selectedImage, setSelectedImage] = useState(null);
   // }, [isAutoPlaying]);
 
 
-  const heroSlides = [
-    {
-      id: 1,
-      image: "/Kamang-Resort/DaftarMenu2.jpg",
-      title: "Menu Nusantara dan Cotential ",
-      description: "Menu Makanan Khas",
-    },
-    {
-      id: 2,
-      image: "/Kamang-Resort/DaftarMenu3.jpg",
-      title: "Pasta, Mie dan Pizza",
-      description: "Sourced directly from local farmers",
-    },
-    {
-      id: 3,
-      image: "/Kamang-Resort/DaftarMenu4.jpg",
-      title: "Fresh Local Ingredients",
-      description: "Sourced directly from local farmers",
-    },
-    {
-      id: 4,
-      image: "/Kamang-Resort/DaftarMenu5.jpg",
-      title: "Starter, Dessert, Snack ",
-      description: "Sourced directly from local farmers",
-    },
-       {
-      id: 5,
-      image: "/Kamang-Resort/DaftarMenu6.jpg",
-      title: "Cold Drink",
-      description: "Sourced directly from local farmers",
-    },
-     {
-      id: 6,
-      image: "/Kamang-Resort/DaftarMenu7.jpg",
-      title: "Hot Drink",
-      description: "Sourced directly from local farmers",
-    },
-  ];
+const heroSlides = [
+  {
+    id: 1,
+    image: "/Kamang-Resort/DaftarMenu2.jpg",
+    title: "Menu Nusantara dan Spesial Kami",
+    description: "Hidangan khas dengan cita rasa autentik Indonesia",
+  },
+  {
+    id: 2,
+    image: "/Kamang-Resort/DaftarMenu3.jpg",
+    title: "Pasta, Mie, dan Pizza",
+    description: "Dibuat dari bahan pilihan dengan rasa terbaik",
+  },
+  {
+    id: 3,
+    image: "/Kamang-Resort/DaftarMenu4.jpg",
+    title: "Bahan Segar dari Alam",
+    description: "Dipilih langsung dari petani lokal",
+  },
+  {
+    id: 4,
+    image: "/Kamang-Resort/DaftarMenu5.jpg",
+    title: "Hidangan Pembuka, Penutup, dan Camilan",
+    description: "Disajikan dengan cita rasa istimewa",
+  },
+  {
+    id: 5,
+    image: "/Kamang-Resort/DaftarMenu6.jpg",
+    title: "Minuman Dingin",
+    description: "Segarkan harimu dengan pilihan terbaik kami",
+  },
+  {
+    id: 6,
+    image: "/Kamang-Resort/DaftarMenu7.jpg",
+    title: "Minuman Hangat",
+    description: "Nikmati kehangatan dalam setiap tegukan",
+  },
+];
+
 
    // Auto slide functionality
    
@@ -209,7 +210,7 @@ const [selectedImage, setSelectedImage] = useState(null);
               Kamang Resort Restaurant
             </h1>
             <p className="lead">
-              Authentic Taste • Relaxed Atmosphere • Beautiful View
+              Cita Rasa Asli • Suasana Nyaman • Pemandangan Menawan
             </p>
           </div>
         </div>
@@ -367,7 +368,7 @@ const [selectedImage, setSelectedImage] = useState(null);
 
 
       {/* Contact & CTA */}
-      <div className="container">
+      {/* <div className="container">
         <div className="row mt-5">
           <div className="col-12 text-center">
             <div className="restaurant-cta">
@@ -403,7 +404,7 @@ const [selectedImage, setSelectedImage] = useState(null);
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

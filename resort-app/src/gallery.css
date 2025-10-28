@@ -45,15 +45,7 @@
   grid-row: span 4; /* 2x1 */
 }
 
-.tetris-item.tall {
-  grid-column: span 2;
-  grid-row: span; /* 1x2 */
-}
 
-.tetris-item.large {
-  grid-column: span 3;
-  grid-row: span 3; /* 2x2 */
-}
 
 .tetris-item.vertical {
   grid-column: span 2;

@@ -5,12 +5,36 @@ import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js"; // ✅ Tambahkan ini
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Home() {
   const [activeFilter, setActiveFilter] = useState("all");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [checkin, setCheckin] = useState("");
+  const [checkout, setCheckout] = useState("");
+  const [adults, setAdults] = useState(1);
+  const [children, setChildren] = useState(0);
+
+  const navigate = useNavigate();
+
+  const handleSubmit = () => {
+    // Hitung total tamu
+    const totalGuests = Number(adults) + Number(children);
+
+    // Validasi sederhana
+    if (!checkin || !checkout) {
+      alert("Silakan pilih tanggal check-in dan check-out!");
+      return;
+    }
+
+    // Redirect ke halaman rekomendasi dengan membawa data input
+    navigate("/recomendation", {
+      state: { totalGuests, checkin, checkout },
+    });
+
+    setShow(false);
+  };
 
   const images = [
     "DaftarMenu1.jpg",
@@ -23,6 +47,8 @@ function Home() {
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
 
+
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -30,6 +56,7 @@ function Home() {
 
     return () => clearInterval(interval); // bersihkan interval saat unmount
   }, []);
+
 
   const testimonials = [
     {
@@ -52,34 +79,35 @@ function Home() {
     },
   ];
 
-  const galleryItems = [
-    // Nature & Views
-    {
-      id: 1,
-      category: "nature",
-      image: "/Kamang-Resort/resort-gunung.jpg",
-      title: "Mountain View",
-      description: "Breathtaking scenery from the resort",
-    },
+const galleryItems = [
+  // Alam & Pemandangan
+  {
+    id: 1,
+    category: "nature",
+    image: "/Kamang-Resort/resort-gunung.jpg",
+    title: "Pemandangan Gunung",
+    description: "Pemandangan menakjubkan dari area resort",
+  },
 
-    // Facilities
-    {
-      id: 4,
-      category: "facilities",
-      image: "/Kamang-Resort/resort-kolam.jpg",
-      title: "Swimming Pool",
-      description: "Infinity pool with panoramic views",
-    },
+  // Fasilitas
+  {
+    id: 4,
+    category: "facilities",
+    image: "/Kamang-Resort/resort-kolam.jpg",
+    title: "Kolam Renang",
+    description: "Kolam infinity dengan pemandangan panorama",
+  },
 
-    // Rooms
-    {
-      id: 7,
-      category: "rooms",
-      image: "/Kamang-Resort/resort-bed2.jpg",
-      title: "Deluxe Room",
-      description: "Spacious room with mountain view",
-    },
-  ];
+  // Kamar
+  {
+    id: 7,
+    category: "rooms",
+    image: "/Kamang-Resort/resort-bed2.jpg",
+    title: "Kamar Deluxe",
+    description: "Kamar luas dengan pemandangan pegunungan",
+  },
+];
+
 
   const faqs = [
     {
@@ -117,17 +145,17 @@ function Home() {
       id: 1,
       nama: "RAFTING",
       kategori: "Wisata Petualangan",
-      lokasi: "Kamang Magek, Agam",
+      // lokasi: "Kamang Magek, Agam",
       jarak: "2.5 km",
       // video: "/Kamang-Resort/rafting.MP4",
-      gambar: "/Kamang-Resort/rafting.jpg", // thumbnail fallback
+      gambar: "/Kamang-Resort/rafting.JPG", // thumbnail fallback
     },
     {
       id: 2,
       nama: "PULAU SOETAN",
       kategori: "Wisata Alam & Pulau",
-      lokasi:
-        "Ampang Pulai, Koto XI Tarusan, Kabupaten Pesisir Selatan, Sumatera Barat",
+      // lokasi:
+      //   "Ampang Pulai, Koto XI Tarusan, Kabupaten Pesisir Selatan, Sumatera Barat",
       jarak: "15 km",
       // video: "/Kamang-Resort/pulau-soetan.MP4",
       gambar: "/Kamang-Resort/pulau-soetan.png", // thumbnail fallback
@@ -136,8 +164,8 @@ function Home() {
       id: 3,
       nama: "JUMPING PULAU SIRONJONG",
       kategori: "Wisata Air & Petualangan",
-      lokasi:
-        "Ampang Pulai, Koto XI Tarusan, Kabupaten Pesisir Selatan, Sumatera Barat",
+      // lokasi:
+      //   "Ampang Pulai, Koto XI Tarusan, Kabupaten Pesisir Selatan, Sumatera Barat",
       jarak: "18 km",
       video: "/Kamang-Resort/jumping-sironjong.MP4",
       gambar: "/Kamang-Resort/jumping.png",
@@ -146,103 +174,217 @@ function Home() {
       id: 4,
       nama: "JAM GADANG",
       kategori: "Wisata Ikonik & Sejarah",
-      lokasi:
-        "Benteng Ps. Atas, Kec. Guguk Panjang, Kota Bukittinggi, Sumatera Barat",
+      // lokasi:
+      //   "Benteng Ps. Atas, Kec. Guguk Panjang, Kota Bukittinggi, Sumatera Barat",
       jarak: "25 km",
       // video: "/Kamang-Resort/jam-gadang.MP4",
       gambar: "/Kamang-Resort/Jam-gadang.png",
     },
+{
+  id: 5,
+  nama: "Istano Basa Pagaruyung",
+  kategori: "Wisata Sejarah & Budaya",
+  jarak: "25 km",
+  gambar: "/Kamang-Resort/istanaPaguruyung.webp",
+},
+{
+  id: 6,
+  nama: "Ngarai Sianok",
+  kategori: "Wisata Alam & Ikonik",
+  jarak: "25 km",
+  gambar: "/Kamang-Resort/Ngarai-sianok.webp",
+},
+{
+  id: 7,
+  nama: "Puncak Lawang",
+  kategori: "Wisata Alam & Panorama",
+  jarak: "25 km",
+  gambar: "/Kamang-Resort/puncak-lawang.webp",
+},
+
   ];
 
   return (
     <>
       {/* Hero Section */}
-      <section
-        className="hero-section position-relative d-flex flex-column justify-content-center align-items-start text-start"
-        style={{
-          paddingTop: "90px",
-          height: "100vh", // Tinggi 100% dari viewport
-          paddingLeft: "120px",
-          overflow: "hidden",
-        }}
-      >
-        {/* Background Video */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="position-absolute top-0 start-0 w-100 h-100"
-          style={{ objectFit: "cover", zIndex: "-1", height: "300px" }}
-        >
-          <source src="/Kamang-Resort/kamangresort3.mp4" type="video/mp4" />
-        </video>
+<section
+  className="hero-section position-relative d-flex flex-column justify-content-center align-items-start text-start"
+  style={{
+    paddingTop: "90px",
+    paddingLeft: "120px",
+    overflow: "hidden",
+  }}
+>
+  {/* Background Video */}
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    playsinline="true"
+    preload="auto"
+    className="position-absolute top-0 start-0 w-100 h-100"
+    style={{
+      objectFit: "cover",
+      zIndex: "-1",
+      height: "300px",
+      pointerEvents: "none", // supaya tidak bisa diklik play
+    }}
+  >
+    <source src="/Kamang-Resort/kamangresort7.mp4" type="video/mp4" />
+  </video>
 
-        {/* Overlay Gelap Halus */}
-        <div
-          className="position-absolute top-0 start-0 w-100 h-100"
-          style={{
-            background: "rgba(0, 0, 0, 0)",
-            zIndex: "0",
-          }}
-        ></div>
-
-        {/* Konten Tulisan */}
-        <div
-          style={{
-            zIndex: "1",
-            maxWidth: "700px",
-          }}
-        >
-          <h1
-            className="fw-bold mb-3"
-            style={{
-              color: "#ffffffff",
-              textShadow: "3px 2px 0 rgba(247, 94, 5, 1)",
-            }}
-          >
-            Welcome to Kamang Resort
-          </h1>
-
-          <p
-            className="lead mb-4"
-            style={{
-              color: "#ffffffcc",
-              textShadow: "1px 1px 0px rgba(0,0,0,1)",
-            }}
-          >
-            Temukan ketenangan, kenyamanan, dan keindahan alam yang berpadu
-            sempurna. Pengalaman menginap tak terlupakan menanti Anda di Kamang
-            Resort.
-          </p>
-
-          <Link
-            to="/facilities"
-            className="btn btn-lg"
-            style={{
-              backgroundColor: "#F75E05",
-              color: "#fff",
-              fontWeight: "300",
-              fontSize: "1rem",
-              padding: "10px 20px",
-              borderRadius: "50px",
-              transition: "all 0.3s ease",
-            }}
-            onMouseOver={(e) => {
-              e.target.style.backgroundColor = "#fff";
-              e.target.style.color = "#F75E05";
-            }}
-            onMouseOut={(e) => {
-              e.target.style.backgroundColor = "#F75E05";
-              e.target.style.color = "#fff";
-            }}
-          >
-            Lihat Kamar
-          </Link>
-        </div>
-      </section>
+  {/* Overlay */}
+  <div
+    className="position-absolute top-0 start-0 w-100 h-100"
+    style={{
+      background: "rgba(0, 0, 0, 0)",
+      zIndex: "0",
+    }}
+  ></div>
+</section>
 
       {/* Intro Text */}
+      <section
+        className="kamang-section  text-center d-flex flex-column justify-content-center align-items-center"
+        style={{
+          padding: "60px 10px",
+          backgroundColor: "#fff",
+        }}
+      >
+          <h3
+          className="text-center my-4 "
+          style={{ color: "#315B51", fontWeight: "bold" }}
+        >
+          Kamang Resort & Convention
+        </h3>
+
+        <p
+          className="text-muted justify"
+          style={{
+            lineHeight: "1.8",
+            fontSize: "1.05rem",
+            color: "#555",
+          }}
+        >
+          Rasakan ketenangan di Kamang Resort & Convention, tempat di mana kenyamanan modern berpadu dengan keindahan alam. Pilihan sempurna untuk liburan yang menenangkan.
+        </p>
+
+           <Button
+            variant="primary"
+            onClick={() => setShow(true)}
+            style={{
+              backgroundColor: "#315B51",
+              border: "none",
+              padding: "10px 20px",
+              borderRadius: "8px",
+            }}
+          >
+            Check Rekomendasi Kamar
+          </Button>
+
+          <Modal show={show} onHide={() => setShow(false)} centered size="md">
+            <Modal.Header
+              closeButton
+              style={{ backgroundColor: "#F8F6F1", borderBottom: "none" }}
+            >
+              <Modal.Title
+                className="w-100 text-center fw-bold"
+                style={{ color: "#315B51" }}
+              >
+                Reservasi
+              </Modal.Title>
+            </Modal.Header>
+
+            <Modal.Body style={{ backgroundColor: "#F8F6F1" }}>
+              <form>
+                <fieldset>
+                  {/* Check-in */}
+                  <div className="mb-3">
+                    <label
+                      className="form-label fw-semibold"
+                      style={{ color: "#355B4F" }}
+                    >
+                      Check-in <span className="text-danger">*</span>
+                    </label>
+                    <input
+                      type="date"
+                      className="form-control border-0 shadow-sm py-2"
+                      value={checkin}
+                      onChange={(e) => setCheckin(e.target.value)}
+                    />
+                  </div>
+
+                  {/* Check-out */}
+                  <div className="mb-3">
+                    <label
+                      className="form-label fw-semibold"
+                      style={{ color: "#355B4F" }}
+                    >
+                      Check-out <span className="text-danger">*</span>
+                    </label>
+                    <input
+                      type="date"
+                      className="form-control border-0 shadow-sm py-2"
+                      value={checkout}
+                      onChange={(e) => setCheckout(e.target.value)}
+                    />
+                  </div>
+
+                  {/* Adults */}
+                  <div className="mb-3">
+                    <label
+                      className="form-label fw-semibold"
+                      style={{ color: "#355B4F" }}
+                    >
+                      Adults
+                    </label>
+                    <select
+                      className="form-select border-0 shadow-sm py-2"
+                      value={adults}
+                      onChange={(e) => setAdults(e.target.value)}
+                    >
+                      {[1, 2, 3, 4, 5].map((num) => (
+                        <option key={num}>{num}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Children */}
+                  <div className="mb-3">
+                    <label
+                      className="form-label fw-semibold"
+                      style={{ color: "#355B4F" }}
+                    >
+                      Children
+                    </label>
+                    <select
+                      className="form-select border-0 shadow-sm py-2"
+                      value={children}
+                      onChange={(e) => setChildren(e.target.value)}
+                    >
+                      {[0, 1, 2, 3, 4, 5].map((num) => (
+                        <option key={num}>{num}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Submit */}
+                  <div className="text-center mt-4">
+                    <button
+                      type="button"
+                      className="btn btn-success"
+                      style={{ backgroundColor: "#315B51", border: "none" }}
+                      onClick={handleSubmit}
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </fieldset>
+              </form>
+            </Modal.Body>
+          </Modal>
+      </section>
 
       {/* About & Services */}
       <section className="py-1" style={{ backgroundColor: "#ffffff" }}>
@@ -350,7 +492,7 @@ function Home() {
 
               {/* Tombol Baca Selengkapnya */}
               <div className="mt-3">
-                <Link
+                <Button
                   to="/About"
                   className="btn px-4 py-2"
                   style={{
@@ -369,7 +511,7 @@ function Home() {
                   }
                 >
                   Baca Selengkapnya...
-                </Link>
+                </Button>
               </div>
             </div>
           </div>
@@ -382,7 +524,7 @@ function Home() {
           height: "3px",
           backgroundColor: "#315B51",
           width: "80%",
-          margin: "15px auto",
+          margin: "30px auto",
         }}
       />
 
@@ -392,12 +534,12 @@ function Home() {
           className="text-center my-5 "
           style={{ color: "#315B51", fontWeight: "bold" }}
         >
-          Wisata Terdekat
+          Wisata Favorit
         </h3>
 
         <p
           className="justify text-muted mb-5"
-          style={{ maxWidth: "100%", margin: "0 auto" }}
+          style={{  margin: "0 auto" }}
         >
           Kamang Resort dikelilingi oleh berbagai destinasi wisata menarik yang
           mudah dijangkau. Para tamu dapat menikmati keindahan alam, kegiatan
@@ -415,82 +557,91 @@ function Home() {
             paddingBottom: "10px",
           }}
         >
-          {wisataTerdekat.map((item) => (
-            <div
-              key={item.id}
+     {wisataTerdekat.map((item) => (
+    <div
+      key={item.id}
+      className="flex-shrink-0"
+      style={{
+        width: "clamp(220px, 30vw, 320px)", // fleksibel: min 220px, max 320px
+      }}
+    >
+      <div
+        className="card shadow-sm border-0"
+        style={{
+          borderRadius: "15px",
+          overflow: "hidden",
+          transition: "transform 0.3s ease, box-shadow 0.3s ease",
+          height: "100%",
+        }}
+      >
+        <div
+          className="position-relative"
+          style={{
+            height: "clamp(180px, 25vw, 350px)", // tinggi juga fleksibel
+            overflow: "hidden",
+          }}
+        >
+          {/* Gambar / Video */}
+          {item.video ? (
+            <video
+              src={item.video}
+              poster={item.gambar}
+              className="w-100 h-100"
               style={{
-                minWidth: "320px",
-                flex: "0 0 auto",
+                objectFit: "cover",
+                transition: "transform 0.3s ease",
               }}
-            >
-              <div
-                className="card shadow-sm border-0"
-                style={{
-                  borderRadius: "15px",
-                  overflow: "hidden",
-                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                  height: "100%",
-                }}
-              >
-                <div
-                  className="position-relative"
-                  style={{
-                    height: "350px",
-                    overflow: "hidden",
-                  }}
-                >
-                  {/* Gambar/Video */}
-                  {item.video ? (
-                    <video
-                      src={item.video}
-                      poster={item.gambar}
-                      className="w-100 h-100"
-                      style={{
-                        objectFit: "cover",
-                        transition: "transform 0.3s ease",
-                      }}
-                      muted
-                      onMouseEnter={(e) => e.target.play()}
-                      onMouseLeave={(e) => {
-                        e.target.pause();
-                        e.target.currentTime = 0;
-                      }}
-                    />
-                  ) : (
-                    <img
-                      src={item.gambar}
-                      alt={item.nama}
-                      className="w-100 h-100"
-                      style={{
-                        objectFit: "cover",
-                        transition: "transform 0.3s ease",
-                      }}
-                    />
-                  )}
+              muted
+              onMouseEnter={(e) => e.target.play()}
+              onMouseLeave={(e) => {
+                e.target.pause();
+                e.target.currentTime = 0;
+              }}
+            />
+          ) : (
+            <img
+              src={item.gambar}
+              alt={item.nama}
+              className="w-100 h-100"
+              style={{
+                objectFit: "cover",
+                transition: "transform 0.3s ease",
+              }}
+            />
+          )}
 
-                  {/* Overlay Lokasi */}
-                  <div
-                    className="position-absolute bottom-0 start-0 w-100 text-white p-3"
-                    style={{
-                      background:
-                        "linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0))",
-                    }}
-                  >
-                    <h5 className="fw-bold mb-1">{item.nama}</h5>
-                    <p className="mb-0 small">{item.lokasi}</p>
-                  </div>
-                </div>
+          {/* Overlay Lokasi */}
+          <div
+            className="position-absolute bottom-0 start-0 w-100 text-white p-3"
+            style={{
+              background:
+                "linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0))",
+            }}
+          >
+            <h6 className="fw-bold mb-1">{item.nama}</h6>
+            <p className="mb-0 small">{item.lokasi}</p>
+          </div>
+        </div>
 
-                {/* Keterangan */}
-                <div className="p-3 text-center">
-                  <p className="text-muted mb-1">{item.kategori}</p>
-                </div>
-              </div>
-            </div>
-          ))}
+        {/* Keterangan */}
+        <div className="p-2 text-center">
+          <p className="text-muted mb-1 small">{item.kategori}</p>
+        </div>
+      </div>
+    </div>
+  ))}
         </div>
       </div>
 
+ <hr
+        style={{
+          border: "none",
+          height: "3px",
+          backgroundColor: "#315B51",
+          width: "80%",
+          margin: "50px auto",
+        }}
+      />
       {/* Gallery Grid */}
       <div className="row mb-5">
         {/* Judul Gallery */}
@@ -532,154 +683,86 @@ function Home() {
       </div>
 
       {/* Highlight Section */}
-      <section
-        style={{
-          position: "relative",
-          backgroundImage: "url('/Kamang-Resort/Resort1.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed",
-          minHeight: "250px",
-          width: "100vw",
-          marginLeft: "calc(-50vw + 50%)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "white",
-        }}
-      >
-        {/* Overlay transparan */}
-        <div
+  <section
+  style={{
+    position: "relative",
+    backgroundImage: "url('/Kamang-Resort/Resort1.jpg')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundAttachment: "fixed",
+    minHeight: "300px",
+    width: "100vw",
+    marginLeft: "calc(-50vw + 50%)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    color: "white",
+    padding: "60px 0",
+  }}
+>
+  {/* Overlay Transparan */}
+  <div
+    style={{
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      backgroundColor: "rgba(49, 91, 81, 0.7)",
+      zIndex: 1,
+    }}
+  ></div>
+
+  {/* Konten Statistik */}
+  <div
+    style={{
+      position: "relative",
+      zIndex: 2,
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+      gap: "30px",
+      width: "90%",
+      maxWidth: "1000px",
+      backgroundColor: "white",
+      borderRadius: "20px",
+      boxShadow: "0 8px 25px rgba(0,0,0,0.15)",
+      padding: "40px 20px",
+      color: "#315B51",
+      textAlign: "center",
+    }}
+  >
+    {[
+      { number: "5++", label: "Penilaian di Maps" },
+{ number: "100", label: "Pelayanan" },
+{ number: "10", label: "Staf Lokal" },
+{ number: "4.8", label: "Penilaian Tamu" },
+
+    ].map((item, index) => (
+      <div key={index}>
+        <h2
           style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            backgroundColor: "rgba(49, 91, 81, 0.65)", // #315B51 transparan
-            zIndex: 1,
+            fontSize: "2.5rem",
+            fontWeight: "bold",
+            marginBottom: "10px",
           }}
-        ></div>
+        >
+          {item.number}
+        </h2>
+        <p style={{ fontSize: "1rem", color: "#333" }}>{item.label}</p>
+      </div>
+    ))}
+  </div>
+</section>
 
-        {/* Konten di atas overlay */}
-        <div style={{ zIndex: 2, textAlign: "center" }}>
-          <h2 style={{ color: "#D7BE93" }}>Ingin Membuat Reservasi</h2>
-          <Button variant="primary" onClick={() => setShow(true)}>
-            Check Sekarang
-          </Button>
-
-          <Modal show={show} onHide={() => setShow(false)} centered size="md">
-            <Modal.Header
-              closeButton
-              style={{
-                backgroundColor: "#F8F6F1",
-                borderBottom: "none",
-              }}
-            >
-              <Modal.Title
-                className="w-100 text-center fw-bold"
-                style={{ color: "#315B51" }}
-              >
-                Reservasi
-              </Modal.Title>
-            </Modal.Header>
-
-            <Modal.Body style={{ backgroundColor: "#F8F6F1" }}>
-              <form>
-                <fieldset>
-                  {/* Check-in */}
-                  <div className="mb-3">
-                    <label
-                      className="form-label fw-semibold"
-                      style={{ color: "#355B4F" }}
-                    >
-                      Check-in <span className="text-danger">*</span>
-                    </label>
-                    <input
-                      type="date"
-                      className="form-control border-0 shadow-sm py-2"
-                      placeholder="Check-in Date"
-                    />
-                  </div>
-
-                  {/* Check-out */}
-                  <div className="mb-3">
-                    <label
-                      className="form-label fw-semibold"
-                      style={{ color: "#355B4F" }}
-                    >
-                      Check-out <span className="text-danger">*</span>
-                    </label>
-                    <input
-                      type="date"
-                      className="form-control border-0 shadow-sm py-2"
-                      placeholder="Check-out Date"
-                    />
-                  </div>
-
-                  {/* Adults */}
-                  <div className="mb-3">
-                    <label
-                      className="form-label fw-semibold"
-                      style={{ color: "#355B4F" }}
-                    >
-                      Adults
-                    </label>
-                    <select className="form-select border-0 shadow-sm py-2">
-                      {[1, 2, 3, 4, 5].map((num) => (
-                        <option key={num}>{num}</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  {/* Children */}
-                  <div className="mb-3">
-                    <label
-                      className="form-label fw-semibold"
-                      style={{ color: "#355B4F" }}
-                    >
-                      Children
-                    </label>
-                    <select className="form-select border-0 shadow-sm py-2">
-                      {[0, 1, 2, 3, 4, 5].map((num) => (
-                        <option key={num}>{num}</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  {/* Submit */}
-                  <div className="text-center mt-4">
-                    <button
-                      type="button"
-                      class="btn btn-success"
-                      style={{ backgroundColor: "#315B51" }}
-                    >
-                      Submit
-                    </button>
-                  </div>
-                </fieldset>
-              </form>
-            </Modal.Body>
-
-            <Modal.Footer
-              style={{
-                backgroundColor: "#F8F6F1",
-                borderTop: "none",
-                justifyContent: "center",
-              }}
-            ></Modal.Footer>
-          </Modal>
-        </div>
-      </section>
       {/* End */}
 
       {/* Poster */}
       {/* Poster Section */}
       <section
         className="py-5 poster"
-        // style={{
-        //   background: "linear-gradient(180deg, #f8fcff 0%, #e9f6f1 100%)",
-        // }}
+      // style={{
+      //   background: "linear-gradient(180deg, #f8fcff 0%, #e9f6f1 100%)",
+      // }}
       >
         <div className="container">
           <h3
@@ -784,7 +867,7 @@ function Home() {
                 className="img-fluid rounded-4 shadow-sm"
                 style={{
                   maxWidth: "70%",
-                  transition: "opacity 0.5s ease-in-out",
+                  transition: "transform 0.3s ease",
                   cursor: "pointer",
                 }}
                 onClick={() => {
@@ -866,118 +949,123 @@ function Home() {
       </section>
 
       {/* Video Ai */}
-      <section>
-        <div className="row">
-          <div className="col-12">
-            <div className="video-section">
-              <h3
-                className="text-center mb-5 fw-bold"
-                style={{ color: "#315B50" }}
+      <section
+        style={{
+          background: "linear-gradient(180deg, #f7f9f8 0%, #ffffff 100%)",
+          padding: "20px 20px",
+        }}
+      >
+        <div className="container text-center">
+          <h3
+            className="fw-bold mb-3"
+            style={{
+              color: "#315B50",
+              fontSize: "2rem",
+              letterSpacing: "0.5px",
+            }}
+          >
+            Kamang Bersama Kamala
+          </h3>
+          <p
+            style={{
+              color: "#555",
+              maxWidth: "600px",
+              margin: "0 auto 40px",
+              fontSize: "1.1rem",
+            }}
+          >
+            Saksikan bagaimana <strong>Kamala</strong> — asisten virtual Kamang Resort —
+            membantu Anda menjelajahi keindahan dan layanan terbaik kami.
+          </p>
+
+          <div
+            className="video-card mx-auto shadow-lg fade-in"
+            style={{
+              maxWidth: "720px",
+              borderRadius: "20px",
+              overflow: "hidden",
+              backgroundColor: "#fff",
+              transition: "transform 0.3s ease, box-shadow 0.3s ease",
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = "scale(1.02)";
+              e.currentTarget.style.boxShadow =
+                "0 10px 25px rgba(0, 0, 0, 0.15)";
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = "scale(1)";
+              e.currentTarget.style.boxShadow =
+                "0 4px 15px rgba(0, 0, 0, 0.1)";
+            }}
+          >
+            <div className="ratio ratio-16x9">
+              <video
+                controls
+                poster="thumbnail-video.jpg" // opsional: gambar cover video
+                className="w-100 h-100"
+                style={{ objectFit: "cover" }}
               >
-                Kamang Bersama Kamala
-              </h3>
-              <div className="video-container mb-5">
-                <div className="ratio ratio-16x9">
-                  <video
-                    controls
-                    className="w-100 h-100"
-                    style={{ objectFit: "cover", borderRadius: "15px" }}
-                  >
-                    <source
-                      src="/Kamang-Resort/KamangResort.mp4"
-                      type="video/mp4"
-                    />
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-              </div>
+                <source src="Ai-Kamang.mp4" type="video/mp4" />
+                Browser kamu tidak mendukung video.
+              </video>
             </div>
           </div>
         </div>
       </section>
 
+
+
       {/* Another Highlight */}
-      <section
+  <section
+      className="Highlight position-relative d-flex flex-column justify-content-center align-items-center text-center"
+      style={{
+        backgroundImage: "url('/Kamang-Resort/Resort2.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+        minHeight: "300px",
+        width: "100vw",
+        marginLeft: "calc(-50vw + 50%)",
+        color: "white",
+        overflow: "hidden",
+      }}
+    >
+      {/* Overlay Transparan */}
+      <div
         style={{
-          position: "relative",
-          backgroundImage: "url('/Kamang-Resort/Resort2.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed",
-          minHeight: "300px",
-          width: "100vw",
-          marginLeft: "calc(-50vw + 50%)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "column",
-          color: "white",
-          textAlign: "center",
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundColor: "rgba(49, 91, 81, 0.65)",
+          zIndex: 1,
         }}
-      >
-        {/* Overlay transparan */}
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            backgroundColor: "rgba(49, 91, 81, 0.65)", // warna overlay
-            zIndex: 1,
-          }}
-        ></div>
+      ></div>
 
-        {/* Konten di atas overlay */}
-        <div style={{ zIndex: 2 }}>
-          <h5 style={{ color: "#FFFFFF", marginBottom: "1.5rem" }}>
-            Rayakan berbagai macam momen spesial anda di resort kami
-          </h5>
+      {/* Konten di atas overlay */}
+      <div className="responsive-text" style={{ zIndex: 2, padding: "1rem" }}>
+        <h5 className="highlight-title">
+          Rayakan berbagai macam momen spesial anda di resort kami
+        </h5>
 
-          {/* Tombol Highlight Acara */}
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "10px",
-              justifyContent: "center",
-            }}
-          >
-            {[
-              "Wedding Party",
-              "Family Gathering",
-              "Corporate Event",
-              "Romantic Dinner",
-              "Birthday Celebration",
-              "Retreat & Outbound",
-            ].map((event) => (
-              <button
-                key={event}
-                style={{
-                  backgroundColor: "#D7BE93",
-                  color: "#315B51",
-                  border: "none",
-                  borderRadius: "25px",
-                  padding: "10px 20px",
-                  fontWeight: "600",
-                  cursor: "pointer",
-                  transition: "all 0.3s ease",
-                }}
-                onMouseOver={(e) => {
-                  e.target.style.backgroundColor = "#315B51";
-                  e.target.style.color = "#D7BE93";
-                }}
-                onMouseOut={(e) => {
-                  e.target.style.backgroundColor = "#D7BE93";
-                  e.target.style.color = "#315B51";
-                }}
-              >
-                {event}
-              </button>
-            ))}
-          </div>
+        {/* Tombol Highlight Acara */}
+        <div className="highlight-buttons">
+          {[
+            "Pesta Pernikahan",
+            "Acara Kumpul Keluarga",
+            "Acara Perusahaan",
+            "Makan Malam Romantis",
+            "Perayaan Ulang Tahun",
+            "Kegiatan Retreat & Outbound",
+          ].map((event) => (
+            <button key={event} className="highlight-btn">
+              {event}
+            </button>
+          ))}
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* Testimoni */}
       <section className="py-5 bg-light" id="testimoni">
@@ -1025,9 +1113,8 @@ function Home() {
               <div key={index} className="accordion-item border-0 mb-2">
                 <h2 className="accordion-header">
                   <button
-                    className={`accordion-button faq-btn ${
-                      activeIndex === index ? "" : "collapsed"
-                    }`}
+                    className={`accordion-button faq-btn ${activeIndex === index ? "" : "collapsed"
+                      }`}
                     type="button"
                     onClick={() => toggleFAQ(index)}
                     style={{
@@ -1039,9 +1126,8 @@ function Home() {
                 </h2>
 
                 <div
-                  className={`accordion-content ${
-                    activeIndex === index ? "open" : ""
-                  }`}
+                  className={`accordion-content ${activeIndex === index ? "open" : ""
+                    }`}
                 >
                   <div
                     className="accordion-body"
