@@ -42,9 +42,9 @@ Website Kamang Resort mencakup fitur-fitur berikut:
 
 | Section | Preview |
 |----------|----------|
-| Hero Section | ![Hero](https://github.com/username/Kamang-Resort/blob/main/assets/Img1.png) |
-| Menu Kuliner | ![Menu](https://github.com/username/Kamang-Resort/blob/main/assets/Img2.png) |
-| Kategori Wisata | ![Wisata](https://github.com/username/Kamang-Resort/blob/main/assets/Img3.png) |
+| Hero Section | ![Hero](https://github.com/AstriNurjannah/kamangresort/blob/main/assets/Img1.png) |
+| Menu Kuliner | ![Menu](https://github.com/AstriNurjannah/kamangresort/blob/main/assets/img2.png) |
+| Kategori Wisata | ![Wisata](https://github.com/AstriNurjannah/kamangresort/blob/main/assets/img3.png) |
 
 > *(Ganti URL screenshot sesuai repositori kamu)*
 
