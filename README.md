@@ -46,7 +46,7 @@ Website Kamang Resort mencakup fitur-fitur berikut:
 | Menu Kuliner | ![Menu](https://github.com/AstriNurjannah/kamangresort/blob/main/assets/img2.png) |
 | Kategori Wisata | ![Wisata](https://github.com/AstriNurjannah/kamangresort/blob/main/assets/img3.png) |
 
-> *(Ganti URL screenshot sesuai repositori kamu)*
+
 
 ---
 
@@ -59,5 +59,5 @@ Fitur Chatbot AI pada Kamang Resort berfungsi sebagai asisten digital yang dapat
 
 ---
 
-## 🗂️ Folder Structure
+
 
