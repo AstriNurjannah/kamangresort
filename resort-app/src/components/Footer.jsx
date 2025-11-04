@@ -14,7 +14,7 @@ function Footer() {
       <div className="container">
         <div className="row text-start">
           {/* Kolom 1 - Maps & Nama Resort (lebih besar) */}
-          <div className="col-md-5 mb-4">
+          <div className="col-md-8 col-lg-5 mb-4">
             <h5 className="">Kamang Resort</h5>
             <div
               style={{
@@ -36,32 +36,29 @@ function Footer() {
           </div>
 
           {/* Kolom 2 - Contact Us */}
-          <div className="col-md-3 mb-4">
+          <div className="col-md-4  col-lg-3 mb-4">
             <h5 className="">Contact Us</h5>
             <p>Email : team8bbpvp@gmail.com</p>
-            <p>Phone : +123-456-7890</p>
+            <p>Phone : +62896026356</p>
             <p>Address: Jl. Raya Pauah - Bukittinggi, Kamang Mudiak, Kec. Kamang Magek, Kabupaten Agam, Sumatera Barat 26152</p>
           </div>
 
           {/* Kolom 3 - Media Sosial */}
-          <div className="col-md-2 mb-4">
+          <div className="col-md-2 col-lg-2  mb-4">
             <h5 className="">Follow Us</h5>
             <div className="d-flex gap-3">
-              <a href="#" style={{ color: "white", fontSize: "20px" }}>
-                <i className="bi bi-facebook"></i>
-              </a>
-              <a href="#" style={{ color: "white", fontSize: "20px" }}>
+              <a href="https://www.instagram.com/team8proper.id?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" style={{ color: "white", fontSize: "20px" }}>
                 <i className="bi bi-instagram"></i>
               </a>
-              <a href="#" style={{ color: "white", fontSize: "20px" }}>
-                <i className="bi bi-twitter"></i>
+              <a href="https://www.tiktok.com/@proper.id08?is_from_webapp=1&sender_device=pc" style={{ color: "white", fontSize: "20px" }}>
+                <i class="bi bi-tiktok"></i>
               </a>
            
             </div>
           </div>
 
           {/* Kolom 4 - Logo pendukung */}
-          <div className="col-md-2 mb-4 ">
+          <div className="col-md-6 col-lg-2  mb-4 ">
             <h5 className="">Our Partner</h5>
             <img
               src="/Kamang-Resort/LogoResort.png"
@@ -80,7 +77,7 @@ function Footer() {
 
         {/* Copyright */}
         <div className="text-center py-3 border-top border-light mt-3">
-          <p className="mb-0">© Copyright by Kamang Resort 2025 - Created by Proper.Id</p>
+          <p className="mb-0">© Copyright by Kamang Resort 2025 - Created by Team8proper.Id</p>
           
         </div>
       </div>

@@ -1,0 +1,144 @@
+/* .gallery-section {
+  padding: 100px 0 80px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  min-height: 100vh;
+  margin-top: var(--navbar-height);
+  min-height: calc(100vh - var(--navbar-height));
+} */
+
+.gallery  {
+  background: white !important;
+}
+
+/* ===== TETRIS GRID LAYOUT ===== */
+.tetris-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 kolom */
+  grid-auto-rows: 100px; /* BASE HEIGHT UNIT */
+  grid-gap: 30px;
+  grid-auto-flow: dense; /* PENTING: biar rapat seperti tetris */
+}
+
+/* TETRIS ITEM BASE */
+.tetris-item {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+}
+
+.tetris-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* TETRIS SHAPES */
+.tetris-item.square {
+  grid-column: span 1;
+  grid-row: span 3; /* 1x1 */
+}
+
+.tetris-item.wide {
+  grid-column: span 1;
+  grid-row: span 4; /* 2x1 */
+}
+
+
+
+.tetris-item.vertical {
+  grid-column: span 2;
+  grid-row: span 3; /* 1x3 */
+}
+
+.tetris-item.horizontal {
+  grid-column: span 4;
+  grid-row: span 1; /* 3x1 */
+}
+
+/* TETRIS IMAGE */
+.tetris-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.tetris-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.tetris-item:hover .tetris-image img {
+  transform: scale(1.05);
+}
+
+/* TETRIS OVERLAY */
+.tetris-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(49, 91, 80, 0) 0%,
+    rgba(49, 91, 80, 0.8) 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  padding: 15px;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.tetris-item:hover .tetris-overlay {
+  opacity: 1;
+}
+
+.overlay-content {
+  color: white;
+}
+
+.overlay-content h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.overlay-content p {
+  font-size: 0.8rem;
+  margin: 0;
+  line-height: 1.3;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+  .tetris-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 kolom di tablet */
+  }
+}
+
+@media (max-width: 768px) {
+  .tetris-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 kolom di mobile */
+    grid-auto-rows: 80px; /* lebih kecil di mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .tetris-grid {
+    grid-template-columns: 1fr; /* 1 kolom di small mobile */
+  }
+
+  .tetris-item.wide,
+  .tetris-item.large,
+  .tetris-item.horizontal {
+    grid-column: span 1; /* reset ke 1 kolom */
+  }
+}

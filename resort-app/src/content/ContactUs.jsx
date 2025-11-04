@@ -23,7 +23,6 @@ const ContactUs = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Ganti dengan endpoint Formspree-mu
     const FORM_ENDPOINT = "https://formspree.io/f/mdkwzyql"; 
 
     try {
@@ -50,7 +49,7 @@ const ContactUs = () => {
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
-      setTimeout(() => setSubmitStatus(""), 5000); // Hapus alert setelah 5 detik
+      setTimeout(() => setSubmitStatus(""), 5000);
     }
   };
 
@@ -61,10 +60,10 @@ const ContactUs = () => {
           <div className="row">
             <div className="col-12 text-center mb-5">
               <h1 className="display-4 fw-bold" style={{ color: "#315B50" }}>
-                Contact Us
+                Hubungi Kami
               </h1>
               <p className="lead">
-                Get in touch with us. We'd love to hear from you.
+                Silakan hubungi kami, kami dengan senang hati akan mendengar dari Anda.
               </p>
             </div>
           </div>
@@ -74,32 +73,34 @@ const ContactUs = () => {
             <div className="col-lg-4 col-md-6 mb-4">
               <div className="contact-info-card h-100">
                 <div className="card-body p-4">
-                  <h3 className="card-title mb-4">Get In Touch</h3>
+                  <h3 className="card-title mb-4">Informasi Kontak</h3>
+
                   <div className="contact-item mb-4">
                     <div className="d-flex align-items-center">
                       <div className="contact-icon me-3">
                         <i className="bi bi-geo-alt-fill"></i>
                       </div>
                       <div>
-                        <h6 className="mb-1">Address</h6>
+                        <h6 className="mb-1">Alamat</h6>
                         <p className="text-muted mb-0">
-                          Pauah–Bukittinggi Main Road, Kamang Mudiak, Agam, West
-                          Sumatra
+                          Jl. Raya Pauah–Bukittinggi, Kamang Mudiak, Agam, Sumatera Barat
                         </p>
                       </div>
                     </div>
                   </div>
+
                   <div className="contact-item mb-4">
                     <div className="d-flex align-items-center">
                       <div className="contact-icon me-3">
                         <i className="bi bi-telephone-fill"></i>
                       </div>
                       <div>
-                        <h6 className="mb-1">Phone</h6>
-                        <p className="text-muted mb-0"> +123-456-7890</p>
+                        <h6 className="mb-1">Telepon</h6>
+                        <p className="text-muted mb-0">+62896026356</p>
                       </div>
                     </div>
                   </div>
+
                   <div className="contact-item mb-4">
                     <div className="d-flex align-items-center">
                       <div className="contact-icon me-3">
@@ -111,17 +112,17 @@ const ContactUs = () => {
                       </div>
                     </div>
                   </div>
+
                   <div className="contact-item">
                     <div className="d-flex align-items-center">
                       <div className="contact-icon me-3">
                         <i className="bi bi-clock-fill"></i>
                       </div>
                       <div>
-                        <h6 className="mb-1">Business Hours</h6>
+                        <h6 className="mb-1">Jam Operasional</h6>
                         <p className="text-muted mb-0">
-                          Mon – Fri: 9:00 AM – 6:00 PM
-                          <br />
-                          Sat – Sun: 9:00 AM – 6:00 PM
+                          Senin – Jumat: 09.00 – 18.00 <br />
+                          Sabtu – Minggu: 09.00 – 18.00
                         </p>
                       </div>
                     </div>
@@ -134,15 +135,14 @@ const ContactUs = () => {
             <div className="col-lg-8 col-md-6">
               <div className="contact-form-card">
                 <div className="card-body p-4">
-                  <h3 className="card-title mb-4">Send us a Message</h3>
+                  <h3 className="card-title mb-4">Kirim Pesan</h3>
 
                   {submitStatus === "success" && (
                     <div
                       className="alert alert-success alert-dismissible fade show"
                       role="alert"
                     >
-                      <strong>Success!</strong> Your message has been sent
-                      successfully.
+                      <strong>Berhasil!</strong> Pesan Anda telah berhasil dikirim.
                       <button
                         type="button"
                         className="btn-close"
@@ -156,8 +156,7 @@ const ContactUs = () => {
                       className="alert alert-danger alert-dismissible fade show"
                       role="alert"
                     >
-                      <strong>Error!</strong> There was a problem sending your
-                      message. Please try again.
+                      <strong>Gagal!</strong> Terjadi kesalahan saat mengirim pesan. Silakan coba lagi.
                       <button
                         type="button"
                         className="btn-close"
@@ -170,7 +169,7 @@ const ContactUs = () => {
                     <div className="row">
                       <div className="col-md-6 mb-3">
                         <label htmlFor="name" className="form-label">
-                          Full Name *
+                          Nama Lengkap *
                         </label>
                         <input
                           type="text"
@@ -180,12 +179,12 @@ const ContactUs = () => {
                           value={formData.name}
                           onChange={handleChange}
                           required
-                          placeholder="Enter your full name"
+                          placeholder="Masukkan nama lengkap Anda"
                         />
                       </div>
                       <div className="col-md-6 mb-3">
                         <label htmlFor="email" className="form-label">
-                          Email Address *
+                          Alamat Email *
                         </label>
                         <input
                           type="email"
@@ -195,14 +194,14 @@ const ContactUs = () => {
                           value={formData.email}
                           onChange={handleChange}
                           required
-                          placeholder="Enter your email address"
+                          placeholder="Masukkan alamat email Anda"
                         />
                       </div>
                     </div>
 
                     <div className="mb-3">
                       <label htmlFor="subject" className="form-label">
-                        Subject *
+                        Subjek *
                       </label>
                       <input
                         type="text"
@@ -212,13 +211,13 @@ const ContactUs = () => {
                         value={formData.subject}
                         onChange={handleChange}
                         required
-                        placeholder="Enter the subject"
+                        placeholder="Masukkan subjek pesan"
                       />
                     </div>
 
                     <div className="mb-4">
                       <label htmlFor="message" className="form-label">
-                        Message *
+                        Pesan *
                       </label>
                       <textarea
                         className="form-control"
@@ -228,7 +227,7 @@ const ContactUs = () => {
                         value={formData.message}
                         onChange={handleChange}
                         required
-                        placeholder="Enter your message here..."
+                        placeholder="Tulis pesan Anda di sini..."
                       ></textarea>
                     </div>
 
@@ -245,10 +244,10 @@ const ContactUs = () => {
                               role="status"
                               aria-hidden="true"
                             ></span>
-                            Sending...
+                            Mengirim...
                           </>
                         ) : (
-                          "Send Message"
+                          "Kirim Pesan"
                         )}
                       </button>
                     </div>
@@ -259,6 +258,8 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
+
+      
     </div>
   );
 };

@@ -7,6 +7,8 @@ import Restaurant from "../content/Restaurant";
 import Facilities from "../content/Facilities";
 import { Routes, Route } from "react-router-dom";
 import BackgroundMusic from "./BackgroundMusic";
+import PagenotFound from "../components/PagenotFound";
+import RecommendationPage from "../content/RecomendationPage";
 
 function AppRoutes() {
   return (
@@ -21,6 +23,9 @@ function AppRoutes() {
         <Route path="/Reservation" element={<Reservation />} />
         <Route path="/Facilities" element={<Facilities />} />
         <Route path="/Restaurant" element={<Restaurant />} />
+        <Route path="/Recomendation" element={<RecommendationPage />} />
+
+        <Route path="*" element={<PagenotFound />} />
       </Routes>
     </div>
   );

@@ -12,22 +12,63 @@ body,
   --navbar-height: 80px;
 }
 
-/* Sembunyikan scrollbar tapi tetap bisa discroll */
-::-webkit-scrollbar {
-  display: none;
-}
-.scroll-container {
-  -ms-overflow-style: none;  /* IE dan Edge */
-  scrollbar-width: none;     /* Firefox */
+/* Start Loading */
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  font-family: "Poppins", sans-serif;
+  transition: opacity 0.5s ease;
 }
 
-/* End */
+.loading-logo {
+  width: 120px;
+  height: auto;
+  animation: pulse 1.8s ease-in-out infinite;
+}
 
+@keyframes pulse {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.3;
+    transform: scale(0.95);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Loading End */
 
 .hero-section {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: 100vw;
   left: 50%;
   right: 50%;
   margin-left: -50vw;
@@ -35,14 +76,6 @@ body,
   overflow: hidden;
 }
 
-
-p {
- max-width: 800px;
-  margin: 0 auto;
-  font-size: 17px;
-  line-height: 1.8;
-
-}
 /*tulisan berjalan*/
 @keyframes marquee {
   0% {
@@ -137,7 +170,54 @@ p {
 
 
 
+/* ================================
+   FAQ Section Styles
+================================ */
 
+/* Tombol accordion default */
+.accordion-button {
+  background-color: #fff !important;
+  color: #315b51 !important;
+  border: 1px solid #315b51 !important;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* Tombol saat aktif (terbuka) */
+.accordion-button:not(.collapsed) {
+  background-color: #315b51 !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+/* Hilangkan efek fokus agar rapi */
+.accordion-button:focus {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Konten accordion dengan animasi smooth */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.6s ease, opacity 0.4s ease;
+}
+
+.accordion-content.open {
+  max-height: 300px; /* cukup besar agar isi bisa muat */
+  opacity: 1;
+}
+
+/* Efek hover opsional */
+.accordion-button:hover {
+  background-color: #eaf4f1 !important;
+  color: #315b51 !important;
+}
+
+/* ================================
+   End FAQ Section
+================================ */
 
 /* resturant */
 .restaurant {
@@ -160,7 +240,6 @@ p {
 
 /* end */
 
-
 /* Home LAyout */
 .video {
   display: flex;
@@ -182,7 +261,7 @@ p {
 }
 
 .img {
-  border-radius: 15px;
+  border-radius: px;
   overflow: hidden;
 }
 
@@ -204,8 +283,6 @@ p {
 
 /* End */
 
-
-
 /* Awal (transparan di atas hero/video) */
 /* ==== NAVBAR STYLE ==== */
 
@@ -216,9 +293,11 @@ p {
 }
 
 /* Brand (Logo atau Nama) */
-.navbar-brand {
-  font-size: 1.3rem;
-  font-weight: 600;
+#navbarNavDropdown .nav p {
+  font-size: 0.9rem;
+}
+#navbarNavDropdown .nav #navbarDropdown {
+  font-size: 0.9rem;
 }
 
 /* Dropdown menu item */
@@ -228,14 +307,19 @@ p {
 }
 
 .navbar-transparent {
-   background: rgba(138, 137, 137, 0.3) !important; /* lebih transparan agar blur terlihat */
+  background: rgba(
+    138,
+    137,
+    137,
+    0.3
+  ) !important; /* lebih transparan agar blur terlihat */
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(12px);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .navbar-transparent .nav-link {
-  color: #F75E05 !important; /* beige */
+  color: #f75e05 !important; /* beige */
   font-weight: 600;
 }
 
@@ -259,6 +343,9 @@ p {
   color: #5caa91 !important; /* hijau lebih gelap */
 }
 
+
+
+
 .navbar-brand img {
   width: 200px; /* lebar crop gambar yg diinginkan */
   height: 90px; /* tinggi crop gambar yg diinginkan */
@@ -269,7 +356,7 @@ p {
 
 .contact-us {
   padding: 80px 0;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
   min-height: 100vh;
   margin-top: var(--navbar-height);
   min-height: calc(100vh - var(--navbar-height));
@@ -334,10 +421,10 @@ p {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #315b50 0%, #315b50 100%);
+  background: linear-gradient(135deg, #65c1a9 0%, #315b50 100%);
   border: none;
   border-radius: 10px;
-  padding: 15px 30px;
+  padding: 10px 20px;
   font-weight: 600;
   font-size: 1.1rem;
   transition: all 0.3s ease;
@@ -345,7 +432,7 @@ p {
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(13, 110, 253, 0.4);
+  box-shadow: 0 5px 15px rgba(107, 137, 182, 0.4);
 }
 
 .btn-primary:disabled {
@@ -354,26 +441,10 @@ p {
   box-shadow: none;
 }
 
-.map-section {
-  margin-top: 50px;
-}
-
-.map-placeholder {
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-}
-
-.map-content {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-}
-
 .alert {
   border-radius: 10px;
   border: none;
 }
-
 
 /* Animation untuk form */
 @keyframes fadeInUp {
@@ -455,6 +526,7 @@ p {
   color: #315b50;
 }
 
+
 .team-card {
   padding: 30px 20px;
   background: white;
@@ -501,10 +573,9 @@ p {
   transition: all 0.3s ease;
 }
 
-.btn-primary {
-  background: linear-gradient(135deg, #315b50 0%, #2a4d43 100%);
-  border: none;
-}
+
+
+
 
 .gallery-item {
   border-radius: 15px;
@@ -588,6 +659,68 @@ p {
 
 /* ===== RESPONSIVE SETTINGS ===== */
 
+.highlight-title {
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  padding: 0 1rem;
+  font-size: 1.5rem;
+  line-height: 1.4;
+}
+
+.highlight-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.highlight-btn {
+  background-color: #d7be93;
+  color: #315b51;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.highlight-btn:hover {
+  background-color: #315b51;
+  color: #d7be93;
+}
+
+/* 🌐 Responsif untuk layar kecil */
+@media (max-width: 768px) {
+  .highlight-title {
+    font-size: 1.25rem;
+  }
+
+  .highlight-btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+
+  .Highlight {
+    background-attachment: scroll; /* hindari bug parallax di iOS */
+  }
+}
+
+/* 📱 Layar sangat kecil (hp < 480px) */
+@media (max-width: 480px) {
+  .highlight-title {
+    font-size: 1.1rem;
+  }
+
+  .highlight-btn {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+
+
 /* 📱 HP KECIL (max 480px) */
 @media (max-width: 480px) {
   .hero-section {
@@ -595,41 +728,126 @@ p {
     padding: 20px 90px;
   }
 
+  .btn-primary {
+  background: linear-gradient(135deg, #65c1a9 0%, #315b50 100%);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 10px;
+  font-weight: 400;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
   .hero-section h1 {
-    font-size: 1.7rem;
+    font-size: 1.4rem;
     line-height: 1.5;
+    text-align: center;
   }
-  
+
   .hero-section p {
     font-size: 1rem;
     line-height: 1.5;
     text-align: center;
   }
 
-  .hero-section .btn {
-    font-size: 0.9rem;
+  .poster h4 {
+    font-size: large;
+    text-align: center;
+    line-height: 1.4;
   }
+
+  .hero-section .btn {
+    font-size: 0.2rem;
+    justify-content: center;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* untuk rata tengah */
+  .container .justify {
+    font-size: 0.9rem;
+    text-align: justify;
+    line-height: 1.7;
+    font-weight: 500;
+  }
+
+  section .run-text p {
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    text-align: justify;
+  }
+
+  .container .justify {
+    text-align: justify;
+  }
+
+  /* Style khusus untuk paragraf dengan class tes */
+  .position-relative {
+    width: "100%";
+    height: "320px";
+  }
+
+  .about-us .text-tengah {
+    text-align: justify;
+  }
+  .justify-about {
+  font-size: 0.9rem;
+  text-align: justify;
+}
+.Highlight .responsive-text h5 {
+  font-size: 0.7rem;
+  
+}
+
 }
 
 /* 📱 HP BESAR - TABLET KECIL (481px–768px) */
 @media (min-width: 481px) and (max-width: 768px) {
   .hero-section {
     height: 85vh;
-    padding: 0 40px;
+    padding: 0 120px;
   }
-
   .hero-section h1 {
     font-size: 2.2rem;
   }
 
   .hero-section p {
-    font-size: 1.2rem;
-  
+    font-size: 1.3rem;
   }
 
   .hero-section .btn {
     font-size: 0.95rem;
   }
+  .run-text {
+    font-size: 1rem;
+  }
+
+  .container .justify {
+    font-size: 1rem;
+    text-align: justify;
+    line-height: 1.7;
+    font-weight: 500;
+  }
+  .poster p {
+    padding: 0 20px 15px;
+    text-align: center;
+    line-height: 1.4;
+  }
+  .position-relative {
+    width: "100%";
+    height: "300px";
+  }
+    .justify-about {
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: justify;
+}
+.feature-card p{
+  font-size: 1rem;
+}
 }
 
 /* 💻 TABLET LANDSCAPE - LAPTOP KECIL (769px–1024px) */
@@ -642,6 +860,27 @@ p {
   .hero-section h1 {
     font-size: 2.5rem;
   }
+  .hero-section p {
+    font-size: 1rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .justify-about {
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: justify;
+}
+.feature-card p{
+  font-size: 1rem;
+}
+
+  .container .justify {
+    font-size: 1rem;
+    text-align: justify;
+  }
 
   .hero-section p {
     font-size: 1.3rem;
@@ -653,14 +892,43 @@ p {
   .hero-section {
     height: 100vh;
     padding: 0 120px;
+    margin-bottom: 20px;
   }
 
   .hero-section h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 
   .hero-section p {
-    font-size: 1.5rem;
+    font-size: 1rem;
+  }
+  .justify-about {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  text-align: justify;
+}
+.feature-card p{
+  font-size: 1rem;
+}
+
+  p {
+    font-size: 0.89rem;
+  }
+
+  .container .justify {
+    font-size: 1rem;
+    text-align: center;
+  }
+/* 
+  .container .row {
+    margin-bottom: 120px;
+  } */
+  section .run-text h6 {
+    font-size: 1rem;
+  }
+
+  section .run-text p {
+    font-size: 0.9rem;
   }
 }
 
@@ -668,7 +936,6 @@ p {
 
 /* Responsive Design untuk layar dengan lebar maksimum 768px */
 @media (max-width: 768px) {
-
   /* ===== Section Contact Us ===== */
   .contact-us {
     padding: 80px 0;
@@ -685,9 +952,6 @@ p {
   }
 
   /* ===== Heading besar di layar kecil ===== */
-  .display-4 {
-    font-size: 2rem;
-  }
 
   /* ===== Tombol filter pada gallery ===== */
   .filter-buttons .btn {
@@ -709,5 +973,3 @@ p {
     margin-bottom: 20px;
   }
 }
-
-
