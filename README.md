@@ -1,3 +1,5 @@
+#### NB : Hanya Gunakan folder resort-app untuk menjalankan Web App 
+<hr>
 <h2 align="center"> 🌿 Kamang Resort - Discover Nature, Taste Local, and Experience Kamang </h2> 
 <br>
 <p>
