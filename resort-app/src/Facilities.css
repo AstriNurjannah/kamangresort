@@ -910,7 +910,7 @@
     height: 10px;
     margin: 0 3px; /* GANTI DENGAN MARGIN KECIL */
   }
-}
+
 
 @media (max-width: 576px) {
   .room-content {
